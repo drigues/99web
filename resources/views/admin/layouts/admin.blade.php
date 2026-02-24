@@ -251,10 +251,15 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>
                     </svg>
                     @if($notifCount > 0)
-                        <span class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full text-[9px] font-bold text-white flex items-center justify-center"
+                        <span id="notif-badge"
+                              class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full text-[9px] font-bold text-white flex items-center justify-center"
                               style="background: linear-gradient(135deg, #7C3AED 0%, #9333EA 100%);">
                             {{ $notifCount > 9 ? '9+' : $notifCount }}
                         </span>
+                    @else
+                        <span id="notif-badge"
+                              class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full text-[9px] font-bold text-white flex items-center justify-center"
+                              style="background: linear-gradient(135deg, #7C3AED 0%, #9333EA 100%); display: none;">0</span>
                     @endif
                 </button>
 
@@ -324,12 +329,94 @@
 
         {{-- ── Content area ── --}}
         <main class="flex-1 bg-[#0A0612] p-6" id="main-content">
+
+            {{-- Flash — sucesso --}}
+            @if(session('success'))
+                <div
+                    x-data="{ show: true }"
+                    x-show="show"
+                    x-init="setTimeout(() => show = false, 4000)"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 -translate-y-2"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                    x-transition:leave="transition ease-in duration-200"
+                    x-transition:leave-start="opacity-100 translate-y-0"
+                    x-transition:leave-end="opacity-0 -translate-y-2"
+                    class="flex items-center gap-3 mb-5 px-4 py-3 rounded-xl
+                           bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm"
+                    role="alert"
+                >
+                    <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span class="flex-1">{{ session('success') }}</span>
+                    <button @click="show = false" class="text-emerald-500/60 hover:text-emerald-400 transition-colors" aria-label="Fechar">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+            @endif
+
+            {{-- Flash — erro --}}
+            @if(session('error') || $errors->any())
+                <div
+                    x-data="{ show: true }"
+                    x-show="show"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 -translate-y-2"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                    class="flex items-start gap-3 mb-5 px-4 py-3 rounded-xl
+                           bg-red-500/10 border border-red-500/20 text-red-400 text-sm"
+                    role="alert"
+                >
+                    <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
+                    </svg>
+                    <div class="flex-1">
+                        @if(session('error'))
+                            {{ session('error') }}
+                        @elseif($errors->any())
+                            <ul class="space-y-0.5">
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
+                    <button @click="show = false" class="text-red-500/60 hover:text-red-400 transition-colors flex-shrink-0" aria-label="Fechar">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+            @endif
+
             @yield('content')
         </main>
 
     </div>
 
     @stack('scripts')
+
+    {{-- Polling notificações (a cada 60s) --}}
+    <script>
+    (function () {
+        const badge = document.getElementById('notif-badge');
+        if (!badge) return;
+
+        async function pollNotifs() {
+            try {
+                const r = await fetch('{{ route('admin.api.notifications-count') }}', {
+                    headers: { 'Accept': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content }
+                });
+                if (!r.ok) return;
+                const data = await r.json();
+                const count = data.count ?? 0;
+                badge.textContent = count > 9 ? '9+' : count;
+                badge.style.display = count > 0 ? '' : 'none';
+            } catch {}
+        }
+
+        setInterval(pollNotifs, 60000);
+    })();
+    </script>
 
 </body>
 </html>

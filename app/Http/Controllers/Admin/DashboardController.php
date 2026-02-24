@@ -7,6 +7,7 @@ use App\Models\BlogPost;
 use App\Models\Contact;
 use App\Models\MeetingRequest;
 use App\Models\PackageRequest;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 
@@ -92,5 +93,14 @@ class DashboardController extends Controller
             'chart_labels',
             'chart_values',
         ));
+    }
+
+    public function notificationsCount(): JsonResponse
+    {
+        $count = Contact::novo()->count()
+               + PackageRequest::novo()->count()
+               + MeetingRequest::pendente()->count();
+
+        return response()->json(['count' => $count]);
     }
 }

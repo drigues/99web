@@ -4,6 +4,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PackageRequestController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminContactController;
+use App\Http\Controllers\Admin\AdminPackageRequestController;
+use App\Http\Controllers\Admin\AdminMeetingController;
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,13 +34,33 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-        // Stubs — implementação futura
-        Route::get('/contactos',       fn () => abort(404))->name('contactos.index');
-        Route::get('/contactos/{id}',  fn () => abort(404))->name('contactos.show');
-        Route::get('/pedidos',         fn () => abort(404))->name('pedidos.index');
-        Route::get('/pedidos/{id}',    fn () => abort(404))->name('pedidos.show');
-        Route::get('/reunioes',        fn () => abort(404))->name('reunioes.index');
-        Route::get('/reunioes/{id}',   fn () => abort(404))->name('reunioes.show');
+        // API — contagem de notificações
+        Route::get('/api/notifications-count', [DashboardController::class, 'notificationsCount'])
+            ->name('api.notifications-count');
+
+        // ── Contactos ──
+        Route::get('/contactos',                    [AdminContactController::class, 'index'])->name('contactos.index');
+        Route::get('/contactos/{contact}',          [AdminContactController::class, 'show'])->name('contactos.show');
+        Route::patch('/contactos/{contact}/status', [AdminContactController::class, 'updateStatus'])->name('contactos.updateStatus');
+        Route::patch('/contactos/{contact}/notes',  [AdminContactController::class, 'updateNotes'])->name('contactos.updateNotes');
+        Route::delete('/contactos/{contact}',       [AdminContactController::class, 'destroy'])->name('contactos.destroy');
+
+        // ── Pedidos de pacotes ──
+        Route::get('/pedidos',                       [AdminPackageRequestController::class, 'index'])->name('pedidos.index');
+        Route::get('/pedidos/{pedido}',              [AdminPackageRequestController::class, 'show'])->name('pedidos.show');
+        Route::patch('/pedidos/{pedido}/status',     [AdminPackageRequestController::class, 'updateStatus'])->name('pedidos.updateStatus');
+        Route::patch('/pedidos/{pedido}/notes',      [AdminPackageRequestController::class, 'updateNotes'])->name('pedidos.updateNotes');
+        Route::delete('/pedidos/{pedido}',           [AdminPackageRequestController::class, 'destroy'])->name('pedidos.destroy');
+
+        // ── Reuniões ──
+        Route::get('/reunioes',                      [AdminMeetingController::class, 'index'])->name('reunioes.index');
+        Route::get('/reunioes/{reuniao}',            [AdminMeetingController::class, 'show'])->name('reunioes.show');
+        Route::patch('/reunioes/{reuniao}/status',   [AdminMeetingController::class, 'updateStatus'])->name('reunioes.updateStatus');
+        Route::post('/reunioes/{reuniao}/confirm',   [AdminMeetingController::class, 'confirm'])->name('reunioes.confirm');
+        Route::patch('/reunioes/{reuniao}/notes',    [AdminMeetingController::class, 'updateNotes'])->name('reunioes.updateNotes');
+        Route::delete('/reunioes/{reuniao}',         [AdminMeetingController::class, 'destroy'])->name('reunioes.destroy');
+
+        // ── Stubs (blog, configurações) ──
         Route::get('/blog',            fn () => abort(404))->name('blog.index');
         Route::get('/blog/categorias', fn () => abort(404))->name('blog.categorias.index');
         Route::get('/configuracoes',   fn () => abort(404))->name('configuracoes.index');
