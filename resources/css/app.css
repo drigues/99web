@@ -22,3 +22,26 @@
     --color-brand-cta-from:      #7C3AED;
     --color-brand-cta-to:        #9333EA;
 }
+
+/* ─── Float animations ─────────────────────────────────── */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-12px); }
+}
+
+@keyframes float-alt {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-8px); }
+}
+
+@utility animate-float {
+    animation: float 5s ease-in-out infinite;
+}
+
+@utility animate-float-slow {
+    animation: float 7s ease-in-out 1.5s infinite;
+}
+
+@utility animate-float-delayed {
+    animation: float-alt 5.5s ease-in-out 0.8s infinite;
+}
