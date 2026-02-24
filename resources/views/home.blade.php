@@ -1088,4 +1088,115 @@
     </div>
 </section>
 
+
+{{-- ══════════════════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════════════════ --}}
+<section
+    id="faq"
+    class="py-24 bg-[#0F0A1A]"
+    x-data="{ visible: false }"
+    x-intersect.once="visible = true"
+>
+    <div class="max-w-3xl mx-auto px-6">
+
+        {{-- Cabeçalho --}}
+        <div
+            class="text-center mb-14 transition-all duration-700"
+            :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+        >
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-xs font-medium tracking-wide uppercase mb-4">
+                Dúvidas
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">
+                Perguntas Frequentes
+            </h2>
+            <p class="text-zinc-400 text-base max-w-xl mx-auto">
+                Tudo o que precisa de saber
+            </p>
+        </div>
+
+        {{-- Accordion --}}
+        <div
+            x-data="{ open: null }"
+            class="divide-y divide-zinc-800 border border-zinc-800 rounded-2xl overflow-hidden transition-all duration-700 delay-150"
+            :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+        >
+
+            @php
+            $faqs = [
+                [
+                    'pergunta' => 'Preciso de ter conhecimentos técnicos para gerir o meu site?',
+                    'resposta'  => 'Não. Todos os nossos sites são entregues com um painel de gestão simples e intuitivo. Formamos a sua equipa numa sessão de onboarding e ficamos disponíveis sempre que precisar de ajuda.',
+                ],
+                [
+                    'pergunta' => 'O domínio e o alojamento estão incluídos?',
+                    'resposta'  => 'No primeiro ano, o domínio e o alojamento premium estão incluídos no preço do pacote. A partir do segundo ano, a renovação é cobrada separadamente — geralmente entre 80€ e 150€/ano, dependendo do plano.',
+                ],
+                [
+                    'pergunta' => 'Qual é o prazo de entrega de um website?',
+                    'resposta'  => 'Um website standard fica pronto em 7 a 14 dias úteis após recebermos todos os conteúdos (textos, imagens, logótipo). Projetos mais complexos, como lojas online ou sistemas, têm prazos acordados no briefing.',
+                ],
+                [
+                    'pergunta' => 'Posso fazer alterações ao site depois de entregue?',
+                    'resposta'  => 'Sim. Nos primeiros 30 dias estão incluídas revisões ilimitadas sem custo. Após esse período, pode contratar o nosso plano de manutenção mensal ou pedir alterações pontuais mediante orçamento.',
+                ],
+                [
+                    'pergunta' => 'O que acontece ao fim de 12 meses?',
+                    'resposta'  => 'O site continua a ser seu para sempre. A subscrição anual cobre o alojamento, atualizações de segurança e suporte prioritário. Pode cancelar a qualquer momento e migrar o site para outro servidor.',
+                ],
+                [
+                    'pergunta' => 'Posso acompanhar as estatísticas do meu site?',
+                    'resposta'  => 'Sim. Integramos o Google Analytics 4 e/ou o Google Search Console em todos os projetos. Pode ver em tempo real quantas pessoas visitam o seu site, de onde vêm e quais as páginas mais populares.',
+                ],
+            ];
+            @endphp
+
+            @foreach ($faqs as $index => $faq)
+            <div>
+                {{-- Botão pergunta --}}
+                <button
+                    type="button"
+                    class="w-full flex items-center justify-between gap-4 px-6 py-5 text-left
+                           text-sm font-medium text-white transition-colors duration-200
+                           hover:text-violet-400 focus:outline-none focus-visible:ring-2
+                           focus-visible:ring-violet-500 focus-visible:ring-inset"
+                    x-on:click="open = open === {{ $index }} ? null : {{ $index }}"
+                    :aria-expanded="open === {{ $index }}"
+                >
+                    <span>{{ $faq['pergunta'] }}</span>
+
+                    {{-- Chevron --}}
+                    <svg
+                        class="w-4 h-4 flex-shrink-0 text-violet-400 transition-transform duration-300"
+                        :class="open === {{ $index }} ? 'rotate-180' : ''"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+                        aria-hidden="true"
+                    >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </button>
+
+                {{-- Resposta --}}
+                <div
+                    x-show="open === {{ $index }}"
+                    x-transition:enter="transition ease-out duration-250"
+                    x-transition:enter-start="opacity-0 -translate-y-2"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 translate-y-0"
+                    x-transition:leave-end="opacity-0 -translate-y-2"
+                    style="display: none;"
+                >
+                    <div class="px-6 pb-5 text-sm text-zinc-400 leading-relaxed">
+                        {{ $faq['resposta'] }}
+                    </div>
+                </div>
+            </div>
+            @endforeach
+
+        </div>
+    </div>
+</section>
+
 @endsection
