@@ -41,11 +41,10 @@
                 aria-label="Navegação principal"
             >
                 @foreach ([
-                    'Sobre Ferramentas' => '#sobre',
-                    'Projetos'          => '#projetos',
-                    'Novidades'         => '#novidades',
-                    'FAQ'               => '#faq',
-                    'Blog'              => '#blog',
+                    'Serviços'  => '#servicos',
+                    'Projetos'  => '#projetos',
+                    'Pacotes'   => '#pacotes',
+                    'FAQ'       => '#faq',
                 ] as $label => $href)
                     <a
                         href="{{ $href }}"
@@ -124,11 +123,10 @@
             <nav class="flex flex-col items-center gap-7 text-center" aria-label="Menu mobile">
 
                 @foreach ([
-                    'Sobre Ferramentas' => '#sobre',
-                    'Projetos'          => '#projetos',
-                    'Novidades'         => '#novidades',
-                    'FAQ'               => '#faq',
-                    'Blog'              => '#blog',
+                    'Serviços'  => '#servicos',
+                    'Projetos'  => '#projetos',
+                    'Pacotes'   => '#pacotes',
+                    'FAQ'       => '#faq',
                 ] as $label => $href)
                     <a
                         href="{{ $href }}"

@@ -19,7 +19,7 @@
     <meta property="og:title" content="@yield('og_title', config('app.name', '99web'))">
     <meta property="og:description" content="@yield('og_description', 'Agência digital especializada em soluções web modernas e eficientes.')">
     <meta property="og:image" content="@yield('og_image', asset('images/og-default.png'))">
-    <meta property="og:locale" content="pt_BR">
+    <meta property="og:locale" content="pt_PT">
     <meta property="og:site_name" content="{{ config('app.name', '99web') }}">
 
     {{-- Twitter Card --}}
@@ -28,6 +28,11 @@
     <meta name="twitter:title" content="@yield('og_title', config('app.name', '99web'))">
     <meta name="twitter:description" content="@yield('og_description', 'Agência digital especializada em soluções web modernas e eficientes.')">
     <meta name="twitter:image" content="@yield('og_image', asset('images/og-default.png'))">
+
+    {{-- Favicon --}}
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+    <link rel="alternate icon" href="{{ asset('favicon.ico') }}">
+    <meta name="theme-color" content="#7C3AED">
 
     {{-- CSRF --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">

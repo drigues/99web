@@ -1,5 +1,11 @@
 @import 'tailwindcss';
 
+/* ─── Smooth scroll global ──────────────────────────── */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* compensa o header fixo h-16 */
+}
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';

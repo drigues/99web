@@ -807,7 +807,7 @@
             {{-- ── CARD 1 — Web Essencial ── --}}
             <div
                 :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
-                class="transition-all duration-700 delay-100 ease-out"
+                class="transition-all duration-700 delay-100 ease-out order-2 lg:order-1"
             >
                 <article class="rounded-2xl border border-violet-500/20 bg-[#1A1225] p-8 h-full flex flex-col
                                 hover:border-violet-500/40 hover:shadow-lg hover:shadow-violet-950/40
@@ -860,7 +860,7 @@
             {{-- ── CARD 2 — Web Corporativo (DESTACADO) ── --}}
             <div
                 :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
-                class="transition-all duration-700 delay-200 ease-out"
+                class="transition-all duration-700 delay-200 ease-out order-1 lg:order-2"
             >
                 <article
                     class="relative rounded-2xl border border-violet-500 p-8 h-full flex flex-col
@@ -929,7 +929,7 @@
             {{-- ── CARD 3 — Projetos Personalizados ── --}}
             <div
                 :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
-                class="transition-all duration-700 delay-300 ease-out"
+                class="transition-all duration-700 delay-300 ease-out order-3 lg:order-3"
             >
                 <article class="rounded-2xl border border-violet-500/20 bg-[#1A1225] p-8 h-full flex flex-col
                                 hover:border-violet-500/40 hover:shadow-lg hover:shadow-violet-950/40
