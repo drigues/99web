@@ -254,34 +254,397 @@
 </section>
 
 {{-- ══════════════════════════════════════════════════════
-     SERVIÇOS
+     BLOCO 1 — WEBSITES PROFISSIONAL  (texto esq | mockup dir)
 ══════════════════════════════════════════════════════ --}}
-<section id="servicos" class="py-24 bg-brand-section">
-    <div class="max-w-5xl mx-auto px-6">
-        <h2 class="text-4xl font-bold text-brand-text text-center mb-4">
-            O que fazemos
-        </h2>
-        <p class="text-brand-muted text-center mb-16 max-w-xl mx-auto">
-            Do conceito ao lançamento, cuidamos de cada etapa do seu projeto digital.
-        </p>
+<section
+    id="servicos"
+    class="py-20 bg-brand-bg relative overflow-hidden"
+    x-data="{ visible: false }"
+    x-intersect.once="visible = true"
+>
+    {{-- Gradiente decorativo lateral --}}
+    <div
+        class="absolute -left-40 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl pointer-events-none"
+        style="background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);"
+        aria-hidden="true"
+    ></div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-            @foreach ([
-                ['titulo' => 'Desenvolvimento Web', 'desc' => 'Sites e aplicações performáticas construídos com as melhores tecnologias do mercado.'],
-                ['titulo' => 'UI/UX Design', 'desc' => 'Interfaces intuitivas e esteticamente impecáveis que encantam os usuários.'],
-                ['titulo' => 'Estratégia Digital', 'desc' => 'Planejamento e execução de presença digital para maximizar resultados.'],
-            ] as $servico)
-                <article
-                    class="p-8 rounded-2xl border border-brand-primary/30 bg-brand-bg hover:border-brand-accent transition-colors"
-                    x-data="{ hovered: false }"
-                    x-on:mouseenter="hovered = true"
-                    x-on:mouseleave="hovered = false"
-                    :class="{ 'shadow-lg shadow-brand-primary/20': hovered }"
-                >
-                    <h3 class="text-xl font-semibold text-brand-text mb-3">{{ $servico['titulo'] }}</h3>
-                    <p class="text-brand-muted leading-relaxed">{{ $servico['desc'] }}</p>
-                </article>
-            @endforeach
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+            {{-- Texto --}}
+            <div
+                :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+                class="transition-all duration-700 ease-out"
+            >
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-violet-500/30 bg-violet-500/10 mb-5">
+                    <svg class="w-3 h-3 text-violet-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                    </svg>
+                    <span class="text-xs font-semibold text-violet-400 tracking-widest uppercase">Websites</span>
+                </div>
+
+                <h2 class="text-3xl lg:text-4xl font-bold text-white leading-tight mb-4">
+                    Websites Profissional
+                </h2>
+
+                <p class="text-zinc-400 leading-relaxed mb-8 max-w-md">
+                    Design moderno, adaptado a todos os dispositivos.
+                    O seu negócio merece estar online com um website sólido.
+                </p>
+
+                <ul class="space-y-4">
+                    @foreach ([
+                        'Otimizado para aparecer no Google',
+                        'Planos com domínio e alojamento incluído',
+                        'Rápido, seguro e construído para o seu tempo',
+                    ] as $item)
+                        <li class="flex items-start gap-3">
+                            <div class="mt-0.5 w-5 h-5 rounded-full bg-violet-500/20 border border-violet-500/30 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-3 h-3 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <span class="text-zinc-300">{{ $item }}</span>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+
+            {{-- Mockup — browser website --}}
+            <div
+                :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+                class="transition-all duration-700 delay-200 ease-out"
+            >
+                <div class="rounded-2xl border border-violet-500/20 bg-[#14102A] overflow-hidden shadow-2xl shadow-violet-950/40">
+
+                    {{-- Barra do browser --}}
+                    <div class="bg-[#1E1535] px-4 py-2.5 flex items-center gap-3 border-b border-white/5">
+                        <div class="flex gap-1.5" aria-hidden="true">
+                            <div class="w-2.5 h-2.5 rounded-full bg-red-400/70"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-yellow-400/70"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-green-400/70"></div>
+                        </div>
+                        <div class="flex-1 bg-white/5 rounded-md px-3 py-1 flex items-center gap-2">
+                            <svg class="w-3 h-3 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                            <span class="text-[10px] text-zinc-500">https://seunegocio.pt</span>
+                        </div>
+                    </div>
+
+                    {{-- Conteúdo simulado do site --}}
+                    <div class="p-5" aria-hidden="true">
+                        {{-- Fake nav --}}
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="h-3 w-16 rounded-full bg-violet-400/50"></div>
+                            <div class="flex gap-2">
+                                <div class="h-2 w-8 rounded-full bg-white/10"></div>
+                                <div class="h-2 w-8 rounded-full bg-white/10"></div>
+                                <div class="h-2 w-8 rounded-full bg-white/10"></div>
+                                <div class="h-6 w-16 rounded-full bg-violet-600/60"></div>
+                            </div>
+                        </div>
+
+                        {{-- Fake hero --}}
+                        <div class="rounded-xl p-5 mb-4" style="background: linear-gradient(135deg, #1A0533 0%, #0F0A1A 100%);">
+                            <div class="h-5 w-3/4 rounded-full bg-white/30 mb-2.5"></div>
+                            <div class="h-3 w-1/2 rounded-full bg-white/15 mb-5"></div>
+                            <div class="h-8 w-28 rounded-full" style="background: linear-gradient(135deg, #7C3AED, #9333EA);"></div>
+                        </div>
+
+                        {{-- Fake feature cards --}}
+                        <div class="grid grid-cols-3 gap-2 mb-4">
+                            <div class="rounded-xl bg-white/5 p-3 h-14"></div>
+                            <div class="rounded-xl bg-violet-500/10 border border-violet-500/20 p-3 h-14"></div>
+                            <div class="rounded-xl bg-white/5 p-3 h-14"></div>
+                        </div>
+
+                        {{-- Badge PageSpeed --}}
+                        <div class="flex items-center gap-3">
+                            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-500/15 border border-green-500/25">
+                                <div class="w-1.5 h-1.5 rounded-full bg-green-400"></div>
+                                <span class="text-[10px] font-semibold text-green-400">PageSpeed 98/100</span>
+                            </div>
+                            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/15 border border-blue-500/25">
+                                <div class="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
+                                <span class="text-[10px] font-semibold text-blue-400">SSL Ativo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{{-- ══════════════════════════════════════════════════════
+     BLOCO 2 — SISTEMAS CORPORATIVOS  (mockup esq | texto dir)
+══════════════════════════════════════════════════════ --}}
+<section
+    class="py-20 bg-brand-section relative overflow-hidden"
+    x-data="{ visible: false }"
+    x-intersect.once="visible = true"
+>
+    <div
+        class="absolute -right-40 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl pointer-events-none"
+        style="background: radial-gradient(circle, rgba(124,58,237,0.10) 0%, transparent 70%);"
+        aria-hidden="true"
+    ></div>
+
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+            {{-- Mockup — dashboard  (aparece primeiro no desktop, segundo no mobile) --}}
+            <div
+                :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+                class="transition-all duration-700 delay-200 ease-out order-2 lg:order-1"
+            >
+                <div class="rounded-2xl border border-violet-500/20 bg-[#14102A] p-5 shadow-2xl shadow-violet-950/40" aria-hidden="true">
+
+                    {{-- Header do dashboard --}}
+                    <div class="flex items-center justify-between mb-5">
+                        <div>
+                            <div class="text-xs font-semibold text-zinc-200 mb-0.5">Dashboard Corporativo</div>
+                            <div class="text-[10px] text-zinc-500">Atualizado agora mesmo</div>
+                        </div>
+                        <div class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-green-500/15 border border-green-500/25">
+                            <span class="relative flex h-1.5 w-1.5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-400"></span>
+                            </span>
+                            <span class="text-[10px] font-bold text-green-400">+250% Performance</span>
+                        </div>
+                    </div>
+
+                    {{-- Barras de progresso horizontais --}}
+                    @foreach ([
+                        ['label' => 'Velocidade de processos', 'pct' => 95, 'val' => '95%'],
+                        ['label' => 'Eficiência operacional',  'pct' => 82, 'val' => '82%'],
+                        ['label' => 'Automação de tarefas',    'pct' => 78, 'val' => '78%'],
+                        ['label' => 'Relatórios em tempo real','pct' => 90, 'val' => '90%'],
+                    ] as $kpi)
+                        <div class="mb-3.5">
+                            <div class="flex justify-between text-[10px] mb-1.5">
+                                <span class="text-zinc-400">{{ $kpi['label'] }}</span>
+                                <span class="text-violet-300 font-semibold">{{ $kpi['val'] }}</span>
+                            </div>
+                            <div class="h-1.5 rounded-full bg-white/5 overflow-hidden">
+                                <div
+                                    class="h-full rounded-full"
+                                    style="width: {{ $kpi['pct'] }}%; background: linear-gradient(to right, #7C3AED, #A855F7);"
+                                ></div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                    {{-- Stats cards --}}
+                    <div class="grid grid-cols-2 gap-2 mt-5">
+                        <div class="rounded-xl bg-white/5 p-3">
+                            <div class="text-xl font-bold text-white">142</div>
+                            <div class="text-[10px] text-zinc-400 mt-0.5">Tarefas automatizadas</div>
+                        </div>
+                        <div class="rounded-xl bg-violet-500/15 border border-violet-500/20 p-3">
+                            <div class="text-xl font-bold text-violet-300">38h</div>
+                            <div class="text-[10px] text-zinc-400 mt-0.5">Poupadas por semana</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Texto --}}
+            <div
+                :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+                class="transition-all duration-700 ease-out order-1 lg:order-2"
+            >
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-violet-500/30 bg-violet-500/10 mb-5">
+                    <svg class="w-3 h-3 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
+                    </svg>
+                    <span class="text-xs font-semibold text-violet-400 tracking-widest uppercase">Sistemas</span>
+                </div>
+
+                <h2 class="text-3xl lg:text-4xl font-bold text-white leading-tight mb-4">
+                    Sistemas Corporativos
+                </h2>
+
+                <p class="text-zinc-400 leading-relaxed mb-8 max-w-md">
+                    Aumente a rapidez dos seus processos. Coloque o seu negócio
+                    na frente e torne-o mais eficiente.
+                </p>
+
+                <ul class="space-y-4">
+                    @foreach ([
+                        'Performance para criar soluções imediatas',
+                        'Controle a sua equipa com dados',
+                        'Gestão de conteúdos multiplataformas',
+                    ] as $item)
+                        <li class="flex items-start gap-3">
+                            <div class="mt-0.5 w-5 h-5 rounded-full bg-violet-500/20 border border-violet-500/30 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-3 h-3 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <span class="text-zinc-300">{{ $item }}</span>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{{-- ══════════════════════════════════════════════════════
+     BLOCO 3 — GOOGLE MAPS  (texto esq | mockup dir)
+══════════════════════════════════════════════════════ --}}
+<section
+    class="py-20 bg-brand-bg relative overflow-hidden"
+    x-data="{ visible: false }"
+    x-intersect.once="visible = true"
+>
+    <div
+        class="absolute -left-40 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl pointer-events-none"
+        style="background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);"
+        aria-hidden="true"
+    ></div>
+
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+            {{-- Texto --}}
+            <div
+                :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+                class="transition-all duration-700 ease-out"
+            >
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-violet-500/30 bg-violet-500/10 mb-5">
+                    <svg class="w-3 h-3 text-violet-400" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <span class="text-xs font-semibold text-violet-400 tracking-widest uppercase">Google Maps</span>
+                </div>
+
+                <h2 class="text-3xl lg:text-4xl font-bold text-white leading-tight mb-4">
+                    Google Maps
+                </h2>
+
+                <p class="text-zinc-400 leading-relaxed mb-8 max-w-md">
+                    Otimizamos o seu perfil Google Maps para que os clientes
+                    locais o encontrem primeiro — antes da concorrência.
+                </p>
+
+                <ul class="space-y-4">
+                    @foreach ([
+                        'O seu negócio visível a clientes nas pesquisas do Google',
+                        'Perfil otimizado com foto e recursos do Google Maps',
+                        'Integração com Google My Business para máxima visibilidade',
+                    ] as $item)
+                        <li class="flex items-start gap-3">
+                            <div class="mt-0.5 w-5 h-5 rounded-full bg-violet-500/20 border border-violet-500/30 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-3 h-3 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <span class="text-zinc-300">{{ $item }}</span>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+
+            {{-- Mockup — Google Maps --}}
+            <div
+                :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+                class="transition-all duration-700 delay-200 ease-out"
+            >
+                <div class="rounded-2xl border border-violet-500/20 bg-[#14102A] overflow-hidden shadow-2xl shadow-violet-950/40" aria-hidden="true">
+
+                    {{-- Mapa falso --}}
+                    <div class="relative h-44" style="background-color: #1a1f35;">
+
+                        {{-- Grade de ruas simulada --}}
+                        <div
+                            class="absolute inset-0 opacity-15"
+                            style="background-image:
+                                linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px),
+                                linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px);
+                                background-size: 24px 24px;"
+                        ></div>
+
+                        {{-- Ruas principais --}}
+                        <div class="absolute" style="top:42%; left:0; right:0; height:3px; background:rgba(255,255,255,0.12);"></div>
+                        <div class="absolute" style="top:0; bottom:0; left:35%; width:3px; background:rgba(255,255,255,0.12);"></div>
+                        <div class="absolute" style="top:0; bottom:0; left:65%; width:2px; background:rgba(255,255,255,0.07);"></div>
+                        <div class="absolute" style="top:70%; left:0; right:0; height:2px; background:rgba(255,255,255,0.07);"></div>
+
+                        {{-- Pin central --}}
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="relative">
+                                <div class="absolute -inset-6 rounded-full bg-violet-500/10 animate-ping" style="animation-duration: 2.5s;"></div>
+                                <div class="absolute -inset-3 rounded-full bg-violet-500/15"></div>
+                                <div class="relative w-11 h-11 rounded-full border-2 border-white flex items-center justify-center shadow-xl shadow-violet-600/50"
+                                     style="background: linear-gradient(135deg, #7C3AED, #9333EA);">
+                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Badge +180% --}}
+                        <div class="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-green-500/20 border border-green-500/30">
+                            <span class="text-xs font-bold text-green-400">↑ +180% visibilidade</span>
+                        </div>
+
+                    </div>
+
+                    {{-- Card do negócio --}}
+                    <div class="p-4">
+                        <div class="rounded-xl bg-white/5 p-3.5 mb-3">
+                            <div class="flex items-start gap-3">
+                                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                                     style="background: linear-gradient(135deg, #7C3AED, #9333EA);">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                                    </svg>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-sm font-semibold text-white mb-1 truncate">O Seu Negócio, Lda.</div>
+                                    <div class="flex items-center gap-1 mb-1">
+                                        @for ($i = 0; $i < 5; $i++)
+                                            <svg class="w-3 h-3 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                            </svg>
+                                        @endfor
+                                        <span class="text-[10px] text-zinc-400 ml-1">5.0 · 247 avaliações</span>
+                                    </div>
+                                    <div class="text-[10px] text-zinc-500">Lisboa, Portugal</div>
+                                </div>
+                                <div class="px-2 py-0.5 rounded-full bg-blue-500/15 border border-blue-500/20 flex-shrink-0">
+                                    <span class="text-[9px] font-bold text-blue-300">✓ Verificado</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Stats de pesquisa --}}
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="rounded-lg bg-white/5 p-2 text-center">
+                                <div class="text-sm font-bold text-white">3.2k</div>
+                                <div class="text-[9px] text-zinc-400 mt-0.5">Pesquisas</div>
+                            </div>
+                            <div class="rounded-lg bg-violet-500/15 border border-violet-500/20 p-2 text-center">
+                                <div class="text-sm font-bold text-violet-300">847</div>
+                                <div class="text-[9px] text-zinc-400 mt-0.5">Cliques</div>
+                            </div>
+                            <div class="rounded-lg bg-white/5 p-2 text-center">
+                                <div class="text-sm font-bold text-white">124</div>
+                                <div class="text-[9px] text-zinc-400 mt-0.5">Rotas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>

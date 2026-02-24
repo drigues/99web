@@ -45,3 +45,19 @@
 @utility animate-float-delayed {
     animation: float-alt 5.5s ease-in-out 0.8s infinite;
 }
+
+/* ─── Scroll reveal (x-intersect) ──────────────────────── */
+/*
+    Uso: adiciona a classe base + transição no elemento.
+    Alpine alterna via :class binding controlado por x-intersect.
+    As classes abaixo garantem que o Tailwind JIT as inclua no bundle.
+*/
+@utility reveal-hidden {
+    opacity: 0;
+    transform: translateY(2rem);
+}
+
+@utility reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
