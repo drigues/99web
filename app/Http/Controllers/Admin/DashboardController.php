@@ -3,16 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Contact;
-use App\Models\PackageRequest;
-use App\Models\MeetingRequest;
 use App\Models\BlogPost;
+use App\Models\Contact;
+use App\Models\MeetingRequest;
+use App\Models\PackageRequest;
+use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
     public function index(): View
     {
+        // ── Estatísticas ─────────────────────────────────────────
         $stats = [
             'contacts'         => Contact::count(),
             'contacts_novos'   => Contact::novo()->count(),
@@ -24,8 +26,71 @@ class DashboardController extends Controller
             'blog_published'   => BlogPost::published()->count(),
         ];
 
-        $recent_contacts = Contact::latest()->limit(5)->get();
+        // ── Atividade combinada (10 mais recentes) ────────────────
+        $contacts = Contact::latest()->limit(10)->get()->map(fn ($c) => [
+            'type'     => 'contact',
+            'label'    => 'Contacto',
+            'sublabel' => null,
+            'name'     => $c->name,
+            'email'    => $c->email,
+            'date'     => $c->created_at,
+            'status'   => $c->status,
+            'id'       => $c->id,
+            'href'     => '/admin/contactos/' . $c->id,
+        ]);
 
-        return view('admin.dashboard', compact('stats', 'recent_contacts'));
+        $packages = PackageRequest::latest()->limit(10)->get()->map(fn ($p) => [
+            'type'     => 'package',
+            'label'    => 'Pacote',
+            'sublabel' => ucfirst($p->package_type),
+            'name'     => $p->name,
+            'email'    => $p->email,
+            'date'     => $p->created_at,
+            'status'   => $p->status,
+            'id'       => $p->id,
+            'href'     => '/admin/pedidos/' . $p->id,
+        ]);
+
+        $meetings = MeetingRequest::latest()->limit(10)->get()->map(fn ($m) => [
+            'type'     => 'meeting',
+            'label'    => 'Reunião',
+            'sublabel' => null,
+            'name'     => $m->name,
+            'email'    => $m->email,
+            'date'     => $m->created_at,
+            'status'   => $m->status,
+            'id'       => $m->id,
+            'href'     => '/admin/reunioes/' . $m->id,
+        ]);
+
+        $recent_activity = $contacts
+            ->concat($packages)
+            ->concat($meetings)
+            ->sortByDesc('date')
+            ->take(10)
+            ->values();
+
+        // ── Dados do gráfico (contactos por dia, últimos 30 dias) ─
+        $contactsByDay = Contact::where('created_at', '>=', now()->subDays(29)->startOfDay())
+            ->selectRaw('DATE(created_at) as date, COUNT(*) as count')
+            ->groupBy('date')
+            ->orderBy('date')
+            ->pluck('count', 'date');
+
+        $chart_labels = [];
+        $chart_values = [];
+
+        for ($i = 29; $i >= 0; $i--) {
+            $date = Carbon::now()->subDays($i);
+            $chart_labels[] = $date->format('d/m');
+            $chart_values[] = (int) $contactsByDay->get($date->format('Y-m-d'), 0);
+        }
+
+        return view('admin.dashboard', compact(
+            'stats',
+            'recent_activity',
+            'chart_labels',
+            'chart_values',
+        ));
     }
 }
