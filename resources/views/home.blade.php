@@ -767,4 +767,221 @@
     </div>
 </section>
 
+{{-- ══════════════════════════════════════════════════════
+     PACOTES / PREÇOS
+══════════════════════════════════════════════════════ --}}
+<section
+    id="pacotes"
+    class="py-24 bg-brand-bg relative overflow-hidden"
+    x-data="{ visible: false }"
+    x-intersect.once="visible = true"
+>
+    {{-- Glow de fundo --}}
+    <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-72 blur-3xl pointer-events-none"
+        style="background: radial-gradient(ellipse, rgba(124,58,237,0.13) 0%, transparent 70%);"
+        aria-hidden="true"
+    ></div>
+
+    <div class="relative max-w-5xl mx-auto px-6">
+
+        {{-- Cabeçalho --}}
+        <div
+            :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+            class="transition-all duration-700 ease-out text-center mb-14"
+        >
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-violet-500/30 bg-violet-500/10 mb-5">
+                <svg class="w-3 h-3 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                <span class="text-xs font-semibold text-violet-400 tracking-widest uppercase">Preços</span>
+            </div>
+
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">Pacotes</h2>
+            <p class="text-zinc-400 max-w-md mx-auto">Planos simples e transparentes</p>
+        </div>
+
+        {{-- Grid de cards --}}
+        <div class="grid lg:grid-cols-3 gap-8 items-start">
+
+            {{-- ── CARD 1 — Web Essencial ── --}}
+            <div
+                :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+                class="transition-all duration-700 delay-100 ease-out"
+            >
+                <article class="rounded-2xl border border-violet-500/20 bg-[#1A1225] p-8 h-full flex flex-col
+                                hover:border-violet-500/40 hover:shadow-lg hover:shadow-violet-950/40
+                                transition-all duration-300">
+
+                    <div class="mb-6">
+                        <span class="inline-block px-2.5 py-1 rounded-md bg-white/5 border border-white/10
+                                     text-[10px] font-bold text-zinc-400 tracking-widest uppercase mb-4">
+                            Starter
+                        </span>
+                        <h3 class="text-xl font-bold text-white mb-5">Web Essencial</h3>
+
+                        <div class="flex items-end gap-1.5 mb-1">
+                            <span class="text-4xl font-bold text-white">399€</span>
+                        </div>
+                        <p class="text-xs text-zinc-500">pagamento único</p>
+                    </div>
+
+                    <a
+                        href="#contato"
+                        class="block w-full py-3 rounded-full text-center text-sm font-semibold text-violet-400
+                               border border-violet-500/50 hover:bg-violet-500/10 hover:border-violet-400
+                               transition-all duration-200 mb-8"
+                    >
+                        Garantir o meu website
+                    </a>
+
+                    <ul class="space-y-3.5 flex-1">
+                        @foreach ([
+                            'Design profissional e responsivo',
+                            'Até 5 páginas',
+                            'Formulário de contacto',
+                            'SEO básico',
+                            'Entrega em 7–14 dias',
+                            'Alojamento e domínio incluído (1 ano)',
+                        ] as $feature)
+                            <li class="flex items-start gap-3">
+                                <div class="mt-0.5 w-4 h-4 rounded-full bg-violet-500/15 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-2.5 h-2.5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-zinc-300">{{ $feature }}</span>
+                            </li>
+                        @endforeach
+                    </ul>
+                </article>
+            </div>
+
+            {{-- ── CARD 2 — Web Corporativo (DESTACADO) ── --}}
+            <div
+                :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+                class="transition-all duration-700 delay-200 ease-out"
+            >
+                <article
+                    class="relative rounded-2xl border border-violet-500 p-8 h-full flex flex-col
+                           shadow-xl shadow-violet-500/10 hover:shadow-2xl hover:shadow-violet-500/20
+                           transition-all duration-300"
+                    style="background: linear-gradient(160deg, #1E0F3A 0%, #1A1225 60%, #110A1F 100%);"
+                >
+                    {{-- Glow interno --}}
+                    <div
+                        class="absolute -top-px inset-x-8 h-px"
+                        style="background: linear-gradient(to right, transparent, #7C3AED, transparent);"
+                        aria-hidden="true"
+                    ></div>
+
+                    <div class="mb-6">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md
+                                     bg-violet-500/20 border border-violet-500/40
+                                     text-[10px] font-bold text-violet-300 tracking-widest uppercase mb-4">
+                            <span class="relative flex h-1.5 w-1.5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-violet-400"></span>
+                            </span>
+                            Mais Popular
+                        </span>
+                        <h3 class="text-xl font-bold text-white mb-5">Web Corporativo</h3>
+
+                        <div class="flex items-end gap-1.5 mb-1">
+                            <span class="text-4xl font-bold text-white">599€</span>
+                        </div>
+                        <p class="text-xs text-zinc-500">pagamento único</p>
+                    </div>
+
+                    <a
+                        href="#contato"
+                        class="block w-full py-3 rounded-full text-center text-sm font-semibold text-white
+                               transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:shadow-brand-primary/40 mb-8"
+                        style="background: linear-gradient(135deg, var(--color-brand-cta-from) 0%, var(--color-brand-cta-to) 100%);"
+                    >
+                        Escolher este plano
+                    </a>
+
+                    <ul class="space-y-3.5 flex-1">
+                        @foreach ([
+                            'Design profissional e responsivo',
+                            'Até 10 páginas',
+                            'Formulário de contacto',
+                            'SEO básico + avançado',
+                            'Integração com redes sociais',
+                            'Google Maps + Analytics',
+                            'Blog integrado',
+                            'Suporte prioritário 30 dias',
+                        ] as $feature)
+                            <li class="flex items-start gap-3">
+                                <div class="mt-0.5 w-4 h-4 rounded-full bg-violet-500/25 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-2.5 h-2.5 text-violet-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-zinc-200">{{ $feature }}</span>
+                            </li>
+                        @endforeach
+                    </ul>
+                </article>
+            </div>
+
+            {{-- ── CARD 3 — Projetos Personalizados ── --}}
+            <div
+                :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+                class="transition-all duration-700 delay-300 ease-out"
+            >
+                <article class="rounded-2xl border border-violet-500/20 bg-[#1A1225] p-8 h-full flex flex-col
+                                hover:border-violet-500/40 hover:shadow-lg hover:shadow-violet-950/40
+                                transition-all duration-300">
+
+                    <div class="mb-6">
+                        <span class="inline-block px-2.5 py-1 rounded-md bg-white/5 border border-white/10
+                                     text-[10px] font-bold text-zinc-400 tracking-widest uppercase mb-4">
+                            Custom
+                        </span>
+                        <h3 class="text-xl font-bold text-white mb-5">Projetos Personalizados</h3>
+
+                        <div class="flex items-end gap-1.5 mb-1">
+                            <span class="text-3xl font-bold text-white">Sob consulta</span>
+                        </div>
+                        <p class="text-xs text-zinc-500">proposta à medida do projeto</p>
+                    </div>
+
+                    <a
+                        href="#contato"
+                        class="block w-full py-3 rounded-full text-center text-sm font-semibold text-violet-400
+                               border border-violet-500/50 hover:bg-violet-500/10 hover:border-violet-400
+                               transition-all duration-200 mb-8"
+                    >
+                        Falar sobre o projeto
+                    </a>
+
+                    <ul class="space-y-3.5 flex-1">
+                        @foreach ([
+                            'Sistemas web à medida',
+                            'E-commerce e lojas digitais',
+                            'Integrações com APIs',
+                            'Dashboards e painéis admin',
+                            'Manutenção e suporte contínuo',
+                        ] as $feature)
+                            <li class="flex items-start gap-3">
+                                <div class="mt-0.5 w-4 h-4 rounded-full bg-violet-500/15 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-2.5 h-2.5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-zinc-300">{{ $feature }}</span>
+                            </li>
+                        @endforeach
+                    </ul>
+                </article>
+            </div>
+
+        </div>
+        {{-- /Grid --}}
+
+    </div>
+</section>
+
 @endsection
