@@ -59,8 +59,9 @@
                 {{-- Botões --}}
                 <div class="flex flex-wrap gap-4 mt-8">
                     {{-- CTA primário --}}
-                    <a
-                        href="#contato"
+                    <button
+                        type="button"
+                        @click="$dispatch('comecar-agora', { source: 'cta_hero' })"
                         class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white
                                transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-brand-primary/40"
                         style="background: linear-gradient(135deg, var(--color-brand-cta-from) 0%, var(--color-brand-cta-to) 100%);"
@@ -69,7 +70,7 @@
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
-                    </a>
+                    </button>
 
                     {{-- CTA secundário --}}
                     <a
@@ -1249,8 +1250,9 @@
         </p>
 
         {{-- Botão --}}
-        <a
-            href="mailto:geral@99web.pt"
+        <button
+            type="button"
+            @click="$dispatch('comecar-agora', { source: 'cta_final' })"
             class="inline-flex items-center gap-2.5 px-8 py-4 rounded-full
                    bg-white text-violet-700 font-bold text-base
                    hover:shadow-xl hover:shadow-violet-900/50 hover:scale-105
@@ -1260,7 +1262,7 @@
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
-        </a>
+        </button>
 
         {{-- Micro-texto --}}
         <p class="mt-5 text-sm text-white/50">

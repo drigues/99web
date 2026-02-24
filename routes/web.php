@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 // ─── Público ──────────────────────────────────────────────────
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/contacto', [ContactController::class, 'store'])->name('contacto.store');
 
 // ─── Admin: autenticação (sem middleware) ─────────────────────
 Route::prefix('admin')->name('admin.')->group(function () {

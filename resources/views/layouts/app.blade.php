@@ -62,6 +62,9 @@
     {{-- Footer --}}
     @include('partials.footer')
 
+    {{-- Modal global "Começar Agora" --}}
+    <x-modal-comecar />
+
     @stack('scripts')
 </body>
 </html>

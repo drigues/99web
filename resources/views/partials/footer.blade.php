@@ -108,6 +108,21 @@
                     </li>
 
                 </ul>
+
+                {{-- CTA footer --}}
+                <button
+                    type="button"
+                    @click="$dispatch('comecar-agora', { source: 'cta_footer' })"
+                    class="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white
+                           transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-violet-500/30"
+                    style="background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);"
+                >
+                    Começar Agora
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </button>
+
             </div>
 
         </div>

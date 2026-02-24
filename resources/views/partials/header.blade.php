@@ -57,14 +57,15 @@
             <div class="flex items-center gap-3">
 
                 {{-- CTA — só visível no desktop --}}
-                <a
-                    href="#contato"
+                <button
+                    type="button"
+                    @click="$dispatch('comecar-agora', { source: 'cta_header' })"
                     class="hidden md:inline-flex items-center px-5 py-2.5 rounded-full text-sm font-semibold text-white
                            transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-brand-primary/40"
                     style="background: linear-gradient(135deg, var(--color-brand-cta-from) 0%, var(--color-brand-cta-to) 100%);"
                 >
                     Começar Agora
-                </a>
+                </button>
 
                 {{-- Hamburger — só visível no mobile --}}
                 <button
@@ -136,15 +137,15 @@
                 @endforeach
 
                 {{-- CTA Mobile --}}
-                <a
-                    href="#contato"
-                    x-on:click="mobileOpen = false"
+                <button
+                    type="button"
+                    @click="mobileOpen = false; $dispatch('comecar-agora', { source: 'cta_header_mobile' })"
                     class="mt-4 px-8 py-3.5 rounded-full text-base font-semibold text-white
                            transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-brand-primary/40"
                     style="background: linear-gradient(135deg, var(--color-brand-cta-from) 0%, var(--color-brand-cta-to) 100%);"
                 >
                     Começar Agora
-                </a>
+                </button>
 
             </nav>
         </div>
