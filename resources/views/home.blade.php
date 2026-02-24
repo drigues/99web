@@ -649,4 +649,122 @@
     </div>
 </section>
 
+{{-- ══════════════════════════════════════════════════════
+     PORTFÓLIO — "Criamos para a tua empresa"
+══════════════════════════════════════════════════════ --}}
+<section
+    id="projetos"
+    class="py-24 bg-brand-section relative overflow-hidden"
+    x-data="{ visible: false }"
+    x-intersect.once="visible = true"
+>
+    {{-- Glow central de fundo --}}
+    <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-64 blur-3xl pointer-events-none"
+        style="background: radial-gradient(ellipse, rgba(124,58,237,0.12) 0%, transparent 70%);"
+        aria-hidden="true"
+    ></div>
+
+    <div class="relative max-w-7xl mx-auto px-6">
+
+        {{-- Cabeçalho --}}
+        <div
+            :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+            class="transition-all duration-700 ease-out text-center mb-12"
+        >
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-violet-500/30 bg-violet-500/10 mb-5">
+                <svg class="w-3 h-3 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                </svg>
+                <span class="text-xs font-semibold text-violet-400 tracking-widest uppercase">Portfólio</span>
+            </div>
+
+            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">
+                Criamos para a tua empresa
+            </h2>
+            <p class="text-zinc-400 max-w-xl mx-auto">
+                Websites e sistemas adaptados à realidade da tua empresa
+            </p>
+        </div>
+
+        {{-- Tabs --}}
+        <div
+            x-data="{ tab: 'websites' }"
+            :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+            class="transition-all duration-700 delay-150 ease-out"
+        >
+            {{-- Tab buttons --}}
+            <div class="flex justify-center mb-10">
+                <div class="inline-flex p-1 rounded-xl bg-white/5 border border-white/10 gap-1">
+
+                    <button
+                        x-on:click="tab = 'websites'"
+                        :class="tab === 'websites'
+                            ? 'bg-brand-primary text-white shadow-lg shadow-brand-primary/30'
+                            : 'text-zinc-400 hover:text-zinc-200'"
+                        class="px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200"
+                    >
+                        Websites
+                    </button>
+
+                    <button
+                        x-on:click="tab = 'sistemas'"
+                        :class="tab === 'sistemas'
+                            ? 'bg-brand-primary text-white shadow-lg shadow-brand-primary/30'
+                            : 'text-zinc-400 hover:text-zinc-200'"
+                        class="px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200"
+                    >
+                        Sistemas Corporativos
+                    </button>
+
+                </div>
+            </div>
+
+            {{-- ── Painel: Websites ── --}}
+            <div
+                x-show="tab === 'websites'"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 translate-y-4"
+                x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:leave="transition ease-in duration-200"
+                x-transition:leave-start="opacity-100 translate-y-0"
+                x-transition:leave-end="opacity-0 translate-y-4"
+            >
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    @foreach ($projetos['websites'] as $projeto)
+                        @include('partials.portfolio-card', [
+                            'projeto'   => $projeto,
+                            'categoria' => 'websites',
+                        ])
+                    @endforeach
+                </div>
+            </div>
+
+            {{-- ── Painel: Sistemas ── --}}
+            <div
+                x-show="tab === 'sistemas'"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 translate-y-4"
+                x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:leave="transition ease-in duration-200"
+                x-transition:leave-start="opacity-100 translate-y-0"
+                x-transition:leave-end="opacity-0 translate-y-4"
+                style="display: none;"
+            >
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    @foreach ($projetos['sistemas'] as $projeto)
+                        @include('partials.portfolio-card', [
+                            'projeto'   => $projeto,
+                            'categoria' => 'sistemas',
+                        ])
+                    @endforeach
+                </div>
+            </div>
+
+        </div>
+        {{-- /Tabs --}}
+
+    </div>
+</section>
+
 @endsection
