@@ -828,7 +828,7 @@
                     </div>
 
                     <a
-                        href="#contato"
+                        href="{{ route('pacotes.show', 'essencial') }}"
                         class="block w-full py-3 rounded-full text-center text-sm font-semibold text-violet-400
                                border border-violet-500/50 hover:bg-violet-500/10 hover:border-violet-400
                                transition-all duration-200 mb-8"
@@ -895,7 +895,7 @@
                     </div>
 
                     <a
-                        href="#contato"
+                        href="{{ route('pacotes.show', 'corporativo') }}"
                         class="block w-full py-3 rounded-full text-center text-sm font-semibold text-white
                                transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:shadow-brand-primary/40 mb-8"
                         style="background: linear-gradient(135deg, var(--color-brand-cta-from) 0%, var(--color-brand-cta-to) 100%);"
@@ -950,7 +950,7 @@
                     </div>
 
                     <a
-                        href="#contato"
+                        href="{{ route('pacotes.show', 'personalizado') }}"
                         class="block w-full py-3 rounded-full text-center text-sm font-semibold text-violet-400
                                border border-violet-500/50 hover:bg-violet-500/10 hover:border-violet-400
                                transition-all duration-200 mb-8"
