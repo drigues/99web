@@ -984,4 +984,108 @@
     </div>
 </section>
 
+{{-- ══════════════════════════════════════════════════════
+     TESTEMUNHOS
+══════════════════════════════════════════════════════ --}}
+<section
+    class="py-24 bg-brand-section relative overflow-hidden"
+    x-data="{ visible: false }"
+    x-intersect.once="visible = true"
+>
+    <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-64 blur-3xl pointer-events-none"
+        style="background: radial-gradient(ellipse, rgba(124,58,237,0.10) 0%, transparent 70%);"
+        aria-hidden="true"
+    ></div>
+
+    <div class="relative max-w-5xl mx-auto px-6">
+
+        {{-- Cabeçalho --}}
+        <div
+            :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+            class="transition-all duration-700 ease-out text-center mb-14"
+        >
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-violet-500/30 bg-violet-500/10 mb-5">
+                <svg class="w-3 h-3 text-violet-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+                <span class="text-xs font-semibold text-violet-400 tracking-widest uppercase">Testemunhos</span>
+            </div>
+
+            <h2 class="text-3xl lg:text-4xl font-bold text-white">
+                O que dizem os nossos clientes
+            </h2>
+        </div>
+
+        {{-- Grid de testemunhos --}}
+        <div class="grid lg:grid-cols-3 gap-8">
+
+            @foreach ([
+                [
+                    'texto'   => 'Foi a melhor decisão que tomei para o meu negócio. O site ficou incrível e os clientes aumentaram significativamente.',
+                    'nome'    => 'João Santos',
+                    'cargo'   => 'CEO · Restaurante Mar Aberto',
+                    'iniciais'=> 'JS',
+                    'cor'     => 'linear-gradient(135deg, #7C3AED, #9333EA)',
+                ],
+                [
+                    'texto'   => 'Trabalho de excelente qualidade e atenção ao detalhe. Recomendo a toda a gente que precise de presença online.',
+                    'nome'    => 'Ana Costa',
+                    'cargo'   => 'Fundadora · Studio AC Design',
+                    'iniciais'=> 'AC',
+                    'cor'     => 'linear-gradient(135deg, #6D28D9, #7C3AED)',
+                ],
+                [
+                    'texto'   => 'Profissionais de confiança. Entrega rápida, comunicação clara e o resultado superou todas as expectativas.',
+                    'nome'    => 'Tiago Rodriguez',
+                    'cargo'   => 'Diretor · TechFlow Solutions',
+                    'iniciais'=> 'TR',
+                    'cor'     => 'linear-gradient(135deg, #9333EA, #A855F7)',
+                ],
+            ] as $i => $testemunho)
+                <article
+                    :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+                    class="transition-all duration-700 ease-out
+                           bg-[#1A1225] rounded-xl p-6 border border-violet-500/10
+                           hover:border-violet-500/30 hover:shadow-lg hover:shadow-violet-950/40
+                           flex flex-col gap-5"
+                    :style="`transition-delay: {{ $i * 100 + 100 }}ms`"
+                >
+                    {{-- Estrelas --}}
+                    <div class="flex gap-0.5" aria-label="5 estrelas">
+                        @for ($s = 0; $s < 5; $s++)
+                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                        @endfor
+                    </div>
+
+                    {{-- Citação --}}
+                    <blockquote class="flex-1 text-zinc-300 italic leading-relaxed text-sm">
+                        "{{ $testemunho['texto'] }}"
+                    </blockquote>
+
+                    {{-- Autor --}}
+                    <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+                        {{-- Avatar com iniciais --}}
+                        <div
+                            class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0
+                                   text-sm font-bold text-white select-none"
+                            style="background: {{ $testemunho['cor'] }};"
+                            aria-hidden="true"
+                        >
+                            {{ $testemunho['iniciais'] }}
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-white">{{ $testemunho['nome'] }}</div>
+                            <div class="text-xs text-zinc-500 mt-0.5">{{ $testemunho['cargo'] }}</div>
+                        </div>
+                    </div>
+                </article>
+            @endforeach
+
+        </div>
+    </div>
+</section>
+
 @endsection
