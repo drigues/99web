@@ -47,9 +47,7 @@
     x-data
 >
     {{-- Header --}}
-    <header role="banner">
-        @yield('header')
-    </header>
+    @include('partials.header')
 
     {{-- Conteúdo principal --}}
     <main id="main-content" role="main">
