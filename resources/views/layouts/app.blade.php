@@ -55,9 +55,7 @@
     </main>
 
     {{-- Footer --}}
-    <footer role="contentinfo">
-        @yield('footer')
-    </footer>
+    @include('partials.footer')
 
     @stack('scripts')
 </body>

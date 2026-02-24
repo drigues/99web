@@ -1199,4 +1199,75 @@
     </div>
 </section>
 
+
+{{-- ══════════════════════════════════════════════════════
+     CTA FINAL
+══════════════════════════════════════════════════════ --}}
+<section
+    id="contato"
+    class="py-24 relative overflow-hidden"
+    style="background: linear-gradient(135deg, #6D28D9 0%, #5B21B6 40%, #4C1D95 100%);"
+>
+    {{-- Decoração de fundo: grade de pontos --}}
+    <div
+        class="absolute inset-0 pointer-events-none opacity-[0.07]"
+        style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 28px 28px;"
+        aria-hidden="true"
+    ></div>
+
+    {{-- Glows --}}
+    <div
+        class="absolute -top-20 left-1/4 w-80 h-80 rounded-full blur-3xl pointer-events-none"
+        style="background: radial-gradient(circle, rgba(167,139,250,0.25) 0%, transparent 70%);"
+        aria-hidden="true"
+    ></div>
+    <div
+        class="absolute -bottom-20 right-1/4 w-80 h-80 rounded-full blur-3xl pointer-events-none"
+        style="background: radial-gradient(circle, rgba(124,58,237,0.30) 0%, transparent 70%);"
+        aria-hidden="true"
+    ></div>
+
+    <div class="relative max-w-2xl mx-auto px-6 text-center">
+
+        {{-- Pill --}}
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/10 text-white/80 text-xs font-medium tracking-wide uppercase mb-6">
+            <span class="relative flex h-1.5 w-1.5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-white"></span>
+            </span>
+            Fale connosco hoje
+        </span>
+
+        {{-- Título --}}
+        <h2 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-5">
+            Vamos conversar?
+        </h2>
+
+        {{-- Subtítulo --}}
+        <p class="text-lg text-white/75 leading-relaxed mb-10 max-w-lg mx-auto">
+            Fale com a 99web e construa uma base digital sólida para o teu negócio.
+        </p>
+
+        {{-- Botão --}}
+        <a
+            href="mailto:geral@99web.pt"
+            class="inline-flex items-center gap-2.5 px-8 py-4 rounded-full
+                   bg-white text-violet-700 font-bold text-base
+                   hover:shadow-xl hover:shadow-violet-900/50 hover:scale-105
+                   transition-all duration-200"
+        >
+            Falar com o consultor
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+        </a>
+
+        {{-- Micro-texto --}}
+        <p class="mt-5 text-sm text-white/50">
+            Sem compromisso. Sem complicações. Resposta rápida.
+        </p>
+
+    </div>
+</section>
+
 @endsection
