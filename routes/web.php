@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AdminPackageRequestController;
 use App\Http\Controllers\Admin\AdminMeetingController;
+use App\Http\Controllers\Admin\AdminBlogPostController;
+use App\Http\Controllers\Admin\AdminBlogCategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -75,10 +77,32 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::patch('/reunioes/{reuniao}/notes',    [AdminMeetingController::class, 'updateNotes'])->name('reunioes.updateNotes');
         Route::delete('/reunioes/{reuniao}',         [AdminMeetingController::class, 'destroy'])->name('reunioes.destroy');
 
-        // ── Stubs (blog, configurações) ──
-        Route::get('/blog',            fn () => abort(404))->name('blog.index');
-        Route::get('/blog/categorias', fn () => abort(404))->name('blog.categorias.index');
-        Route::get('/configuracoes',   fn () => abort(404))->name('configuracoes.index');
+        // ── Blog — posts (estáticos ANTES de {post}) ──
+        Route::get('/blog',                        [AdminBlogPostController::class, 'index'])->name('blog.index');
+        Route::get('/blog/criar',                  [AdminBlogPostController::class, 'create'])->name('blog.create');
+        Route::post('/blog',                       [AdminBlogPostController::class, 'store'])->name('blog.store');
+        Route::post('/blog/bulk',                  [AdminBlogPostController::class, 'bulk'])->name('blog.bulk');
+
+        // ── Blog — categorias (estático ANTES de {post}) ──
+        Route::get('/blog/categorias',               [AdminBlogCategoryController::class, 'index'])->name('blog.categorias.index');
+        Route::post('/blog/categorias',              [AdminBlogCategoryController::class, 'store'])->name('blog.categorias.store');
+        Route::patch('/blog/categorias/reorder',     [AdminBlogCategoryController::class, 'reorder'])->name('blog.categorias.reorder');
+        Route::put('/blog/categorias/{category}',    [AdminBlogCategoryController::class, 'update'])->name('blog.categorias.update');
+        Route::delete('/blog/categorias/{category}', [AdminBlogCategoryController::class, 'destroy'])->name('blog.categorias.destroy');
+
+        // ── Blog — posts dinâmicos ──
+        Route::get('/blog/{post}/editar',          [AdminBlogPostController::class, 'edit'])->name('blog.edit');
+        Route::put('/blog/{post}',                 [AdminBlogPostController::class, 'update'])->name('blog.update');
+        Route::delete('/blog/{post}',              [AdminBlogPostController::class, 'destroy'])->name('blog.destroy');
+        Route::patch('/blog/{post}/publish',       [AdminBlogPostController::class, 'togglePublish'])->name('blog.togglePublish');
+        Route::post('/blog/{post}/duplicate',      [AdminBlogPostController::class, 'duplicate'])->name('blog.duplicate');
+        Route::get('/blog/{post}/preview',         [AdminBlogPostController::class, 'preview'])->name('blog.preview');
+
+        // ── API — upload de imagem ──
+        Route::post('/api/upload-image',           [AdminBlogPostController::class, 'uploadImage'])->name('api.upload-image');
+
+        // ── Configurações (stub) ──
+        Route::get('/configuracoes', fn () => abort(404))->name('configuracoes.index');
 
     });
 

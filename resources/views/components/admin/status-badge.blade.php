@@ -20,6 +20,11 @@ $map = [
         'confirmado' => ['bg' => 'bg-emerald-500/20','text' => 'text-emerald-300', 'dot' => 'bg-emerald-400', 'label' => 'Confirmado'],
         'cancelado'  => ['bg' => 'bg-red-500/20',    'text' => 'text-red-400',     'dot' => 'bg-red-400',     'label' => 'Cancelado'],
     ],
+    'blog' => [
+        'publicado' => ['bg' => 'bg-emerald-500/20', 'text' => 'text-emerald-300', 'dot' => 'bg-emerald-400', 'label' => 'Publicado'],
+        'agendado'  => ['bg' => 'bg-amber-500/20',   'text' => 'text-amber-300',   'dot' => 'bg-amber-400',   'label' => 'Agendado'],
+        'rascunho'  => ['bg' => 'bg-zinc-700/50',    'text' => 'text-zinc-400',    'dot' => 'bg-zinc-500',    'label' => 'Rascunho'],
+    ],
 ];
 
 $c = $map[$type][$status] ?? ['bg' => 'bg-zinc-700/50', 'text' => 'text-zinc-400', 'dot' => 'bg-zinc-500', 'label' => ucfirst(str_replace('_', ' ', $status))];
