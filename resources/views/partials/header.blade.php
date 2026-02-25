@@ -51,6 +51,11 @@
                         class="text-sm font-medium text-brand-muted hover:text-brand-accent transition-colors duration-200"
                     >{{ $label }}</a>
                 @endforeach
+                <a
+                    href="{{ route('blog.index') }}"
+                    class="text-sm font-medium transition-colors duration-200
+                           {{ request()->routeIs('blog.*') ? 'text-brand-accent' : 'text-brand-muted hover:text-brand-accent' }}"
+                >Blog</a>
             </nav>
 
             {{-- Direita: CTA + Hamburger --}}
@@ -135,6 +140,12 @@
                         class="text-2xl font-semibold text-white hover:text-brand-accent transition-colors duration-200"
                     >{{ $label }}</a>
                 @endforeach
+                <a
+                    href="{{ route('blog.index') }}"
+                    x-on:click="mobileOpen = false"
+                    class="text-2xl font-semibold transition-colors duration-200
+                           {{ request()->routeIs('blog.*') ? 'text-brand-accent' : 'text-white hover:text-brand-accent' }}"
+                >Blog</a>
 
                 {{-- CTA Mobile --}}
                 <button
