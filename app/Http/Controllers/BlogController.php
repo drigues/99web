@@ -197,10 +197,10 @@ class BlogController extends Controller
             ->get();
 
         $tags = BlogTag::withCount(['posts' => fn ($q) => $q->published()])
-            ->having('posts_count', '>', 0)
-            ->orderByDesc('posts_count')
-            ->limit(30)
-            ->get();
+            ->get()
+            ->filter(fn ($tag) => $tag->posts_count > 0)
+            ->sortByDesc('posts_count')
+            ->take(30);
 
         return [$categories, $tags];
     }

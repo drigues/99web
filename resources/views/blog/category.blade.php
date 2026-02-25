@@ -6,6 +6,10 @@
 <section class="pt-24 pb-10 px-4 bg-[#0A0612]">
     <div class="max-w-6xl mx-auto">
         <nav class="flex items-center gap-1.5 text-xs text-zinc-500 mb-5" aria-label="Breadcrumb">
+            <a href="{{ route('home') }}" class="hover:text-violet-400 transition-colors">Home</a>
+            <svg class="w-3 h-3 text-zinc-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
+            </svg>
             <a href="{{ route('blog.index') }}" class="hover:text-violet-400 transition-colors">Blog</a>
             <svg class="w-3 h-3 text-zinc-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
