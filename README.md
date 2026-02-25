@@ -1,59 +1,248 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 99web — Website Institucional
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Website institucional e painel de administração para a agência **99web**, construído com Laravel 12.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Stack
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| Camada | Tecnologia |
+|---|---|
+| Backend | PHP 8.2+, Laravel 12 |
+| Frontend | Tailwind CSS 4, Alpine.js 3 |
+| Bundler | Vite 7 |
+| Base de dados | SQLite (dev) · MySQL/PostgreSQL (prod) |
+| Imagens | Intervention Image 3 (redimensionamento + WebP) |
+| Mail | SMTP (qualquer provedor compatível) |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Instalação rápida
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+```bash
+git clone <repo-url> 99web
+cd 99web
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# Instalar dependências PHP e Node
+composer install
+npm install
 
-## Laravel Sponsors
+# Configurar ambiente
+cp .env.example .env
+php artisan key:generate
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+# Criar base de dados SQLite (dev) e correr migrações + seeders
+touch database/database.sqlite
+php artisan migrate --seed
 
-### Premium Partners
+# Ligar storage público (uploads de imagens)
+php artisan storage:link
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+# Build dos assets
+npm run build
+```
 
-## Contributing
+### Iniciar servidor de desenvolvimento
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+composer run dev
+```
 
-## Code of Conduct
+Ou manualmente:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+php artisan serve
+npm run dev
+```
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Credenciais de administração (após seed)
 
-## License
+| Campo | Valor |
+|---|---|
+| URL | `http://localhost:8000/admin` |
+| Email | `admin@99web.pt` |
+| Password | `password` |
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+> **Alterar a password após o primeiro login em** `/admin/perfil`.
+
+---
+
+## Estrutura do projeto
+
+```
+app/
+├── Http/
+│   ├── Controllers/
+│   │   ├── Admin/               # Controladores do painel admin
+│   │   │   ├── AdminBlogPostController.php
+│   │   │   ├── AdminBlogCategoryController.php
+│   │   │   ├── AdminContactController.php
+│   │   │   ├── AdminMeetingController.php
+│   │   │   ├── AdminPackageRequestController.php
+│   │   │   ├── AdminSettingsController.php
+│   │   │   ├── AdminProfileController.php
+│   │   │   ├── AdminActivityController.php
+│   │   │   ├── AdminLoginController.php
+│   │   │   └── DashboardController.php
+│   │   ├── BlogController.php   # Blog público
+│   │   ├── ContactController.php
+│   │   ├── HomeController.php
+│   │   ├── PackageRequestController.php
+│   │   └── SitemapController.php
+│   ├── Middleware/
+│   │   ├── AdminAuth.php        # Guard do admin
+│   │   ├── SecurityHeaders.php  # CSP + headers de segurança
+│   │   └── ShareSettings.php    # Partilha $siteSettings com as views
+│   └── Requests/                # Form Requests com validação
+├── Models/
+│   ├── AdminUser.php
+│   ├── ActivityLog.php
+│   ├── BlogCategory.php
+│   ├── BlogPost.php
+│   ├── BlogTag.php
+│   ├── Contact.php
+│   ├── MeetingRequest.php
+│   ├── PackageRequest.php
+│   └── SiteSetting.php
+├── Services/
+│   └── SeoService.php           # Meta tags, OG, JSON-LD
+├── Mail/                        # Mailable classes
+└── Traits/
+    └── LogsActivity.php         # Auto-logging em modelos
+
+config/
+├── packages.php                 # Definição dos 3 pacotes
+└── seo.php                      # Config SEO (Google Analytics ID, etc.)
+
+resources/views/
+├── layouts/                     # Layout público
+├── partials/                    # Header, footer, nav
+├── packages/                    # Páginas de pacotes + formulário
+├── blog/                        # Listagem e artigo público
+├── home.blade.php
+└── admin/
+    ├── layouts/admin.blade.php  # Layout do painel admin
+    ├── components/              # Componentes x-admin.*
+    ├── blog/                    # CRUD de artigos e categorias
+    ├── contactos/               # Gestão de contactos
+    ├── pedidos/                 # Pedidos de pacotes
+    ├── reunioes/                # Pedidos de reunião
+    ├── configuracoes/           # Definições do site
+    ├── perfil/                  # Perfil do administrador
+    └── atividade/               # Registo de atividade
+```
+
+---
+
+## Funcionalidades
+
+### Público
+- Página inicial com secções: hero, serviços, pacotes, processo, testemunhos, CTA
+- **3 pacotes** (Essencial, Corporativo, Personalizado) com formulários de pedido
+- Formulário de contacto com resposta automática por email
+- **Blog** com listagem, artigo, categorias, tags, RSS feed e sitemap
+- SEO completo: meta tags, Open Graph, JSON-LD, sitemap.xml, robots.txt
+
+### Admin (`/admin`)
+- **Dashboard** com contadores e notificações
+- **Contactos** — lista, detalhe, notas, mudança de estado, exportação CSV
+- **Pedidos de Pacotes** — lista, detalhe, notas, mudança de estado, exportação CSV
+- **Reuniões** — lista, detalhe, confirmação, notas, exportação CSV
+- **Blog** — CRUD completo com editor TinyMCE, upload de imagens WebP, preview, duplicar, publicar/despublicar via AJAX
+- **Categorias do Blog** — CRUD com drag & drop para reordenar (SortableJS)
+- **Configurações** — 5 tabs: Geral, Redes Sociais, SEO, Email, Pacotes
+- **Perfil** — editar nome, email, avatar e alterar password
+- **Atividade** — registo das últimas 200 ações do administrador
+
+### Segurança
+- Guard de admin separado (`admin_users` table)
+- Rate limiting: `/contacto` (30/min), `/pacotes` (20/min), `/login` (10/min)
+- Honeypot anti-spam (`_hp` field em formulários públicos)
+- Security headers via middleware (CSP, X-Frame-Options, HSTS em produção)
+- CSRF em todos os formulários POST
+
+---
+
+## Variáveis de ambiente
+
+Copiar `.env.example` para `.env` e preencher:
+
+```dotenv
+APP_NAME=99web
+APP_URL=https://99web.pt
+
+# Email de notificações internas
+MAIL_ADMIN_ADDRESS=geral@99web.pt
+MAIL_FROM_ADDRESS=noreply@99web.pt
+MAIL_FROM_NAME="99web"
+
+# Google Analytics (opcional)
+GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX
+```
+
+Ver `.env.example` para a lista completa.
+
+---
+
+## Comandos úteis
+
+```bash
+# Migrações
+php artisan migrate
+php artisan migrate:fresh --seed   # Reset completo + seed
+
+# Cache (produção)
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
+# Limpar cache (desenvolvimento)
+php artisan optimize:clear
+
+# Testes
+composer run test
+
+# Code style
+./vendor/bin/pint
+```
+
+---
+
+## Deploy (produção)
+
+1. Configurar `.env` com `APP_ENV=production`, `APP_DEBUG=false`, credenciais reais de BD e SMTP
+2. `composer install --no-dev --optimize-autoloader`
+3. `npm ci && npm run build`
+4. `php artisan migrate --force`
+5. `php artisan storage:link`
+6. `php artisan config:cache && php artisan route:cache && php artisan view:cache`
+7. Configurar worker de queue: `php artisan queue:work --daemon`
+
+### Nginx (exemplo mínimo)
+
+```nginx
+server {
+    listen 80;
+    server_name 99web.pt www.99web.pt;
+    root /var/www/99web/public;
+    index index.php;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass unix:/run/php/php8.2-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+```
+
+---
+
+## Licença
+
+Projeto privado — todos os direitos reservados © 99web.
