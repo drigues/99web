@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PackageRequestController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AdminPackageRequestController;
@@ -20,6 +21,14 @@ Route::get('/pacotes/{type}', [PackageRequestController::class, 'show'])->name('
     ->where('type', 'essencial|corporativo|personalizado');
 Route::post('/pacotes/{type}', [PackageRequestController::class, 'store'])->name('pacotes.store')
     ->where('type', 'essencial|corporativo|personalizado');
+
+// ─── Blog público ─────────────────────────────────────────────
+Route::prefix('blog')->name('blog.')->group(function () {
+    Route::get('/',                 [BlogController::class, 'index'])->name('index');
+    Route::get('/categoria/{slug}', [BlogController::class, 'category'])->name('category');
+    Route::get('/tag/{slug}',       [BlogController::class, 'tag'])->name('tag');
+    Route::get('/{slug}',           [BlogController::class, 'show'])->name('show');
+});
 
 // ─── Admin ────────────────────────────────────────────────────
 Route::prefix('admin')->name('admin.')->group(function () {

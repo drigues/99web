@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 /* ─── Smooth scroll global ──────────────────────────── */
 html {
@@ -66,4 +67,31 @@ html {
 @utility reveal-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* ─── Blog prose — violet dark theme ───────────────────── */
+.prose-blog {
+    --tw-prose-body:              #d4d4d8;
+    --tw-prose-headings:          #ffffff;
+    --tw-prose-lead:              #a1a1aa;
+    --tw-prose-links:             #a78bfa;
+    --tw-prose-bold:              #ffffff;
+    --tw-prose-counters:          #a1a1aa;
+    --tw-prose-bullets:           #7c3aed;
+    --tw-prose-hr:                #27272a;
+    --tw-prose-quotes:            #e4e4e7;
+    --tw-prose-quote-borders:     #7c3aed;
+    --tw-prose-captions:          #71717a;
+    --tw-prose-code:              #c4b5fd;
+    --tw-prose-pre-code:          #e4e4e7;
+    --tw-prose-pre-bg:            #0F0A1A;
+    --tw-prose-th-borders:        #3f3f46;
+    --tw-prose-td-borders:        #27272a;
+}
+
+/* Scrollbar hide for horizontal scroll bars */
+@utility scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
 }
