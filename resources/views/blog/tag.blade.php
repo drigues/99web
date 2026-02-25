@@ -1,21 +1,5 @@
 @extends('layouts.app')
 
-@section('title', '#' . $tag->name . ' — Blog | 99web')
-@section('description', 'Artigos com a tag ' . $tag->name . ' — dicas e insights da equipa 99web.')
-@section('og_title', '#' . $tag->name . ' — Blog 99web')
-@section('og_description', 'Descubra artigos sobre ' . $tag->name . ' no blog da 99web.')
-
-@push('head')
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "#{{ $tag->name }} — Blog 99web",
-    "url": "{{ route('blog.tag', $tag->slug) }}"
-}
-</script>
-@endpush
-
 @section('content')
 
 {{-- ── Header ──────────────────────────────────────────────── --}}

@@ -1,22 +1,5 @@
 @extends('layouts.app')
 
-@section('title', ($category->meta_title ?: $category->name . ' — Blog') . ' | 99web')
-@section('description', $category->meta_description ?: 'Artigos sobre ' . $category->name . ' — dicas e insights da equipa 99web.')
-@section('og_title', $category->name . ' — Blog 99web')
-@section('og_description', $category->meta_description ?: 'Descubra artigos sobre ' . $category->name . ' no blog da 99web.')
-
-@push('head')
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "{{ addslashes($category->name) }} — Blog 99web",
-    "description": "{{ addslashes($category->meta_description ?: 'Artigos sobre ' . $category->name) }}",
-    "url": "{{ route('blog.category', $category->slug) }}"
-}
-</script>
-@endpush
-
 @section('content')
 
 {{-- ── Header ──────────────────────────────────────────────── --}}

@@ -2,10 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\SeoService;
+
 class HomeController extends Controller
 {
     public function index()
     {
+        app(SeoService::class)
+            ->setTitle('99web — Agência Digital | Websites, SEO e Marketing Digital')
+            ->setDescription('Criamos websites profissionais, sistemas web e estratégias SEO que impulsionam o crescimento do seu negócio. Especialistas em soluções digitais em Portugal.')
+            ->setKeywords('agência digital, websites profissionais, desenvolvimento web, SEO, marketing digital, Portugal, 99web')
+            ->setCanonical(route('home'))
+            ->setOgData(['type' => 'website'])
+            ->setOrganizationSchema()
+            ->setLocalBusinessSchema();
+
         $projetos = [
             'websites' => [
                 [

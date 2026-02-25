@@ -1,10 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'Blog — Dicas, novidades e tendências do mundo digital | 99web')
-@section('description', 'Descubra artigos sobre web design, SEO, marketing digital e tecnologia. Insights da equipa 99web para o sucesso do seu negócio online.')
-@section('og_title', 'Blog 99web — Dicas e tendências do mundo digital')
-@section('og_description', 'Artigos sobre web design, SEO, marketing digital e tecnologia. Insights da equipa 99web.')
-
 @php
 $categoryColors = [
     'web-design'        => 'bg-blue-500/15 text-blue-300',
