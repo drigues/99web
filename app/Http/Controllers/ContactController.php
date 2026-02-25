@@ -12,6 +12,11 @@ class ContactController extends Controller
 {
     public function store(StoreContactRequest $request): JsonResponse
     {
+        // Honeypot anti-spam: silently discard if _hp field is filled by a bot
+        if ($request->filled('_hp')) {
+            return response()->json(['message' => 'Contacto recebido com sucesso.'], 201);
+        }
+
         $contact = Contact::create([
             'name'        => $request->nome,
             'email'       => $request->email,

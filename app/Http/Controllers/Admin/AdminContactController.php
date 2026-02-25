@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ActivityLog;
 use App\Models\Contact;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class AdminContactController extends Controller
 {
@@ -73,9 +75,56 @@ class AdminContactController extends Controller
 
     public function destroy(Contact $contact): RedirectResponse
     {
+        ActivityLog::record('deleted', $contact, "Contacto eliminado: {$contact->name}");
         $contact->delete();
 
         return redirect()->route('admin.contactos.index')
             ->with('success', 'Contacto eliminado.');
+    }
+
+    public function export(Request $request): StreamedResponse
+    {
+        $query = Contact::latest();
+
+        if ($search = $request->input('search')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%")
+                  ->orWhere('company', 'like', "%{$search}%");
+            });
+        }
+        if ($status = $request->input('status')) {
+            $query->where('status', $status);
+        }
+        if ($source = $request->input('source')) {
+            $query->where('source', $source);
+        }
+
+        $contacts = $query->get();
+
+        ActivityLog::record('export', null, "Exportação CSV de {$contacts->count()} contactos");
+
+        $filename = 'contactos_' . now()->format('Ymd_His') . '.csv';
+
+        return response()->streamDownload(function () use ($contacts) {
+            $out = fopen('php://output', 'w');
+            fprintf($out, chr(0xEF) . chr(0xBB) . chr(0xBF)); // UTF-8 BOM
+            fputcsv($out, ['Nome', 'Email', 'Telefone', 'Empresa', 'Mensagem', 'Estado', 'Origem', 'Data'], ';');
+
+            foreach ($contacts as $c) {
+                fputcsv($out, [
+                    $c->name,
+                    $c->email,
+                    $c->phone    ?? '',
+                    $c->company  ?? '',
+                    $c->message  ?? '',
+                    $c->status,
+                    $c->source   ?? '',
+                    $c->created_at->format('d/m/Y H:i'),
+                ], ';');
+            }
+
+            fclose($out);
+        }, $filename, ['Content-Type' => 'text/csv; charset=UTF-8']);
     }
 }

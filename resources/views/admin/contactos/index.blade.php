@@ -13,6 +13,12 @@
             <h1 class="text-xl font-bold text-white">Contactos</h1>
             <p class="text-sm text-zinc-500 mt-0.5">{{ $contacts->total() }} registos no total</p>
         </div>
+        <a href="{{ route('admin.contactos.export', request()->query()) }}"
+           class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium
+                  text-zinc-400 border border-zinc-700 hover:border-emerald-500/40 hover:text-emerald-400 transition-colors">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+            Exportar CSV
+        </a>
     </div>
 
     {{-- Filtros --}}

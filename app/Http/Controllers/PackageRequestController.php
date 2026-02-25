@@ -26,6 +26,11 @@ class PackageRequestController extends Controller
 
     public function store(string $type, StorePackageRequestRequest $request): RedirectResponse
     {
+        // Honeypot anti-spam: se campo _hp vier preenchido, é bot
+        if ($request->filled('_hp')) {
+            return redirect()->route('pacotes.obrigado');
+        }
+
         $packages = config('packages');
 
         abort_if(!isset($packages[$type]), 404);
