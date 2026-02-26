@@ -1236,7 +1236,7 @@
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-white"></span>
             </span>
-            Fale connosco hoje
+            Fale conosco hoje
         </span>
 
         {{-- Título --}}
