@@ -16,14 +16,14 @@
 </div>
 
 {{-- ── Header ───────────────────────────────────────────────── --}}
-<header class="bg-[#2B4C6F] shadow-md sticky top-0 z-40" x-data="{ mobileOpen: false }">
+<header class="bg-[#1d3e67] shadow-md sticky top-0 z-40" x-data="{ mobileOpen: false }">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
             {{-- Logo --}}
-            <a href="#" class="flex items-center">
+            <a href="#" class="flex items-center -my-1">
                 <img src="{{ asset('images/accro/logo.jpg') }}"
                      alt="ACCCRO - Associação Empresarial"
-                     class="h-14 w-auto"
+                     class="h-20 w-auto"
                      width="217" height="106"
                      loading="eager">
             </a>
@@ -39,7 +39,7 @@
             </nav>
 
             {{-- CTA --}}
-            <a href="#associar" class="hidden lg:inline-flex bg-white hover:bg-gray-100 text-[#2B4C6F] text-sm font-semibold rounded-lg px-5 py-2 transition-colors">
+            <a href="#associar" class="hidden lg:inline-flex bg-white hover:bg-gray-100 text-[#1d3e67] text-sm font-semibold rounded-lg px-5 py-2 transition-colors">
                 Associar-me
             </a>
 
@@ -63,7 +63,7 @@
          x-transition:leave="transition ease-in duration-150"
          x-transition:leave-start="opacity-100 translate-y-0"
          x-transition:leave-end="opacity-0 -translate-y-2"
-         class="lg:hidden bg-[#243F5E] border-t border-white/10 shadow-lg">
+         class="lg:hidden bg-[#1a3558] border-t border-white/10 shadow-lg">
         <nav class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
             <a @click="mobileOpen = false" href="#inicio" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors">Início</a>
             <a @click="mobileOpen = false" href="#noticias" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors">Notícias & Eventos</a>
@@ -72,7 +72,7 @@
             <a @click="mobileOpen = false" href="#trilhos" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors">Trilhos</a>
             <a @click="mobileOpen = false" href="#contacto" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors">Contacto</a>
             <div class="border-t border-white/10 mt-2 pt-3">
-                <a href="#associar" @click="mobileOpen = false" class="block text-center bg-white hover:bg-gray-100 text-[#2B4C6F] text-sm font-semibold rounded-lg px-5 py-2.5 transition-colors">
+                <a href="#associar" @click="mobileOpen = false" class="block text-center bg-white hover:bg-gray-100 text-[#1d3e67] text-sm font-semibold rounded-lg px-5 py-2.5 transition-colors">
                     Associar-me
                 </a>
             </div>
