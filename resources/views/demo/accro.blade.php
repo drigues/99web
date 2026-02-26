@@ -16,35 +16,35 @@
 </div>
 
 {{-- ── Header ───────────────────────────────────────────────── --}}
-<header class="bg-white shadow-sm sticky top-0 z-40" x-data="{ mobileOpen: false }">
+<header class="bg-[#2B4C6F] shadow-md sticky top-0 z-40" x-data="{ mobileOpen: false }">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
+        <div class="flex items-center justify-between h-20">
             {{-- Logo --}}
             <a href="#" class="flex items-center">
                 <img src="{{ asset('images/accro/logo.jpg') }}"
                      alt="ACCCRO - Associação Empresarial"
-                     class="h-10 w-auto"
+                     class="h-14 w-auto"
                      width="217" height="106"
                      loading="eager">
             </a>
 
             {{-- Desktop nav --}}
             <nav class="hidden lg:flex items-center gap-7">
-                <a href="#inicio" class="text-sm font-medium text-gray-700 hover:text-[#2D6AE0] transition-colors">Início</a>
-                <a href="#noticias" class="text-sm font-medium text-gray-700 hover:text-[#2D6AE0] transition-colors">Notícias & Eventos</a>
-                <a href="#servicos" class="text-sm font-medium text-gray-700 hover:text-[#2D6AE0] transition-colors">Serviços</a>
-                <a href="#acelerar2030" class="text-sm font-medium text-gray-700 hover:text-[#2D6AE0] transition-colors">Acelerar2030</a>
-                <a href="#trilhos" class="text-sm font-medium text-gray-700 hover:text-[#2D6AE0] transition-colors">Trilhos</a>
-                <a href="#contacto" class="text-sm font-medium text-gray-700 hover:text-[#2D6AE0] transition-colors">Contacto</a>
+                <a href="#inicio" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Início</a>
+                <a href="#noticias" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Notícias & Eventos</a>
+                <a href="#servicos" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Serviços</a>
+                <a href="#acelerar2030" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Acelerar2030</a>
+                <a href="#trilhos" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Trilhos</a>
+                <a href="#contacto" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Contacto</a>
             </nav>
 
             {{-- CTA --}}
-            <a href="#associar" class="hidden lg:inline-flex bg-[#2D6AE0] hover:bg-[#1E50B8] text-white text-sm font-medium rounded-lg px-5 py-2 transition-colors">
+            <a href="#associar" class="hidden lg:inline-flex bg-white hover:bg-gray-100 text-[#2B4C6F] text-sm font-semibold rounded-lg px-5 py-2 transition-colors">
                 Associar-me
             </a>
 
             {{-- Mobile hamburger --}}
-            <button @click="mobileOpen = !mobileOpen" class="lg:hidden p-2 text-gray-700" aria-label="Menu">
+            <button @click="mobileOpen = !mobileOpen" class="lg:hidden p-2 text-white" aria-label="Menu">
                 <svg x-show="!mobileOpen" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
                 </svg>
@@ -63,16 +63,16 @@
          x-transition:leave="transition ease-in duration-150"
          x-transition:leave-start="opacity-100 translate-y-0"
          x-transition:leave-end="opacity-0 -translate-y-2"
-         class="lg:hidden bg-white border-t border-gray-100 shadow-lg">
+         class="lg:hidden bg-[#243F5E] border-t border-white/10 shadow-lg">
         <nav class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
-            <a @click="mobileOpen = false" href="#inicio" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#2D6AE0] transition-colors">Início</a>
-            <a @click="mobileOpen = false" href="#noticias" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#2D6AE0] transition-colors">Notícias & Eventos</a>
-            <a @click="mobileOpen = false" href="#servicos" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#2D6AE0] transition-colors">Serviços</a>
-            <a @click="mobileOpen = false" href="#acelerar2030" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#2D6AE0] transition-colors">Acelerar2030</a>
-            <a @click="mobileOpen = false" href="#trilhos" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#2D6AE0] transition-colors">Trilhos</a>
-            <a @click="mobileOpen = false" href="#contacto" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#2D6AE0] transition-colors">Contacto</a>
-            <div class="border-t border-gray-100 mt-2 pt-3">
-                <a href="#associar" @click="mobileOpen = false" class="block text-center bg-[#2D6AE0] hover:bg-[#1E50B8] text-white text-sm font-medium rounded-lg px-5 py-2.5 transition-colors">
+            <a @click="mobileOpen = false" href="#inicio" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors">Início</a>
+            <a @click="mobileOpen = false" href="#noticias" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors">Notícias & Eventos</a>
+            <a @click="mobileOpen = false" href="#servicos" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors">Serviços</a>
+            <a @click="mobileOpen = false" href="#acelerar2030" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors">Acelerar2030</a>
+            <a @click="mobileOpen = false" href="#trilhos" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors">Trilhos</a>
+            <a @click="mobileOpen = false" href="#contacto" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-colors">Contacto</a>
+            <div class="border-t border-white/10 mt-2 pt-3">
+                <a href="#associar" @click="mobileOpen = false" class="block text-center bg-white hover:bg-gray-100 text-[#2B4C6F] text-sm font-semibold rounded-lg px-5 py-2.5 transition-colors">
                     Associar-me
                 </a>
             </div>

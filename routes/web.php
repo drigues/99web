@@ -48,7 +48,7 @@ Route::prefix('blog')->name('blog.')->group(function () {
 });
 
 // ─── Demo / Portfólio ────────────────────────────────────────────
-Route::get('/demo/accro', [DemoController::class, 'accro'])->name('demo.accro');
+Route::get('/demo/acccro', [DemoController::class, 'acccro'])->name('demo.acccro');
 
 // ─── Admin ────────────────────────────────────────────────────
 Route::prefix('admin')->name('admin.')->group(function () {

@@ -6,7 +6,7 @@ use Illuminate\View\View;
 
 class DemoController extends Controller
 {
-    public function accro(): View
+    public function acccro(): View
     {
         return view('demo.accro');
     }
