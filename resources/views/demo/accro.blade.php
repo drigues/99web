@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACCRO — Associação Empresarial da Região Oeste</title>
+    <title>ACCCRO — Associação Empresarial da Região Oeste</title>
     <meta name="description" content="Associação Empresarial da Região do Oeste. Consultoria, formação, networking e incentivos para o desenvolvimento dos negócios.">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -20,11 +20,12 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
             {{-- Logo --}}
-            <a href="#" class="flex items-center gap-2.5">
-                <div class="w-9 h-9 bg-[#0F1B2D] rounded-full flex items-center justify-center">
-                    <span class="text-white font-bold text-sm">A</span>
-                </div>
-                <span class="text-[#0F1B2D] font-bold text-xl tracking-tight">ACCRO</span>
+            <a href="#" class="flex items-center">
+                <img src="{{ asset('images/accro/logo.jpg') }}"
+                     alt="ACCCRO - Associação Empresarial"
+                     class="h-10 w-auto"
+                     width="217" height="106"
+                     loading="eager">
             </a>
 
             {{-- Desktop nav --}}
@@ -80,8 +81,18 @@
 </header>
 
 {{-- ── Hero ─────────────────────────────────────────────────── --}}
-<section id="inicio" class="bg-[#0F1B2D] text-white py-20 lg:py-28 px-4 overflow-hidden">
-    <div class="max-w-7xl mx-auto">
+<section id="inicio" class="relative min-h-[600px] lg:min-h-[700px] flex items-center overflow-hidden">
+    {{-- Background Image --}}
+    <div class="absolute inset-0">
+        <img src="{{ asset('images/accro/hero-bg.jpg') }}"
+             alt="Praça da Fruta, Caldas da Rainha"
+             class="w-full h-full object-cover"
+             width="1536" height="1024"
+             loading="eager">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0F1B2D]/90 via-[#0F1B2D]/80 to-[#0F1B2D]/60"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full text-white">
         <div class="lg:grid lg:grid-cols-2 gap-12 items-center">
 
             {{-- Left column --}}
@@ -203,7 +214,7 @@
                             <span class="text-[#2D6AE0] font-medium">Programa</span>
                         </div>
                         <h3 class="font-bold text-xl mt-2 text-[#1A1A2E] leading-snug">
-                            ACCRO lança nova fase do Programa Acelerar2030 para PMEs da Região Oeste
+                            ACCCRO lança nova fase do Programa Acelerar2030 para PMEs da Região Oeste
                         </h3>
                         <p class="text-gray-600 mt-2 text-sm line-clamp-3">
                             A nova fase do programa traz apoios reforçados para digitalização e internacionalização, com foco nas micro e pequenas empresas dos 21 municípios abrangidos.
@@ -355,7 +366,7 @@
                 <div x-data x-intersect.once="$el.classList.add('animate-fade-in-up')" class="opacity-0">
                     <h2 class="text-3xl lg:text-4xl font-bold">Acelerar2030</h2>
                     <p class="text-gray-300 mt-4 leading-relaxed">
-                        O programa de aceleração empresarial da ACCRO visa impulsionar o crescimento sustentável das PMEs da Região Oeste, alinhado com os Objetivos de Desenvolvimento Sustentável da Agenda 2030. Com mentoria especializada, acesso a financiamento e networking estratégico, apoiamos a transformação digital e a internacionalização.
+                        O programa de aceleração empresarial da ACCCRO visa impulsionar o crescimento sustentável das PMEs da Região Oeste, alinhado com os Objetivos de Desenvolvimento Sustentável da Agenda 2030. Com mentoria especializada, acesso a financiamento e networking estratégico, apoiamos a transformação digital e a internacionalização.
                     </p>
                     <a href="#" class="inline-flex items-center gap-2 bg-[#2D6AE0] hover:bg-[#1E50B8] text-white font-medium rounded-lg px-6 py-3 transition-colors mt-6">
                         Candidatar a Minha Empresa
@@ -501,7 +512,7 @@
 <section class="bg-[#F7F8FA] py-12 px-4">
     <div class="max-w-2xl mx-auto text-center" x-data x-intersect.once="$el.classList.add('animate-fade-in-up')">
         <h2 class="text-2xl font-bold text-[#1A1A2E]">Fique a Par de Tudo</h2>
-        <p class="text-gray-500 mt-2">Receba as últimas notícias, eventos e oportunidades da ACCRO diretamente no seu email.</p>
+        <p class="text-gray-500 mt-2">Receba as últimas notícias, eventos e oportunidades da ACCCRO diretamente no seu email.</p>
         <form class="flex flex-col sm:flex-row gap-2 mt-6 max-w-md mx-auto" onsubmit="return false;">
             <input type="email" placeholder="O seu email" class="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#2D6AE0]/30 focus:border-[#2D6AE0] outline-none transition-colors">
             <button type="button" class="bg-[#E8443A] hover:bg-[#d13a31] text-white text-sm font-medium rounded-lg px-6 py-2.5 transition-colors whitespace-nowrap">
@@ -525,7 +536,7 @@
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3068.5!2d-9.1397!3d39.4036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd18fd0c0e4b6f1f%3A0x0!2sCaldas+da+Rainha!5e0!3m2!1spt-PT!2spt!4v1"
                         width="100%" height="100%" style="border:0; min-height: 320px;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
-                        title="Mapa — ACCRO, Caldas da Rainha">
+                        title="Mapa — ACCCRO, Caldas da Rainha">
                     </iframe>
                 </div>
             </div>
@@ -567,11 +578,12 @@
 
             {{-- Branding --}}
             <div>
-                <div class="flex items-center gap-2.5 mb-4">
-                    <div class="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center">
-                        <span class="text-white font-bold text-sm">A</span>
-                    </div>
-                    <span class="font-bold text-xl tracking-tight">ACCRO</span>
+                <div class="mb-4">
+                    <img src="{{ asset('images/accro/logo.jpg') }}"
+                         alt="ACCCRO"
+                         class="h-12 w-auto brightness-200"
+                         width="217" height="106"
+                         loading="lazy">
                 </div>
                 <p class="text-gray-400 text-sm leading-relaxed">
                     Associação Empresarial da Região do Oeste. Apoiamos empresas desde 1984.
@@ -632,7 +644,7 @@
         {{-- Bottom bar --}}
         <div class="border-t border-white/10 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
             <p class="text-xs text-gray-500">
-                &copy; 2026 ACCRO — Associação Empresarial da Região Oeste. Todos os direitos reservados.
+                &copy; 2026 ACCCRO — Associação Empresarial da Região Oeste. Todos os direitos reservados.
             </p>
             <p class="text-xs text-gray-500">
                 Desenvolvido por <a href="/" class="text-[#2D6AE0] hover:text-blue-400 font-medium transition-colors">99web.pt</a>
