@@ -359,58 +359,89 @@
                 #CONSTRUIR O FUTURO
             </span>
 
-            <div class="lg:grid lg:grid-cols-2 gap-12 items-start">
+            <div x-data x-intersect.once="$el.classList.add('animate-fade-in-up')" class="opacity-0">
+                <img src="{{ asset('images/accro/acelerar2030-logo.png') }}"
+                     alt="Acelerar 2030 - Para um centro + digital"
+                     class="h-16 w-auto mb-6"
+                     width="320" height="80"
+                     loading="lazy">
 
-                {{-- Left --}}
-                <div x-data x-intersect.once="$el.classList.add('animate-fade-in-up')" class="opacity-0">
-                    <img src="{{ asset('images/accro/acelerar2030-logo.png') }}"
-                         alt="Acelerar 2030 - Para um centro + digital"
-                         class="h-16 w-auto mb-6"
-                         width="320" height="80"
-                         loading="lazy">
+                <h2 class="text-3xl lg:text-4xl font-bold">Acelerar2030</h2>
 
-                    <h2 class="text-3xl lg:text-4xl font-bold">Acelerar2030</h2>
+                <p class="text-gray-300 text-base leading-relaxed mt-4">
+                    Acelerar2030 é uma iniciativa que visa impulsionar o crescimento e a competitividade das empresas da região Centro de Portugal. Este projeto é liderado pelo CEC/CCIC - Conselho Empresarial do Centro/Câmara de Comércio e Indústria do Centro, em consórcio com 21 Associações Empresariais, com experiência em projetos de ligação ao tecido empresarial e com capilaridade regional de atuação junto do setor empresarial do comércio e serviços.
+                </p>
 
-                    <p class="text-gray-300 text-base leading-relaxed mt-4">
-                        Acelerar2030 é uma iniciativa que visa impulsionar o crescimento e a competitividade das empresas da região Centro de Portugal. Este projeto é liderado pelo CEC/CCIC - Conselho Empresarial do Centro/Câmara de Comércio e Indústria do Centro, em consórcio com 21 Associações Empresariais, com experiência em projetos de ligação ao tecido empresarial e com capilaridade regional de atuação junto do setor empresarial do comércio e serviços.
-                    </p>
+                <p class="text-gray-300 text-base leading-relaxed mt-4">
+                    A ACCCRO - Associação Empresarial das Caldas da Rainha e Oeste, orgulha-se de integrar este consórcio enquanto antena, dinamizando o projeto na região Oeste em parceria com a ACIRO - Associação Comercial, Industrial e Serviços da Região Oeste, uma das 8 aceleradoras da Região Centro.
+                </p>
 
-                    <p class="text-gray-300 text-base leading-relaxed mt-4">
-                        A ACCCRO - Associação Empresarial das Caldas da Rainha e Oeste, orgulha-se de integrar este consórcio enquanto antena, dinamizando o projeto na região Oeste em parceria com a ACIRO - Associação Comercial, Industrial e Serviços da Região Oeste, uma das 8 aceleradoras da Região Centro.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-3 mt-8">
-                        <a href="#associar" class="inline-flex items-center justify-center gap-2 bg-[#2D9B5E] hover:bg-[#248C50] text-white font-medium rounded-lg px-6 py-3 transition-colors">
-                            Contactar a Aceleradora do Oeste
-                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-                        </a>
-                        <a href="https://acelerar2030.pt" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 border border-green-400/40 text-green-300 hover:bg-green-500/10 font-medium rounded-lg px-6 py-3 transition-colors">
-                            Site Oficial Acelerar2030
-                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-                {{-- Right — stat cards --}}
-                <div x-data x-intersect.once="$el.classList.add('animate-fade-in-up')" class="opacity-0 mt-10 lg:mt-0">
-                    <div class="grid grid-cols-2 gap-4">
-                        @php
-                        $acStats = [
-                            ['value' => '21', 'label' => 'Municípios', 'color' => 'text-white'],
-                            ['value' => '8', 'label' => 'Setores', 'color' => 'text-white'],
-                            ['value' => '100+', 'label' => 'PMEs Apoiadas', 'color' => 'text-white'],
-                            ['value' => '€2M', 'label' => 'Investimento', 'color' => 'text-[#34C66A]'],
-                        ];
-                        @endphp
-                        @foreach($acStats as $st)
-                            <div class="bg-[#1E4D35]/60 rounded-xl p-5 text-center border border-green-500/10 hover:border-green-500/25 transition-colors">
-                                <p class="text-3xl font-bold {{ $st['color'] }}">{{ $st['value'] }}</p>
-                                <p class="text-gray-400 text-sm mt-1">{{ $st['label'] }}</p>
+                {{-- Stat cards — single row with icons --}}
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
+                    {{-- Municípios --}}
+                    <div class="bg-[#1E4D35]/60 rounded-xl p-5 text-center border border-green-500/10 hover:border-green-500/25 transition-colors">
+                        <div class="flex justify-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-green-500/15 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-[#34C66A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+                                </svg>
                             </div>
-                        @endforeach
+                        </div>
+                        <p class="text-3xl font-bold text-white">21</p>
+                        <p class="text-gray-400 text-sm mt-1">Municípios</p>
+                    </div>
+
+                    {{-- Setores --}}
+                    <div class="bg-[#1E4D35]/60 rounded-xl p-5 text-center border border-green-500/10 hover:border-green-500/25 transition-colors">
+                        <div class="flex justify-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-green-500/15 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-[#34C66A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="text-3xl font-bold text-white">8</p>
+                        <p class="text-gray-400 text-sm mt-1">Setores</p>
+                    </div>
+
+                    {{-- PMEs Apoiadas --}}
+                    <div class="bg-[#1E4D35]/60 rounded-xl p-5 text-center border border-green-500/10 hover:border-green-500/25 transition-colors">
+                        <div class="flex justify-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-green-500/15 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-[#34C66A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="text-3xl font-bold text-white">100+</p>
+                        <p class="text-gray-400 text-sm mt-1">PMEs Apoiadas</p>
+                    </div>
+
+                    {{-- Investimento --}}
+                    <div class="bg-[#1E4D35]/60 rounded-xl p-5 text-center border border-green-500/10 hover:border-green-500/25 transition-colors">
+                        <div class="flex justify-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-green-500/15 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-[#34C66A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="text-3xl font-bold text-[#34C66A]">€2M</p>
+                        <p class="text-gray-400 text-sm mt-1">Investimento</p>
                     </div>
                 </div>
 
+                <div class="flex flex-col sm:flex-row gap-3 mt-10">
+                    <a href="#associar" class="inline-flex items-center justify-center gap-2 bg-[#2D9B5E] hover:bg-[#248C50] text-white font-medium rounded-lg px-6 py-3 transition-colors">
+                        Contactar a Aceleradora do Oeste
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                    </a>
+                    <a href="https://acelerar2030.pt" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 border border-green-400/40 text-green-300 hover:bg-green-500/10 font-medium rounded-lg px-6 py-3 transition-colors">
+                        Site Oficial Acelerar2030
+                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
