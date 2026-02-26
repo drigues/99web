@@ -353,25 +353,42 @@
 
 {{-- ── Acelerar2030 ─────────────────────────────────────────── --}}
 <section id="acelerar2030" class="px-4 lg:px-20 my-8">
-    <div class="bg-[#0F1B2D] text-white py-16 px-6 sm:px-10 lg:px-16 rounded-2xl">
+    <div class="bg-gradient-to-br from-[#1A3A2A] to-[#0D2618] text-white py-16 px-6 sm:px-10 lg:px-16 rounded-2xl border border-green-500/20">
         <div class="max-w-6xl mx-auto">
-            <span class="inline-flex items-center gap-2 text-sm text-blue-300 bg-blue-500/15 rounded-full px-4 py-1 font-medium mb-6">
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                Programa Parceria CCDRLO
+            <span class="inline-block bg-green-500/20 text-green-300 rounded-full px-4 py-1 text-sm font-semibold tracking-wide mb-6">
+                #CONSTRUIR O FUTURO
             </span>
 
-            <div class="lg:grid lg:grid-cols-2 gap-12 items-center">
+            <div class="lg:grid lg:grid-cols-2 gap-12 items-start">
 
                 {{-- Left --}}
                 <div x-data x-intersect.once="$el.classList.add('animate-fade-in-up')" class="opacity-0">
+                    <img src="{{ asset('images/accro/acelerar2030-logo.png') }}"
+                         alt="Acelerar 2030 - Para um centro + digital"
+                         class="h-16 w-auto mb-6"
+                         width="320" height="80"
+                         loading="lazy">
+
                     <h2 class="text-3xl lg:text-4xl font-bold">Acelerar2030</h2>
-                    <p class="text-gray-300 mt-4 leading-relaxed">
-                        O programa de aceleração empresarial da ACCCRO visa impulsionar o crescimento sustentável das PMEs da Região Oeste, alinhado com os Objetivos de Desenvolvimento Sustentável da Agenda 2030. Com mentoria especializada, acesso a financiamento e networking estratégico, apoiamos a transformação digital e a internacionalização.
+
+                    <p class="text-gray-300 text-base leading-relaxed mt-4">
+                        Acelerar2030 é uma iniciativa que visa impulsionar o crescimento e a competitividade das empresas da região Centro de Portugal. Este projeto é liderado pelo CEC/CCIC - Conselho Empresarial do Centro/Câmara de Comércio e Indústria do Centro, em consórcio com 21 Associações Empresariais, com experiência em projetos de ligação ao tecido empresarial e com capilaridade regional de atuação junto do setor empresarial do comércio e serviços.
                     </p>
-                    <a href="#" class="inline-flex items-center gap-2 bg-[#2D6AE0] hover:bg-[#1E50B8] text-white font-medium rounded-lg px-6 py-3 transition-colors mt-6">
-                        Candidatar a Minha Empresa
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-                    </a>
+
+                    <p class="text-gray-300 text-base leading-relaxed mt-4">
+                        A ACCCRO - Associação Empresarial das Caldas da Rainha e Oeste, orgulha-se de integrar este consórcio enquanto antena, dinamizando o projeto na região Oeste em parceria com a ACIRO - Associação Comercial, Industrial e Serviços da Região Oeste, uma das 8 aceleradoras da Região Centro.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-3 mt-8">
+                        <a href="#associar" class="inline-flex items-center justify-center gap-2 bg-[#2D9B5E] hover:bg-[#248C50] text-white font-medium rounded-lg px-6 py-3 transition-colors">
+                            Contactar a Aceleradora do Oeste
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                        </a>
+                        <a href="https://acelerar2030.pt" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 border border-green-400/40 text-green-300 hover:bg-green-500/10 font-medium rounded-lg px-6 py-3 transition-colors">
+                            Site Oficial Acelerar2030
+                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+                        </a>
+                    </div>
                 </div>
 
                 {{-- Right — stat cards --}}
@@ -382,11 +399,11 @@
                             ['value' => '21', 'label' => 'Municípios', 'color' => 'text-white'],
                             ['value' => '8', 'label' => 'Setores', 'color' => 'text-white'],
                             ['value' => '100+', 'label' => 'PMEs Apoiadas', 'color' => 'text-white'],
-                            ['value' => '€2M', 'label' => 'Investimento', 'color' => 'text-[#F5A623]'],
+                            ['value' => '€2M', 'label' => 'Investimento', 'color' => 'text-[#34C66A]'],
                         ];
                         @endphp
                         @foreach($acStats as $st)
-                            <div class="bg-[#1A2E4A] rounded-xl p-5 text-center border border-white/5 hover:border-white/15 transition-colors">
+                            <div class="bg-[#1E4D35]/60 rounded-xl p-5 text-center border border-green-500/10 hover:border-green-500/25 transition-colors">
                                 <p class="text-3xl font-bold {{ $st['color'] }}">{{ $st['value'] }}</p>
                                 <p class="text-gray-400 text-sm mt-1">{{ $st['label'] }}</p>
                             </div>
@@ -568,6 +585,20 @@
             </div>
 
         </div>
+    </div>
+</section>
+
+{{-- ── Logos Parceiros ─────────────────────────────────────── --}}
+<section class="bg-white py-12 border-t border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-sm text-gray-500 mb-8 font-medium tracking-wide uppercase">Programa financiado por</p>
+        <div class="flex items-center justify-center">
+            <img src="{{ asset('images/accro/emat-acelerar-logos.jpg') }}"
+                 alt="Parceiros do Programa Acelerar2030 - CEC, ACIRO, ACCCRO, PRR, República Portuguesa, União Europeia"
+                 class="max-w-full h-auto max-h-24 lg:max-h-28 object-contain"
+                 loading="lazy">
+        </div>
+        <p class="text-xs text-gray-400 mt-6">Projeto financiado pelo PRR - Plano de Recuperação e Resiliência no âmbito da NextGenerationEU</p>
     </div>
 </section>
 
