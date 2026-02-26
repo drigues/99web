@@ -74,15 +74,14 @@
         <hr class="divider">
 
         <p class="note">
-            Se precisar de cancelar ou reagendar, por favor contacte-nos com pelo menos 24 horas de antecedência em
-            <a href="mailto:geral@99web.pt" style="color:#7C3AED;">geral@99web.pt</a>
-            ou em <a href="tel:+351210000000" style="color:#7C3AED;">+351 210 000 000</a>.
+            Se precisar de cancelar ou reagendar, por favor contacte-nos com pelo menos 24 horas de antecedência pelo
+            <a href="tel:+351939341853" style="color:#7C3AED;">+351 939 341 853</a>.
         </p>
 
     </div>
 
     <div class="footer">
-        <p>99web · <a href="https://99web.pt" style="color:#7C3AED;">99web.pt</a> · geral@99web.pt</p>
+        <p>99web · <a href="https://99web.pt" style="color:#7C3AED;">99web.pt</a></p>
     </div>
 
 </div>

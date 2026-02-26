@@ -122,7 +122,7 @@
     </div>
 
     <div class="footer">
-        <p>99web · <a href="https://99web.pt" style="color:#7C3AED;">99web.pt</a> · geral@99web.pt</p>
+        <p>99web · <a href="https://99web.pt" style="color:#7C3AED;">99web.pt</a></p>
     </div>
 
 </div>

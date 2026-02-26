@@ -17,9 +17,7 @@
 
                 {{-- Info legal --}}
                 <address class="not-italic space-y-1.5 text-xs text-zinc-600">
-                    <p>99web, Lda. · NIF 000 000 000</p>
-                    <p>Av. da Liberdade, 110</p>
-                    <p>1250-096 Lisboa, Portugal</p>
+                    <p>99web · Óbidos, Portugal</p>
                 </address>
             </div>
 
@@ -50,21 +48,6 @@
                 <h3 class="text-xs font-bold text-white tracking-widest uppercase mb-5">Contacto</h3>
                 <ul class="space-y-4">
 
-                    {{-- Email --}}
-                    <li class="flex items-start gap-3">
-                        <div class="mt-0.5 w-7 h-7 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center flex-shrink-0">
-                            <svg class="w-3.5 h-3.5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="text-[10px] text-zinc-600 uppercase tracking-wider mb-0.5">Email</p>
-                            <a href="mailto:geral@99web.pt" class="text-sm text-zinc-400 hover:text-violet-400 transition-colors duration-200">
-                                geral@99web.pt
-                            </a>
-                        </div>
-                    </li>
-
                     {{-- Telefone --}}
                     <li class="flex items-start gap-3">
                         <div class="mt-0.5 w-7 h-7 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center flex-shrink-0">
@@ -74,8 +57,8 @@
                         </div>
                         <div>
                             <p class="text-[10px] text-zinc-600 uppercase tracking-wider mb-0.5">Telefone</p>
-                            <a href="tel:+351210000000" class="text-sm text-zinc-400 hover:text-violet-400 transition-colors duration-200">
-                                +351 210 000 000
+                            <a href="tel:+351939341853" class="text-sm text-zinc-400 hover:text-violet-400 transition-colors duration-200">
+                                +351 939 341 853
                             </a>
                         </div>
                     </li>
@@ -103,7 +86,7 @@
                         </div>
                         <div>
                             <p class="text-[10px] text-zinc-600 uppercase tracking-wider mb-0.5">Localização</p>
-                            <p class="text-sm text-zinc-400">Lisboa, Portugal</p>
+                            <p class="text-sm text-zinc-400">Óbidos, Portugal</p>
                         </div>
                     </li>
 

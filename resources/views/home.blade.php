@@ -619,7 +619,7 @@
                                         @endfor
                                         <span class="text-[10px] text-zinc-400 ml-1">5.0 · 247 avaliações</span>
                                     </div>
-                                    <div class="text-[10px] text-zinc-500">Lisboa, Portugal</div>
+                                    <div class="text-[10px] text-zinc-500">Óbidos, Portugal</div>
                                 </div>
                                 <div class="px-2 py-0.5 rounded-full bg-blue-500/15 border border-blue-500/20 flex-shrink-0">
                                     <span class="text-[9px] font-bold text-blue-300">✓ Verificado</span>

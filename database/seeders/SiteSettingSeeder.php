@@ -15,9 +15,8 @@ class SiteSettingSeeder extends Seeder
             ['key' => 'site_tagline', 'value' => 'Agência Digital · Portugal','type' => 'text',    'group' => 'general'],
 
             // Contact
-            ['key' => 'email',        'value' => 'geral@99web.pt',           'type' => 'text',     'group' => 'contact'],
-            ['key' => 'phone',        'value' => '+351 210 000 000',         'type' => 'text',     'group' => 'contact'],
-            ['key' => 'address',      'value' => 'Av. da Liberdade, 110, 1250-096 Lisboa', 'type' => 'text', 'group' => 'contact'],
+            ['key' => 'phone',        'value' => '+351 939 341 853',         'type' => 'text',     'group' => 'contact'],
+            ['key' => 'location',     'value' => 'Óbidos, Portugal',         'type' => 'text',     'group' => 'contact'],
 
             // Social
             ['key' => 'social_links', 'value' => json_encode([

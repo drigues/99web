@@ -96,7 +96,7 @@
                             <label class="block text-xs font-medium text-zinc-400 mb-1.5">Telefone</label>
                             <input type="text" name="site_phone"
                                 value="{{ $settings->get('site_phone', '') }}"
-                                placeholder="+351 900 000 000"
+                                placeholder="+351 939 341 853"
                                 class="w-full px-3 py-2 rounded-lg bg-white/5 border border-zinc-700 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-violet-500/60 transition-colors">
                         </div>
                         <div>

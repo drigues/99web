@@ -87,15 +87,14 @@
         <hr class="divider">
 
         <p class="footer-note">
-            Se tiver alguma dúvida urgente, pode contactar-nos diretamente por email em
-            <a href="mailto:geral@99web.pt" style="color:#7C3AED;">geral@99web.pt</a>
-            ou por telefone em <a href="tel:+351210000000" style="color:#7C3AED;">+351 210 000 000</a>.
+            Se tiver alguma dúvida urgente, pode contactar-nos diretamente por telefone em
+            <a href="tel:+351939341853" style="color:#7C3AED;">+351 939 341 853</a>.
         </p>
 
     </div>
 
     <div class="footer">
-        <p>99web · <a href="https://99web.pt" style="color:#7C3AED;">99web.pt</a> · geral@99web.pt</p>
+        <p>99web · <a href="https://99web.pt" style="color:#7C3AED;">99web.pt</a></p>
     </div>
 
 </div>

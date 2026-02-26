@@ -88,19 +88,19 @@
             </a>
 
             <a
-                href="mailto:geral@99web.pt"
+                href="tel:+351939341853"
                 class="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-medium
                        text-zinc-400 border border-white/10 hover:border-white/20 hover:text-white
                        transition-all duration-200"
             >
-                Enviar email diretamente
+                Ligar diretamente
             </a>
         </div>
 
         {{-- Micro-texto --}}
         <p class="mt-8 text-xs text-zinc-600">
             Dúvidas? Contacte-nos em
-            <a href="tel:+351210000000" class="text-violet-500 hover:text-violet-400 transition-colors">+351 210 000 000</a>
+            <a href="tel:+351939341853" class="text-violet-500 hover:text-violet-400 transition-colors">+351 939 341 853</a>
         </p>
 
     </div>
