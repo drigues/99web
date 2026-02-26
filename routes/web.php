@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PackageRequestController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\DemoController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AdminPackageRequestController;
@@ -45,6 +46,9 @@ Route::prefix('blog')->name('blog.')->group(function () {
     Route::get('/tag/{slug}',       [BlogController::class, 'tag'])->name('tag');
     Route::get('/{slug}',           [BlogController::class, 'show'])->name('show');
 });
+
+// ─── Demo / Portfólio ────────────────────────────────────────────
+Route::get('/demo/accro', [DemoController::class, 'accro'])->name('demo.accro');
 
 // ─── Admin ────────────────────────────────────────────────────
 Route::prefix('admin')->name('admin.')->group(function () {
