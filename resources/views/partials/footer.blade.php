@@ -8,7 +8,7 @@
             <div>
                 {{-- Logo --}}
                 <a href="{{ route('home') }}" class="inline-flex items-baseline gap-0.5 mb-5" aria-label="99web — Página inicial">
-                    <span class="text-2xl font-bold text-white tracking-tight">99</span><span class="text-2xl font-bold text-brand-accent tracking-tight">web</span>
+                    <span class="text-2xl font-bold text-brand-accent tracking-tight">99web</span>
                 </a>
 
                 <p class="text-sm text-zinc-500 leading-relaxed mb-6 max-w-xs">

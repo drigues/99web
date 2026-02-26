@@ -32,7 +32,7 @@
                 class="flex-shrink-0 text-2xl font-bold tracking-tight select-none"
                 aria-label="99web — Página inicial"
             >
-                <span class="text-white">99</span><span class="text-brand-accent">web</span>
+                <span class="-text-brand-accent">99web</span>
             </a>
 
             {{-- Nav Desktop --}}
