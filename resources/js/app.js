@@ -23,6 +23,40 @@ gsap.ticker.lagSmoothing(0);
 // ─── Text Splitting ─────────────────────────────────────
 Splitting();
 
+// ─── Custom Cursor ──────────────────────────────────────
+const cursor = document.getElementById('cursor');
+if (cursor) {
+    const xTo = gsap.quickTo(cursor, 'x', { duration: 0.4, ease: 'power2.out' });
+    const yTo = gsap.quickTo(cursor, 'y', { duration: 0.4, ease: 'power2.out' });
+
+    window.addEventListener('mousemove', (e) => {
+        xTo(e.clientX - 10);
+        yTo(e.clientY - 10);
+    });
+
+    document.querySelectorAll('a, button, [data-magnetic]').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('scale-[3]', 'opacity-50'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('scale-[3]', 'opacity-50'));
+    });
+}
+
+// ─── Page Loader ────────────────────────────────────────
+const loader = document.getElementById('loader');
+const loaderCount = document.getElementById('loader-count');
+if (loader) {
+    const obj = { val: 0 };
+    gsap.to(obj, {
+        val: 100, duration: 1.5, ease: 'power2.inOut',
+        onUpdate: () => { loaderCount.textContent = Math.round(obj.val); },
+        onComplete: () => {
+            gsap.to(loader, {
+                clipPath: 'inset(0 0 100% 0)', duration: 0.8, ease: 'power3.inOut',
+                onComplete: () => loader.remove()
+            });
+        }
+    });
+}
+
 // ─── Scroll-driven Animations ───────────────────────────
 function initAnimations() {
     // [data-animate="fade-up"]

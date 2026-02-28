@@ -1,0 +1,1 @@
+<div id="cursor" class="hidden md:block fixed top-0 left-0 w-5 h-5 rounded-full border border-[var(--accent-light)] pointer-events-none z-[9999] mix-blend-difference transition-transform duration-200"></div>
