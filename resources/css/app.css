@@ -47,6 +47,21 @@ html.lenis, html.lenis body {
     clip-path: inset(0 0 0 0);
 }
 
+/* ─── Swiper overrides ──────────────────────────────── */
+.testimonials-pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background: var(--gray);
+    opacity: 0.4;
+    transition: all 0.3s ease;
+}
+.testimonials-pagination .swiper-pagination-bullet-active {
+    background: var(--accent);
+    opacity: 1;
+    width: 24px;
+    border-radius: 4px;
+}
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
