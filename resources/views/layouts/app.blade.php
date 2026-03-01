@@ -5,24 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('meta_title', '99web — Websites Profissionais em Portugal')</title>
-    <meta name="description" content="@yield('meta_description', 'Criamos websites modernos, sistemas corporativos e presença digital premium para empresas portuguesas.')">
-
-    {{-- Open Graph --}}
-    <meta property="og:title" content="@yield('og_title', '99web')">
-    <meta property="og:description" content="@yield('meta_description')">
-    <meta property="og:image" content="@yield('og_image', asset('images/og-default.jpg'))">
-    <meta property="og:type" content="website">
+    {{-- SEOTools: meta, OpenGraph, Twitter, JSON-LD --}}
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+    {!! Twitter::generate() !!}
+    {!! JsonLd::generate() !!}
 
     {{-- Favicon --}}
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
     <link rel="alternate icon" href="{{ asset('favicon.ico') }}">
     <meta name="theme-color" content="#7C3AED">
 
-    {{-- Fonts --}}
+    {{-- RSS --}}
+    <link rel="alternate" type="application/rss+xml" title="Blog 99web" href="{{ route('blog.feed') }}">
+
+    {{-- Fonts — preconnect + display=swap --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+
+    {{-- DNS prefetch para recursos externos --}}
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('head')

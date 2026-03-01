@@ -160,7 +160,8 @@ $categoryColors = [
                         <a href="{{ route('blog.show', $featuredPost->slug) }}" class="relative block aspect-video sm:aspect-[21/9] overflow-hidden">
                             @if($featuredPost->featured_image)
                                 <img src="{{ $featuredPost->featured_image }}" alt="{{ $featuredPost->title }}"
-                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                     loading="lazy">
                             @else
                                 <div class="w-full h-full"
                                      style="background: linear-gradient(135deg, rgba(124,58,237,.25) 0%, rgba(15,10,26,.8) 100%);">
@@ -185,7 +186,7 @@ $categoryColors = [
                                 <div class="flex items-center gap-3 text-xs text-zinc-400">
                                     @if($featuredPost->author?->avatar)
                                         <img src="{{ $featuredPost->author->avatar }}" alt="{{ $featuredPost->author->name }}"
-                                             class="w-6 h-6 rounded-full object-cover">
+                                             class="w-6 h-6 rounded-full object-cover" loading="lazy">
                                     @else
                                         <div class="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold text-white"
                                              style="background: linear-gradient(135deg, #7C3AED 0%, #9333EA 100%);">

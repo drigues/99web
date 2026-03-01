@@ -1,8 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'Pedido recebido — 99web')
-@section('description', 'O seu pedido foi recebido com sucesso. A equipa 99web irá entrar em contacto em breve.')
-
 @section('content')
 
 <div

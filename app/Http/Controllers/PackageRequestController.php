@@ -6,6 +6,7 @@ use App\Http\Requests\StorePackageRequestRequest;
 use App\Mail\PackageRequestConfirmation;
 use App\Mail\PackageRequestNotification;
 use App\Models\PackageRequest;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
@@ -17,6 +18,9 @@ class PackageRequestController extends Controller
         $packages = config('packages');
 
         abort_if(!isset($packages[$type]), 404);
+
+        SEOMeta::setTitle('Pacote ' . $packages[$type]['name'] . ' — 99web');
+        SEOMeta::setDescription('Solicite o pacote ' . $packages[$type]['name'] . ' da 99web. Websites profissionais para o seu negócio.');
 
         return view('packages.request', [
             'package' => $packages[$type],
@@ -72,6 +76,9 @@ class PackageRequestController extends Controller
 
     public function obrigado(): View
     {
+        SEOMeta::setTitle('Pedido recebido — 99web');
+        SEOMeta::setDescription('O seu pedido foi recebido com sucesso. A equipa 99web irá entrar em contacto em breve.');
+
         return view('packages.obrigado');
     }
 }

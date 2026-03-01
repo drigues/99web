@@ -1,8 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'Pedido — ' . $package['name'] . ' · 99web')
-@section('description', 'Preencha os dados para solicitar o pacote ' . $package['name'] . ' da 99web.')
-
 @section('content')
 
 <div

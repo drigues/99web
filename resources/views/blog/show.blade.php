@@ -57,7 +57,7 @@ $catColor = $categoryColors[$post->category->slug ?? ''] ?? 'bg-zinc-700/60 text
             <div class="flex items-center gap-2">
                 @if($post->author?->avatar)
                     <img src="{{ $post->author->avatar }}" alt="{{ $post->author->name }}"
-                         class="w-8 h-8 rounded-full object-cover">
+                         class="w-8 h-8 rounded-full object-cover" loading="lazy">
                 @else
                     <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white"
                          style="background: linear-gradient(135deg, #7C3AED 0%, #9333EA 100%);">
@@ -109,6 +109,7 @@ $catColor = $categoryColors[$post->category->slug ?? ''] ?? 'bg-zinc-700/60 text
                 src="{{ $post->featured_image }}"
                 alt="{{ $post->title }}"
                 class="w-full h-full object-cover"
+                loading="lazy"
             >
         </div>
     </div>

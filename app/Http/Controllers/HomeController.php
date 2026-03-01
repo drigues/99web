@@ -2,20 +2,52 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\SeoService;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\TwitterCard;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        app(SeoService::class)
-            ->setTitle('99web — Agência Digital | Websites, SEO e Marketing Digital')
-            ->setDescription('Criamos websites profissionais, sistemas web e estratégias SEO que impulsionam o crescimento do seu negócio. Especialistas em soluções digitais em Portugal.')
-            ->setKeywords('agência digital, websites profissionais, desenvolvimento web, SEO, marketing digital, Portugal, 99web')
-            ->setCanonical(route('home'))
-            ->setOgData(['type' => 'website'])
-            ->setOrganizationSchema()
-            ->setLocalBusinessSchema();
+        // ─── Meta ─────────────────────────────────────────────
+        SEOMeta::setTitle('Agência Digital | Websites, SEO e Marketing Digital');
+        SEOMeta::setDescription('Criamos websites profissionais, sistemas web e estratégias SEO que impulsionam o crescimento do seu negócio. Especialistas em soluções digitais em Portugal.');
+        SEOMeta::setKeywords(['agência digital', 'websites profissionais', 'desenvolvimento web', 'SEO', 'marketing digital', 'Portugal', '99web']);
+        SEOMeta::setCanonical(route('home'));
+        SEOMeta::addMeta('author', '99web');
+
+        // ─── OpenGraph ───────────────────────────────────────
+        OpenGraph::setTitle('99web — Agência Digital');
+        OpenGraph::setDescription('Criamos websites profissionais e estratégias SEO que impulsionam o crescimento do seu negócio.');
+        OpenGraph::setUrl(route('home'));
+        OpenGraph::addProperty('type', 'website');
+        OpenGraph::addProperty('locale', 'pt_PT');
+        OpenGraph::addImage(asset('images/og-default.png'));
+
+        // ─── Twitter ─────────────────────────────────────────
+        TwitterCard::setTitle('99web — Agência Digital');
+        TwitterCard::setDescription('Criamos websites profissionais e estratégias SEO que impulsionam o crescimento do seu negócio.');
+        TwitterCard::setImage(asset('images/og-default.png'));
+
+        // ─── JSON-LD: Organization ──────────────────────────
+        JsonLd::setType('Organization');
+        JsonLd::setTitle('99web');
+        JsonLd::setDescription('Agência digital especializada em desenvolvimento web, SEO e marketing digital.');
+        JsonLd::setUrl(config('app.url'));
+        JsonLd::addValue('logo', asset('images/logo.png'));
+        JsonLd::addValue('contactPoint', [
+            '@type'             => 'ContactPoint',
+            'telephone'         => '+351 939 341 853',
+            'contactType'       => 'customer service',
+            'availableLanguage' => ['Portuguese', 'English'],
+        ]);
+        JsonLd::addValue('address', [
+            '@type'           => 'PostalAddress',
+            'addressLocality' => 'Óbidos',
+            'addressCountry'  => 'PT',
+        ]);
 
         $projetos = [
             'websites' => [

@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\BlogCategory;
 use App\Models\BlogPost;
 use App\Models\BlogTag;
-use App\Services\SeoService;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\TwitterCard;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
@@ -53,13 +56,19 @@ class BlogController extends Controller
             $remainingPosts = $posts->slice(1);
         }
 
-        app(SeoService::class)
-            ->setTitle('Blog — Dicas, novidades e tendências do mundo digital | 99web')
-            ->setDescription('Descubra artigos sobre web design, SEO, marketing digital e tecnologia. Insights da equipa 99web para o sucesso do seu negócio online.')
-            ->setKeywords('blog, web design, SEO, marketing digital, tecnologia, dicas, Portugal')
-            ->setCanonical(route('blog.index'))
-            ->setOgData(['title' => 'Blog 99web — Dicas e tendências do mundo digital'])
-            ->addExtra('<link rel="alternate" type="application/rss+xml" title="Blog 99web RSS" href="' . route('blog.feed') . '">');
+        // ─── SEO ─────────────────────────────────────────────
+        SEOMeta::setTitle('Blog — Dicas, novidades e tendências do mundo digital');
+        SEOMeta::setDescription('Descubra artigos sobre web design, SEO, marketing digital e tecnologia. Insights da equipa 99web para o sucesso do seu negócio online.');
+        SEOMeta::setKeywords(['blog', 'web design', 'SEO', 'marketing digital', 'tecnologia', 'dicas', 'Portugal']);
+        SEOMeta::setCanonical(route('blog.index'));
+
+        OpenGraph::setTitle('Blog 99web — Dicas e tendências do mundo digital');
+        OpenGraph::setDescription('Descubra artigos sobre web design, SEO, marketing digital e tecnologia.');
+        OpenGraph::setUrl(route('blog.index'));
+        OpenGraph::addImage(asset('images/og-default.png'));
+
+        TwitterCard::setTitle('Blog 99web');
+        TwitterCard::setDescription('Descubra artigos sobre web design, SEO, marketing digital e tecnologia.');
 
         return view('blog.index', compact(
             'posts', 'featuredPost', 'remainingPosts',
@@ -88,26 +97,59 @@ class BlogController extends Controller
             ->limit(3)
             ->get();
 
-        $seo = app(SeoService::class)
-            ->setTitle(($post->meta_title ?: $post->title) . ' | Blog 99web')
-            ->setDescription($post->meta_description ?: $post->excerpt)
-            ->setCanonical($post->canonical_url ?? route('blog.show', $post->slug))
-            ->setOgData([
-                'type'        => 'article',
-                'title'       => $post->meta_title ?: $post->title,
-                'description' => $post->meta_description ?: $post->excerpt,
-                'image'       => $post->og_image ?? $post->featured_image ?? asset('images/og-default.png'),
-            ])
-            ->setArticleSchema($post)
-            ->setBreadcrumbSchema([
-                ['name' => 'Home',  'url' => route('home')],
-                ['name' => 'Blog',  'url' => route('blog.index')],
-                ['name' => $post->category->name ?? 'Artigos', 'url' => $post->category ? route('blog.category', $post->category->slug) : route('blog.index')],
-                ['name' => $post->title],
-            ]);
+        // ─── SEO ─────────────────────────────────────────────
+        $metaTitle = ($post->meta_title ?: $post->title) . ' | Blog 99web';
+        $metaDesc  = $post->meta_description ?: $post->excerpt;
+        $ogImage   = $post->og_image ?? $post->featured_image ?? asset('images/og-default.png');
 
+        SEOMeta::setTitle($metaTitle);
+        SEOMeta::setDescription($metaDesc);
+        SEOMeta::setCanonical($post->canonical_url ?? route('blog.show', $post->slug));
         if ($post->meta_keywords) {
-            $seo->setKeywords($post->meta_keywords);
+            SEOMeta::setKeywords(explode(',', $post->meta_keywords));
+        }
+
+        OpenGraph::setTitle($post->meta_title ?: $post->title);
+        OpenGraph::setDescription($metaDesc);
+        OpenGraph::setUrl(route('blog.show', $post->slug));
+        OpenGraph::addProperty('type', 'article');
+        OpenGraph::addProperty('locale', 'pt_PT');
+        OpenGraph::addImage($ogImage);
+        OpenGraph::addProperty('article:published_time', optional($post->published_at)->toIso8601String());
+        OpenGraph::addProperty('article:modified_time', optional($post->updated_at)->toIso8601String());
+        if ($post->category) {
+            OpenGraph::addProperty('article:section', $post->category->name);
+        }
+
+        TwitterCard::setTitle($post->meta_title ?: $post->title);
+        TwitterCard::setDescription($metaDesc);
+        TwitterCard::setImage($ogImage);
+
+        // ─── JSON-LD: Article + Breadcrumb ──────────────────
+        $content = strip_tags($post->content ?? '');
+
+        JsonLd::setType('BlogPosting');
+        JsonLd::setTitle($post->title);
+        JsonLd::setDescription($post->excerpt ?? '');
+        JsonLd::setUrl(route('blog.show', $post->slug));
+        JsonLd::addValue('headline', $post->title);
+        JsonLd::addValue('wordCount', str_word_count($content));
+        JsonLd::addValue('datePublished', optional($post->published_at)->toIso8601String());
+        JsonLd::addValue('dateModified', optional($post->updated_at)->toIso8601String());
+        JsonLd::addValue('author', [
+            '@type' => 'Person',
+            'name'  => $post->author->name ?? '99web',
+        ]);
+        JsonLd::addValue('publisher', [
+            '@type' => 'Organization',
+            'name'  => '99web',
+            'logo'  => ['@type' => 'ImageObject', 'url' => asset('images/logo.png')],
+        ]);
+        if ($post->category) {
+            JsonLd::addValue('articleSection', $post->category->name);
+        }
+        if ($ogImage) {
+            JsonLd::addImage($ogImage);
         }
 
         return view('blog.show', compact('post', 'toc', 'contentWithIds', 'relatedPosts'));
@@ -126,19 +168,29 @@ class BlogController extends Controller
 
         [$categories, $tags] = $this->sidebarData();
 
-        app(SeoService::class)
-            ->setTitle(($category->meta_title ?: $category->name . ' — Blog') . ' | 99web')
-            ->setDescription($category->meta_description ?: 'Artigos sobre ' . $category->name . ' — dicas e insights da equipa 99web.')
-            ->setCanonical(route('blog.category', $category->slug))
-            ->setOgData([
-                'title'       => $category->name . ' — Blog 99web',
-                'description' => $category->meta_description ?: 'Descubra artigos sobre ' . $category->name . ' no blog da 99web.',
-            ])
-            ->setBreadcrumbSchema([
-                ['name' => 'Home',         'url' => route('home')],
-                ['name' => 'Blog',         'url' => route('blog.index')],
-                ['name' => $category->name],
-            ]);
+        // ─── SEO ─────────────────────────────────────────────
+        $metaTitle = ($category->meta_title ?: $category->name . ' — Blog') . ' | 99web';
+        $metaDesc  = $category->meta_description ?: 'Artigos sobre ' . $category->name . ' — dicas e insights da equipa 99web.';
+
+        SEOMeta::setTitle($metaTitle);
+        SEOMeta::setDescription($metaDesc);
+        SEOMeta::setCanonical(route('blog.category', $category->slug));
+
+        OpenGraph::setTitle($category->name . ' — Blog 99web');
+        OpenGraph::setDescription($metaDesc);
+        OpenGraph::setUrl(route('blog.category', $category->slug));
+        OpenGraph::addImage(asset('images/og-default.png'));
+
+        TwitterCard::setTitle($category->name . ' — Blog 99web');
+        TwitterCard::setDescription($metaDesc);
+
+        // Breadcrumb JSON-LD
+        JsonLd::setType('BreadcrumbList');
+        JsonLd::addValue('itemListElement', [
+            ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
+            ['@type' => 'ListItem', 'position' => 2, 'name' => 'Blog', 'item' => route('blog.index')],
+            ['@type' => 'ListItem', 'position' => 3, 'name' => $category->name],
+        ]);
 
         return view('blog.category', compact('category', 'posts', 'categories', 'tags'));
     }
@@ -156,19 +208,26 @@ class BlogController extends Controller
 
         [$categories, $tags] = $this->sidebarData();
 
-        app(SeoService::class)
-            ->setTitle('#' . $tag->name . ' — Blog | 99web')
-            ->setDescription('Artigos com a tag ' . $tag->name . ' — dicas e insights da equipa 99web.')
-            ->setCanonical(route('blog.tag', $tag->slug))
-            ->setOgData([
-                'title'       => '#' . $tag->name . ' — Blog 99web',
-                'description' => 'Descubra artigos sobre ' . $tag->name . ' no blog da 99web.',
-            ])
-            ->setBreadcrumbSchema([
-                ['name' => 'Home',            'url' => route('home')],
-                ['name' => 'Blog',            'url' => route('blog.index')],
-                ['name' => '#' . $tag->name],
-            ]);
+        // ─── SEO ─────────────────────────────────────────────
+        SEOMeta::setTitle('#' . $tag->name . ' — Blog | 99web');
+        SEOMeta::setDescription('Artigos com a tag ' . $tag->name . ' — dicas e insights da equipa 99web.');
+        SEOMeta::setCanonical(route('blog.tag', $tag->slug));
+
+        OpenGraph::setTitle('#' . $tag->name . ' — Blog 99web');
+        OpenGraph::setDescription('Descubra artigos sobre ' . $tag->name . ' no blog da 99web.');
+        OpenGraph::setUrl(route('blog.tag', $tag->slug));
+        OpenGraph::addImage(asset('images/og-default.png'));
+
+        TwitterCard::setTitle('#' . $tag->name . ' — Blog 99web');
+        TwitterCard::setDescription('Descubra artigos sobre ' . $tag->name . ' no blog da 99web.');
+
+        // Breadcrumb JSON-LD
+        JsonLd::setType('BreadcrumbList');
+        JsonLd::addValue('itemListElement', [
+            ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
+            ['@type' => 'ListItem', 'position' => 2, 'name' => 'Blog', 'item' => route('blog.index')],
+            ['@type' => 'ListItem', 'position' => 3, 'name' => '#' . $tag->name],
+        ]);
 
         return view('blog.tag', compact('tag', 'posts', 'categories', 'tags'));
     }

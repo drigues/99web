@@ -1,8 +1,5 @@
 @extends('layouts.app')
 
-@section('title', '99web — Agência Digital')
-@section('description', 'Criamos a sua presença online. Seja encontrado pelos seus públicos com sites e aplicações web modernas.')
-
 @section('content')
 
 {{-- ══════════════════════════════════════════════════════
