@@ -21,17 +21,9 @@ class SiteSetting extends Model
 
     public static function get(string $key, mixed $default = null): mixed
     {
-        $setting = static::where('key', $key)->first();
+        $settings = static::getAllCached();
 
-        if (! $setting) {
-            return $default;
-        }
-
-        return match ($setting->type) {
-            'boolean' => filter_var($setting->value, FILTER_VALIDATE_BOOLEAN),
-            'json'    => json_decode($setting->value, true),
-            default   => $setting->value,
-        };
+        return $settings[$key] ?? $default;
     }
 
     public static function set(string $key, mixed $value, string $type = 'text', string $group = 'general'): void
@@ -42,6 +34,34 @@ class SiteSetting extends Model
             ['key' => $key],
             ['value' => $stored, 'type' => $type, 'group' => $group]
         );
+
+        static::clearCache();
+    }
+
+    public static function setMany(array $data, string $group = 'general'): void
+    {
+        foreach ($data as $key => $value) {
+            if ($value !== null) {
+                static::updateOrCreate(
+                    ['key' => $key],
+                    ['value' => is_array($value) ? json_encode($value) : (string) $value, 'group' => $group]
+                );
+            }
+        }
+
+        static::clearCache();
+    }
+
+    public static function getAllCached(): array
+    {
+        return Cache::remember('site_settings', 3600, function () {
+            return static::pluck('value', 'key')->toArray();
+        });
+    }
+
+    public static function clearCache(): void
+    {
+        Cache::forget('site_settings');
     }
 
     public function scopeByGroup($query, string $group)

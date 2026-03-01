@@ -15,7 +15,7 @@
                 </p>
 
                 <address class="not-italic text-xs text-[var(--gray)]">
-                    99web · Óbidos, Portugal
+                    {{ $settings->get('site_name', '99web') }} · {{ $settings->get('contact_address', 'Óbidos, Portugal') }}
                 </address>
             </div>
 
@@ -42,17 +42,17 @@
                 <ul class="space-y-4">
                     <li>
                         <p class="text-[10px] text-[var(--gray)] uppercase tracking-wider mb-0.5">Telefone</p>
-                        <a href="tel:+351939341853" class="text-base text-[var(--white)] hover:text-[var(--accent)] transition-colors duration-300">
-                            +351 939 341 853
+                        <a href="tel:{{ preg_replace('/\s+/', '', $settings->get('contact_phone', '+351939341853')) }}" class="text-base text-[var(--white)] hover:text-[var(--accent)] transition-colors duration-300">
+                            {{ $settings->get('contact_phone', '+351 939 341 853') }}
                         </a>
                     </li>
                     <li>
                         <p class="text-[10px] text-[var(--gray)] uppercase tracking-wider mb-0.5">Horário</p>
-                        <p class="text-base text-[var(--white)]">Seg – Sex: 09:00 – 18:00</p>
+                        <p class="text-base text-[var(--white)]">{{ $settings->get('working_hours', 'Seg – Sex: 09:00 – 18:00') }}</p>
                     </li>
                     <li>
                         <p class="text-[10px] text-[var(--gray)] uppercase tracking-wider mb-0.5">Localização</p>
-                        <p class="text-base text-[var(--white)]">Óbidos, Portugal</p>
+                        <p class="text-base text-[var(--white)]">{{ $settings->get('contact_address', 'Óbidos, Portugal') }}</p>
                     </li>
                 </ul>
 

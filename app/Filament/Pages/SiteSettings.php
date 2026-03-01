@@ -7,7 +7,6 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
-use Illuminate\Support\Facades\Cache;
 
 class SiteSettings extends Page implements Forms\Contracts\HasForms
 {
@@ -31,15 +30,19 @@ class SiteSettings extends Page implements Forms\Contracts\HasForms
 
     public function mount(): void
     {
-        $settings = SiteSetting::all()->mapWithKeys(function ($setting) {
-            $value = match ($setting->type) {
-                'boolean' => filter_var($setting->value, FILTER_VALIDATE_BOOLEAN),
-                'json' => json_decode($setting->value, true),
-                default => $setting->value,
-            };
+        // Load directly from DB (bypass cache) to always show fresh values
+        $settings = SiteSetting::pluck('value', 'key')->toArray();
 
-            return [$setting->key => $value];
-        })->toArray();
+        // Cast booleans for Toggle fields
+        $booleanKeys = [
+            'package_essencial_active', 'package_corporativo_active',
+            'package_personalizado_active', 'show_loader',
+        ];
+        foreach ($booleanKeys as $key) {
+            if (isset($settings[$key])) {
+                $settings[$key] = filter_var($settings[$key], FILTER_VALIDATE_BOOLEAN);
+            }
+        }
 
         $this->form->fill($settings);
     }
@@ -221,19 +224,29 @@ class SiteSettings extends Page implements Forms\Contracts\HasForms
         $data = $this->form->getState();
 
         foreach ($data as $key => $value) {
-            $type = match (true) {
-                is_bool($value) => 'boolean',
-                is_array($value) => 'json',
-                default => 'text',
-            };
+            if ($key === '' || $key === null) {
+                continue;
+            }
 
-            SiteSetting::set($key, $value ?? '', $type, $this->getGroupForKey($key));
+            $group = $this->getGroupForKey($key);
+
+            // Convert booleans to string for storage
+            if (is_bool($value)) {
+                $value = $value ? '1' : '0';
+            }
+
+            SiteSetting::updateOrCreate(
+                ['key' => $key],
+                ['value' => (string) ($value ?? ''), 'group' => $group, 'type' => 'text']
+            );
         }
 
-        Cache::forget('site_settings');
+        // Clear cache so public views reflect changes immediately
+        SiteSetting::clearCache();
 
         Notification::make()
-            ->title('Configurações guardadas')
+            ->title('Configurações guardadas!')
+            ->body('As alterações já estão visíveis no site.')
             ->success()
             ->send();
     }

@@ -313,7 +313,7 @@
                         <h3 class="text-xl lg:text-2xl font-bold text-[var(--white)] mb-5">Web Essencial</h3>
 
                         <div class="flex items-end gap-1.5 mb-1">
-                            <span class="text-4xl lg:text-6xl font-display font-black text-[var(--white)]">399€</span>
+                            <span class="text-4xl lg:text-6xl font-display font-black text-[var(--white)]">{{ $settings->get('package_essencial_price', '399€') }}</span>
                         </div>
                         <p class="text-xs text-[var(--gray)]">pagamento único</p>
                     </div>
@@ -380,7 +380,7 @@
                         <h3 class="text-xl lg:text-2xl font-bold text-white mb-5">Web Corporativo</h3>
 
                         <div class="flex items-end gap-1.5 mb-1">
-                            <span class="text-4xl lg:text-6xl font-display font-black text-white">599€</span>
+                            <span class="text-4xl lg:text-6xl font-display font-black text-white">{{ $settings->get('package_corporativo_price', '599€') }}</span>
                         </div>
                         <p class="text-xs text-zinc-500">pagamento único</p>
                     </div>
@@ -435,7 +435,7 @@
                         <h3 class="text-xl lg:text-2xl font-bold text-[var(--white)] mb-5">Projetos Personalizados</h3>
 
                         <div class="flex items-end gap-1.5 mb-1">
-                            <span class="text-3xl lg:text-5xl font-display font-black text-[var(--white)]">Sob consulta</span>
+                            <span class="text-3xl lg:text-5xl font-display font-black text-[var(--white)]">{{ $settings->get('package_personalizado_price', 'Sob consulta') }}</span>
                         </div>
                         <p class="text-xs text-[var(--gray)]">proposta à medida do projeto</p>
                     </div>
