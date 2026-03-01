@@ -2,8 +2,8 @@
 @php
 $classes = match($variant) {
     'primary' => 'bg-[var(--accent)] text-white hover:bg-[var(--accent-light)]',
-    'outline' => 'border border-white/30 text-white hover:bg-white/10',
-    'white' => 'bg-[var(--white)] text-[var(--black)] hover:bg-white',
+    'outline' => 'border border-[var(--border-color)] text-[var(--white)] hover:bg-[var(--white)]/10',
+    'white' => 'bg-[var(--white)] text-[var(--black)] hover:opacity-90',
     default => 'bg-[var(--accent)] text-white hover:bg-[var(--accent-light)]',
 };
 @endphp

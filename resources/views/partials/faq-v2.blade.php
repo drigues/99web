@@ -3,7 +3,7 @@
 
         <x-section-label text="Dúvidas" />
 
-        <h2 class="text-4xl lg:text-6xl font-display leading-tight mb-20" data-animate="fade-up">
+        <h2 class="text-5xl lg:text-7xl font-display leading-tight mb-20" data-animate="fade-up">
             Perguntas frequentes
         </h2>
 
@@ -36,9 +36,9 @@
         ];
         @endphp
 
-        <div x-data="{ open: null }" class="border-t border-white/10" data-animate="fade-up">
+        <div x-data="{ open: null }" class="border-t border-[var(--border-color)]" data-animate="fade-up">
             @foreach ($faqs as $index => $faq)
-            <div class="border-b border-white/10">
+            <div class="border-b border-[var(--border-color)]">
                 <button
                     type="button"
                     class="w-full flex items-center gap-6 lg:gap-10 py-7 lg:py-8 text-left group focus:outline-none"
@@ -49,7 +49,7 @@
                     <span class="text-sm text-[var(--gray)] font-mono flex-shrink-0">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
 
                     <!-- Question -->
-                    <span class="flex-1 text-xl font-display text-[var(--white)] group-hover:text-[var(--accent-light)] transition-colors duration-300">
+                    <span class="flex-1 text-2xl lg:text-3xl font-display text-[var(--white)] group-hover:text-[var(--accent-light)] transition-colors duration-300">
                         {{ $faq['pergunta'] }}
                     </span>
 
@@ -65,7 +65,7 @@
                 <!-- Answer -->
                 <div x-show="open === {{ $index }}" x-collapse x-cloak>
                     <div class="pb-8 pl-0 lg:pl-16 pr-14">
-                        <p class="text-[var(--gray)] text-base leading-relaxed max-w-2xl">
+                        <p class="text-[var(--gray)] text-lg leading-relaxed max-w-2xl">
                             {{ $faq['resposta'] }}
                         </p>
                     </div>

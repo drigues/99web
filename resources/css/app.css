@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
-/* ─── CSS Custom Properties ──────────────────────────── */
+/* ─── CSS Custom Properties (Dark Mode — default) ──── */
 :root {
     --black: #0a0a0a;
     --white: #f5f2eb;
@@ -10,8 +10,37 @@
     --gray: #6b6b6b;
     --bg-dark: #0F0A1A;
     --bg-card: #1A1225;
-    --font-display: 'Instrument Serif', serif;
-    --font-body: 'DM Sans', sans-serif;
+
+    /* Semantic tokens */
+    --text-primary: #f5f2eb;
+    --text-secondary: #6b6b6b;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-subtle: rgba(255, 255, 255, 0.05);
+
+    /* Fonts */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Manrope', sans-serif;
+}
+
+/* ─── Light Mode ────────────────────────────────────── */
+html.light {
+    --black: #ffffff;
+    --white: #1a1a1a;
+    --gray: #64748b;
+    --bg-dark: #f8f7f4;
+    --bg-card: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #64748b;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --border-subtle: rgba(0, 0, 0, 0.05);
+
+    /* Brand overrides for light */
+    --color-brand-bg: #f8f7f4;
+    --color-brand-section: #f3f0ff;
+    --color-brand-hero-from: #f3f0ff;
+    --color-brand-hero-to: #f8f7f4;
+    --color-brand-text: #1a1a1a;
+    --color-brand-muted: #64748b;
 }
 
 html {
@@ -47,19 +76,40 @@ html.lenis, html.lenis body {
     clip-path: inset(0 0 0 0);
 }
 
-/* ─── Swiper overrides ──────────────────────────────── */
-.testimonials-pagination .swiper-pagination-bullet {
-    width: 8px;
-    height: 8px;
-    background: var(--gray);
-    opacity: 0.4;
-    transition: all 0.3s ease;
+/* ─── Marquee ──────────────────────────────────────────── */
+@keyframes marquee-left {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
-.testimonials-pagination .swiper-pagination-bullet-active {
-    background: var(--accent);
-    opacity: 1;
-    width: 24px;
-    border-radius: 4px;
+
+@keyframes marquee-right {
+    0%   { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+}
+
+.marquee-left .marquee-track {
+    animation: marquee-left 40s linear infinite;
+}
+
+.marquee-right .marquee-track {
+    animation: marquee-right 40s linear infinite;
+}
+
+.marquee-left:hover .marquee-track,
+.marquee-right:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee-left .marquee-track,
+    .marquee-right .marquee-track {
+        animation: none;
+    }
 }
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -68,7 +118,7 @@ html.lenis, html.lenis body {
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 
     /* Brand palette */

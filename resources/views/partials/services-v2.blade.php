@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
         <x-section-label text="O que fazemos" />
-        <h2 class="text-4xl lg:text-6xl font-display leading-tight max-w-3xl mb-20 lg:mb-32" data-animate="fade-up">
+        <h2 class="text-5xl lg:text-7xl font-display leading-tight max-w-3xl mb-20 lg:mb-32" data-animate="fade-up">
             Soluções digitais para empresas que querem <em class="text-[var(--accent-light)]">crescer</em>
         </h2>
     </div>
@@ -17,8 +17,8 @@
                     <div class="relative overflow-hidden rounded-2xl" data-img-reveal>
                         <!-- Browser mockup -->
                         <div class="aspect-[4/3] bg-gradient-to-br from-violet-500/20 via-[var(--bg-card)] to-purple-900/30 relative">
-                            <div class="absolute inset-6 lg:inset-10 bg-[var(--bg-card)] rounded-xl border border-white/10 shadow-2xl overflow-hidden" data-parallax="-20">
-                                <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5">
+                            <div class="absolute inset-6 lg:inset-10 bg-[var(--bg-card)] rounded-xl border border-[var(--border-color)] shadow-2xl overflow-hidden" data-parallax="-20">
+                                <div class="flex items-center gap-2 px-4 py-3 border-b border-[var(--border-subtle)]">
                                     <span class="w-2.5 h-2.5 rounded-full bg-red-400/60" aria-hidden="true"></span>
                                     <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/60" aria-hidden="true"></span>
                                     <span class="w-2.5 h-2.5 rounded-full bg-green-400/60" aria-hidden="true"></span>
@@ -33,7 +33,7 @@
                                     <div class="h-3 w-4/6 bg-white/5 rounded mb-6"></div>
                                     <div class="flex gap-3">
                                         <div class="h-10 w-32 bg-[var(--accent)]/30 rounded-lg"></div>
-                                        <div class="h-10 w-32 bg-white/5 rounded-lg border border-white/10"></div>
+                                        <div class="h-10 w-32 bg-white/5 rounded-lg border border-[var(--border-color)]"></div>
                                     </div>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                     </div>
 
                     <!-- Floating: Lighthouse -->
-                    <div class="absolute -top-4 right-2 lg:-top-6 lg:-right-8 bg-[var(--bg-card)] rounded-xl border border-white/10 p-4 shadow-xl z-10" data-parallax="-40" data-animate="fade-up">
+                    <div class="absolute -top-4 right-2 lg:-top-6 lg:-right-8 bg-[var(--bg-card)] rounded-xl border border-[var(--border-color)] p-4 shadow-xl z-10" data-parallax="-40" data-animate="fade-up">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
                                 <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
@@ -54,7 +54,7 @@
                     </div>
 
                     <!-- Floating: Responsivo -->
-                    <div class="absolute -bottom-4 left-6 lg:-bottom-6 lg:left-10 bg-[var(--bg-card)] rounded-xl border border-white/10 p-4 shadow-xl z-10" data-parallax="-15" data-animate="fade-up">
+                    <div class="absolute -bottom-4 left-6 lg:-bottom-6 lg:left-10 bg-[var(--bg-card)] rounded-xl border border-[var(--border-color)] p-4 shadow-xl z-10" data-parallax="-15" data-animate="fade-up">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
                                 <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
@@ -67,8 +67,8 @@
                 <!-- Texto — col 5 -->
                 <div class="lg:col-span-5" data-animate="fade-up">
                     <span class="text-sm font-mono text-[var(--accent-light)] mb-4 block">01</span>
-                    <h3 class="text-3xl lg:text-4xl font-display mb-6">Websites Profissionais</h3>
-                    <p class="text-[var(--gray)] text-lg leading-relaxed mb-8">
+                    <h3 class="text-4xl lg:text-5xl font-display mb-6">Websites Profissionais</h3>
+                    <p class="text-[var(--gray)] text-lg lg:text-xl leading-relaxed mb-8">
                         Design moderno, responsivo, otimizado para Google. O seu negócio merece estar online com um website que converte visitantes em clientes.
                     </p>
                     <ul class="space-y-4 mb-10">
@@ -114,8 +114,8 @@
                 <!-- Texto — col 5 -->
                 <div class="lg:col-span-5 order-2 lg:order-1" data-animate="fade-up">
                     <span class="text-sm font-mono text-[var(--accent-light)] mb-4 block">02</span>
-                    <h3 class="text-3xl lg:text-4xl font-display mb-6">Sistemas Corporativos</h3>
-                    <p class="text-[var(--gray)] text-lg leading-relaxed mb-8">
+                    <h3 class="text-4xl lg:text-5xl font-display mb-6">Sistemas Corporativos</h3>
+                    <p class="text-[var(--gray)] text-lg lg:text-xl leading-relaxed mb-8">
                         Automatize processos, controle dados, aumente eficiência. Sistemas à medida que transformam a gestão do seu negócio.
                     </p>
                     <ul class="space-y-4 mb-10">
@@ -154,31 +154,31 @@
                     <div class="relative overflow-hidden rounded-2xl" data-img-reveal>
                         <!-- Dashboard mockup -->
                         <div class="aspect-[4/3] bg-gradient-to-br from-blue-500/15 via-[var(--bg-card)] to-indigo-900/20 relative">
-                            <div class="absolute inset-6 lg:inset-10 bg-[var(--bg-card)] rounded-xl border border-white/10 shadow-2xl p-6" data-parallax="-20">
+                            <div class="absolute inset-6 lg:inset-10 bg-[var(--bg-card)] rounded-xl border border-[var(--border-color)] shadow-2xl p-6" data-parallax="-20">
                                 <div class="flex items-center justify-between mb-6" aria-hidden="true">
                                     <div class="h-4 w-32 bg-white/10 rounded"></div>
                                     <div class="flex gap-2">
-                                        <div class="h-8 w-20 bg-white/5 rounded-lg border border-white/10"></div>
+                                        <div class="h-8 w-20 bg-white/5 rounded-lg border border-[var(--border-color)]"></div>
                                         <div class="h-8 w-8 bg-[var(--accent)]/20 rounded-lg"></div>
                                     </div>
                                 </div>
                                 <!-- Stats row -->
                                 <div class="grid grid-cols-3 gap-3 mb-6" aria-hidden="true">
-                                    <div class="bg-white/5 rounded-lg p-3 border border-white/5">
+                                    <div class="bg-white/5 rounded-lg p-3 border border-[var(--border-subtle)]">
                                         <div class="h-3 w-12 bg-white/10 rounded mb-2"></div>
                                         <div class="h-6 w-16 bg-blue-400/20 rounded"></div>
                                     </div>
-                                    <div class="bg-white/5 rounded-lg p-3 border border-white/5">
+                                    <div class="bg-white/5 rounded-lg p-3 border border-[var(--border-subtle)]">
                                         <div class="h-3 w-12 bg-white/10 rounded mb-2"></div>
                                         <div class="h-6 w-16 bg-green-400/20 rounded"></div>
                                     </div>
-                                    <div class="bg-white/5 rounded-lg p-3 border border-white/5">
+                                    <div class="bg-white/5 rounded-lg p-3 border border-[var(--border-subtle)]">
                                         <div class="h-3 w-12 bg-white/10 rounded mb-2"></div>
                                         <div class="h-6 w-16 bg-[var(--accent)]/20 rounded"></div>
                                     </div>
                                 </div>
                                 <!-- Chart placeholder -->
-                                <div class="bg-white/5 rounded-lg border border-white/5 p-4 h-32 flex items-end gap-1.5" aria-hidden="true">
+                                <div class="bg-white/5 rounded-lg border border-[var(--border-subtle)] p-4 h-32 flex items-end gap-1.5" aria-hidden="true">
                                     <div class="flex-1 bg-[var(--accent)]/20 rounded-t" style="height:40%"></div>
                                     <div class="flex-1 bg-[var(--accent)]/30 rounded-t" style="height:60%"></div>
                                     <div class="flex-1 bg-[var(--accent)]/20 rounded-t" style="height:35%"></div>
@@ -193,7 +193,7 @@
                     </div>
 
                     <!-- Floating: Eficiência -->
-                    <div class="absolute -top-4 left-2 lg:-top-4 lg:-left-8 bg-[var(--bg-card)] rounded-xl border border-white/10 p-4 shadow-xl z-10" data-parallax="-35" data-animate="fade-up">
+                    <div class="absolute -top-4 left-2 lg:-top-4 lg:-left-8 bg-[var(--bg-card)] rounded-xl border border-[var(--border-color)] p-4 shadow-xl z-10" data-parallax="-35" data-animate="fade-up">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
                                 <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
@@ -206,7 +206,7 @@
                     </div>
 
                     <!-- Floating: Processos -->
-                    <div class="absolute -bottom-4 right-6 lg:-bottom-6 lg:right-10 bg-[var(--bg-card)] rounded-xl border border-white/10 p-3 shadow-xl z-10" data-parallax="-20" data-animate="fade-up">
+                    <div class="absolute -bottom-4 right-6 lg:-bottom-6 lg:right-10 bg-[var(--bg-card)] rounded-xl border border-[var(--border-color)] p-3 shadow-xl z-10" data-parallax="-20" data-animate="fade-up">
                         <div class="flex items-center gap-2">
                             <span class="text-lg" aria-hidden="true">⚡</span>
                             <span class="text-xs text-[var(--white)]">Processos automatizados</span>
@@ -228,15 +228,15 @@
                     <div class="relative overflow-hidden rounded-2xl" data-img-reveal>
                         <!-- Mapa mockup -->
                         <div class="aspect-[4/3] bg-gradient-to-br from-teal-500/15 via-[var(--bg-card)] to-cyan-900/20 relative">
-                            <div class="absolute inset-6 lg:inset-10 rounded-xl overflow-hidden border border-white/10 shadow-2xl" data-parallax="-20">
+                            <div class="absolute inset-6 lg:inset-10 rounded-xl overflow-hidden border border-[var(--border-color)] shadow-2xl" data-parallax="-20">
                                 <div class="w-full h-full bg-[var(--bg-card)] relative">
                                     <!-- Grid de mapa -->
                                     <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(var(--gray) 1px, transparent 1px), linear-gradient(90deg, var(--gray) 1px, transparent 1px); background-size: 40px 40px;" aria-hidden="true"></div>
                                     <!-- Linhas de rua -->
-                                    <div class="absolute top-1/3 left-0 right-0 h-px bg-white/10" aria-hidden="true"></div>
-                                    <div class="absolute top-2/3 left-0 right-0 h-px bg-white/10" aria-hidden="true"></div>
-                                    <div class="absolute left-1/3 top-0 bottom-0 w-px bg-white/10" aria-hidden="true"></div>
-                                    <div class="absolute left-2/3 top-0 bottom-0 w-px bg-white/10" aria-hidden="true"></div>
+                                    <div class="absolute top-1/3 left-0 right-0 h-px bg-[var(--border-color)]" aria-hidden="true"></div>
+                                    <div class="absolute top-2/3 left-0 right-0 h-px bg-[var(--border-color)]" aria-hidden="true"></div>
+                                    <div class="absolute left-1/3 top-0 bottom-0 w-px bg-[var(--border-color)]" aria-hidden="true"></div>
+                                    <div class="absolute left-2/3 top-0 bottom-0 w-px bg-[var(--border-color)]" aria-hidden="true"></div>
                                     <!-- Pin central -->
                                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-full" aria-hidden="true">
                                         <div class="w-8 h-8 bg-red-500 rounded-full border-4 border-white shadow-lg relative">
@@ -244,7 +244,7 @@
                                         </div>
                                     </div>
                                     <!-- Business card overlay -->
-                                    <div class="absolute bottom-4 left-4 right-4 bg-[var(--black)]/80 backdrop-blur-sm rounded-lg p-4 border border-white/10" aria-hidden="true">
+                                    <div class="absolute bottom-4 left-4 right-4 bg-[var(--black)]/80 backdrop-blur-sm rounded-lg p-4 border border-[var(--border-color)]" aria-hidden="true">
                                         <div class="flex items-center gap-3">
                                             <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
                                                 <span class="text-blue-400 font-bold text-sm">G</span>
@@ -264,7 +264,7 @@
                     </div>
 
                     <!-- Floating: Visibilidade -->
-                    <div class="absolute -top-4 right-2 lg:-top-4 lg:-right-8 bg-[var(--bg-card)] rounded-xl border border-white/10 p-4 shadow-xl z-10" data-parallax="-30" data-animate="fade-up">
+                    <div class="absolute -top-4 right-2 lg:-top-4 lg:-right-8 bg-[var(--bg-card)] rounded-xl border border-[var(--border-color)] p-4 shadow-xl z-10" data-parallax="-30" data-animate="fade-up">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
                                 <span class="text-amber-400 text-sm" aria-hidden="true">📍</span>
@@ -277,7 +277,7 @@
                     </div>
 
                     <!-- Floating: Rating -->
-                    <div class="absolute -bottom-4 left-8 bg-[var(--bg-card)] rounded-xl border border-white/10 p-3 shadow-xl z-10" data-parallax="-15" data-animate="fade-up">
+                    <div class="absolute -bottom-4 left-8 bg-[var(--bg-card)] rounded-xl border border-[var(--border-color)] p-3 shadow-xl z-10" data-parallax="-15" data-animate="fade-up">
                         <div class="flex items-center gap-2">
                             <span class="text-yellow-400 text-xs" aria-hidden="true">★★★★★</span>
                             <span class="text-xs text-[var(--white)]">5.0 no Google</span>
@@ -288,8 +288,8 @@
                 <!-- Texto — col 5 -->
                 <div class="lg:col-span-5" data-animate="fade-up">
                     <span class="text-sm font-mono text-[var(--accent-light)] mb-4 block">03</span>
-                    <h3 class="text-3xl lg:text-4xl font-display mb-6">Google Maps & SEO Local</h3>
-                    <p class="text-[var(--gray)] text-lg leading-relaxed mb-8">
+                    <h3 class="text-4xl lg:text-5xl font-display mb-6">Google Maps & SEO Local</h3>
+                    <p class="text-[var(--gray)] text-lg lg:text-xl leading-relaxed mb-8">
                         Coloque o seu negócio visível nas pesquisas locais. Otimização do perfil Google Business para máxima visibilidade na sua região.
                     </p>
                     <ul class="space-y-4 mb-10">

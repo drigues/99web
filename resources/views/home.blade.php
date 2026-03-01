@@ -41,14 +41,14 @@
                 </div>
 
                 {{-- H1 --}}
-                <h1 class="text-4xl lg:text-5xl font-bold text-white leading-tight">
+                <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-[var(--white)] leading-tight">
                     Seus clientes estão<br>
                     à sua procura<br>
                     <span class="text-brand-accent">na internet!</span>
                 </h1>
 
                 {{-- Subtítulo --}}
-                <p class="text-lg text-zinc-400 mt-5 leading-relaxed max-w-lg">
+                <p class="text-xl lg:text-2xl text-[var(--gray)] mt-5 leading-relaxed max-w-lg">
                     Criamos a sua presença online — seja encontrado
                     pelos seus públicos com um site que converte.
                 </p>
@@ -72,7 +72,7 @@
                     {{-- CTA secundário --}}
                     <a
                         href="#projetos"
-                        class="inline-flex items-center px-6 py-3 rounded-full font-semibold text-white
+                        class="inline-flex items-center px-6 py-3 rounded-full font-semibold text-[var(--white)]
                                border border-violet-500 hover:bg-violet-500/20 transition-colors duration-200"
                     >
                         Ver casos de sucesso
@@ -80,36 +80,34 @@
                 </div>
 
                 {{-- Stats / Badges --}}
-                <div class="flex flex-wrap gap-8 mt-10 pt-8 border-t border-white/5">
+                <div class="flex flex-wrap gap-8 mt-10 pt-8 border-t border-[var(--border-subtle)]">
 
                     {{-- 100% Entregas --}}
                     <div class="flex items-center gap-3">
                         <div class="w-11 h-11 rounded-xl bg-brand-primary/15 border border-brand-primary/20 flex items-center justify-center flex-shrink-0">
-                            {{-- Sparkles / IA --}}
                             <svg class="w-5 h-5 text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"/>
                             </svg>
                         </div>
                         <div>
-                            <div class="text-2xl font-bold text-white leading-none">100%</div>
-                            <div class="text-xs text-zinc-400 mt-0.5">Entregas no prazo</div>
+                            <div class="text-2xl font-bold text-[var(--white)] leading-none">100%</div>
+                            <div class="text-xs text-[var(--gray)] mt-0.5">Entregas no prazo</div>
                         </div>
                     </div>
 
                     {{-- Divisor --}}
-                    <div class="hidden sm:block w-px bg-white/10 self-stretch"></div>
+                    <div class="hidden sm:block w-px bg-[var(--border-color)] self-stretch"></div>
 
                     {{-- Suporte --}}
                     <div class="flex items-center gap-3">
                         <div class="w-11 h-11 rounded-xl bg-brand-primary/15 border border-brand-primary/20 flex items-center justify-center flex-shrink-0">
-                            {{-- Headset / Suporte --}}
                             <svg class="w-5 h-5 text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/>
                             </svg>
                         </div>
                         <div>
-                            <div class="text-lg font-bold text-white leading-none">Suporte</div>
-                            <div class="text-xs text-zinc-400 mt-0.5">Resposta em 24/48h</div>
+                            <div class="text-lg font-bold text-[var(--white)] leading-none">Suporte</div>
+                            <div class="text-xs text-[var(--gray)] mt-0.5">Resposta em 24/48h</div>
                         </div>
                     </div>
 
@@ -131,7 +129,7 @@
                 <div class="relative w-full max-w-sm">
 
                     {{-- ── Card principal ── --}}
-                    <div class="animate-float relative rounded-2xl border border-violet-500/20 bg-[#14102A] p-5 shadow-2xl shadow-violet-950/50">
+                    <div class="animate-float relative rounded-2xl border border-violet-500/20 bg-[var(--bg-card)] p-5 shadow-2xl shadow-violet-950/50">
 
                         {{-- Dots estilo browser --}}
                         <div class="flex gap-1.5 mb-5" aria-hidden="true">
@@ -164,22 +162,22 @@
                         {{-- Mini stats --}}
                         <div class="grid grid-cols-3 gap-2">
                             <div class="rounded-xl bg-white/5 p-3">
-                                <div class="text-sm font-bold text-white">+127%</div>
-                                <div class="text-[10px] text-zinc-400 mt-0.5">Tráfego</div>
+                                <div class="text-sm font-bold text-[var(--white)]">+127%</div>
+                                <div class="text-[10px] text-[var(--gray)] mt-0.5">Tráfego</div>
                             </div>
                             <div class="rounded-xl bg-violet-500/15 border border-violet-500/20 p-3">
                                 <div class="text-sm font-bold text-violet-300">98/100</div>
-                                <div class="text-[10px] text-zinc-400 mt-0.5">SEO Score</div>
+                                <div class="text-[10px] text-[var(--gray)] mt-0.5">SEO Score</div>
                             </div>
                             <div class="rounded-xl bg-white/5 p-3">
-                                <div class="text-sm font-bold text-white">4.9 ★</div>
-                                <div class="text-[10px] text-zinc-400 mt-0.5">Avaliação</div>
+                                <div class="text-sm font-bold text-[var(--white)]">4.9 ★</div>
+                                <div class="text-[10px] text-[var(--gray)] mt-0.5">Avaliação</div>
                             </div>
                         </div>
 
                         {{-- Barra de progresso --}}
                         <div class="mt-4">
-                            <div class="flex justify-between text-[10px] text-zinc-400 mb-1.5">
+                            <div class="flex justify-between text-[10px] text-[var(--gray)] mb-1.5">
                                 <span>Crescimento mensal</span>
                                 <span class="text-violet-300 font-semibold">78%</span>
                             </div>
@@ -193,7 +191,7 @@
                     {{-- ── Card flutuante: Projeto entregue (topo direito) ── --}}
                     <div
                         class="animate-float-delayed absolute -top-4 -right-4
-                               rounded-xl bg-[#1C1535] border border-violet-500/20 px-3 py-2.5 shadow-xl"
+                               rounded-xl bg-[var(--bg-card)] border border-violet-500/20 px-3 py-2.5 shadow-xl"
                         aria-hidden="true"
                     >
                         <div class="flex items-center gap-2.5">
@@ -203,8 +201,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <div class="text-xs font-semibold text-white whitespace-nowrap">Projeto entregue!</div>
-                                <div class="text-[10px] text-zinc-400">há 2 minutos</div>
+                                <div class="text-xs font-semibold text-[var(--white)] whitespace-nowrap">Projeto entregue!</div>
+                                <div class="text-[10px] text-[var(--gray)]">há 2 minutos</div>
                             </div>
                         </div>
                     </div>
@@ -212,13 +210,13 @@
                     {{-- ── Card flutuante: Visitantes (baixo esquerdo) ── --}}
                     <div
                         class="animate-float-slow absolute -bottom-4 -left-4
-                               rounded-xl bg-[#1C1535] border border-violet-500/20 px-3.5 py-2.5 shadow-xl"
+                               rounded-xl bg-[var(--bg-card)] border border-violet-500/20 px-3.5 py-2.5 shadow-xl"
                         aria-hidden="true"
                     >
                         <div class="flex items-center gap-3">
                             <div class="text-xl font-bold text-violet-400">24k</div>
                             <div>
-                                <div class="text-[11px] font-medium text-white">Visitantes/mês</div>
+                                <div class="text-[11px] font-medium text-[var(--white)]">Visitantes/mês</div>
                                 <div class="text-[10px] text-green-400 font-semibold">↑ +48% este mês</div>
                             </div>
                         </div>
@@ -227,18 +225,18 @@
                     {{-- ── Card flutuante: Clientes (centro direito) ── --}}
                     <div
                         class="animate-float-delayed absolute -right-5 top-1/2 -translate-y-1/2
-                               rounded-xl bg-[#1C1535] border border-violet-500/20 px-3 py-2 shadow-xl hidden lg:block"
+                               rounded-xl bg-[var(--bg-card)] border border-violet-500/20 px-3 py-2 shadow-xl hidden lg:block"
                         style="animation-delay: 1.2s;"
                         aria-hidden="true"
                     >
-                        <div class="text-[10px] text-zinc-400 mb-1">Clientes ativos</div>
+                        <div class="text-[10px] text-[var(--gray)] mb-1">Clientes ativos</div>
                         <div class="flex -space-x-2">
                             @foreach (['#7C3AED','#A855F7','#9333EA','#6D28D9'] as $cor)
-                                <div class="w-6 h-6 rounded-full border-2 border-[#1C1535]"
+                                <div class="w-6 h-6 rounded-full border-2 border-[var(--bg-card)]"
                                      style="background-color: {{ $cor }};"></div>
                             @endforeach
-                            <div class="w-6 h-6 rounded-full border-2 border-[#1C1535] bg-white/10 flex items-center justify-center">
-                                <span class="text-[8px] font-bold text-zinc-300">+9</span>
+                            <div class="w-6 h-6 rounded-full border-2 border-[var(--bg-card)] bg-white/10 flex items-center justify-center">
+                                <span class="text-[8px] font-bold text-[var(--gray)]">+9</span>
                             </div>
                         </div>
                     </div>
@@ -252,7 +250,7 @@
 </section>
 
 {{-- ══════════════════════════════════════════════════════
-     SERVIÇOS — Accordion editorial v2
+     SERVIÇOS — Visual-first editorial v2
 ══════════════════════════════════════════════════════ --}}
 @include('partials.services-v2')
 
@@ -291,8 +289,8 @@
                 <span class="text-xs font-semibold text-violet-400 tracking-widest uppercase">Preços</span>
             </div>
 
-            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">Pacotes</h2>
-            <p class="text-zinc-400 max-w-md mx-auto">Planos simples e transparentes</p>
+            <h2 class="text-4xl lg:text-5xl font-bold text-[var(--white)] mb-4">Pacotes</h2>
+            <p class="text-lg text-[var(--gray)] max-w-md mx-auto">Planos simples e transparentes</p>
         </div>
 
         {{-- Grid de cards --}}
@@ -303,21 +301,21 @@
                 :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
                 class="transition-all duration-700 delay-100 ease-out order-2 lg:order-1"
             >
-                <article class="rounded-2xl border border-violet-500/20 bg-[#1A1225] p-8 h-full flex flex-col
+                <article class="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] p-8 h-full flex flex-col
                                 hover:border-violet-500/40 hover:shadow-lg hover:shadow-violet-950/40
                                 transition-all duration-300">
 
                     <div class="mb-6">
-                        <span class="inline-block px-2.5 py-1 rounded-md bg-white/5 border border-white/10
-                                     text-[10px] font-bold text-zinc-400 tracking-widest uppercase mb-4">
+                        <span class="inline-block px-2.5 py-1 rounded-md bg-white/5 border border-[var(--border-color)]
+                                     text-[10px] font-bold text-[var(--gray)] tracking-widest uppercase mb-4">
                             Starter
                         </span>
-                        <h3 class="text-xl font-bold text-white mb-5">Web Essencial</h3>
+                        <h3 class="text-xl font-bold text-[var(--white)] mb-5">Web Essencial</h3>
 
                         <div class="flex items-end gap-1.5 mb-1">
-                            <span class="text-4xl font-bold text-white">399€</span>
+                            <span class="text-4xl font-bold text-[var(--white)]">399€</span>
                         </div>
-                        <p class="text-xs text-zinc-500">pagamento único</p>
+                        <p class="text-xs text-[var(--gray)]">pagamento único</p>
                     </div>
 
                     <a
@@ -344,7 +342,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                                     </svg>
                                 </div>
-                                <span class="text-sm text-zinc-300">{{ $feature }}</span>
+                                <span class="text-sm text-[var(--gray)]">{{ $feature }}</span>
                             </li>
                         @endforeach
                     </ul>
@@ -425,21 +423,21 @@
                 :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
                 class="transition-all duration-700 delay-300 ease-out order-3 lg:order-3"
             >
-                <article class="rounded-2xl border border-violet-500/20 bg-[#1A1225] p-8 h-full flex flex-col
+                <article class="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] p-8 h-full flex flex-col
                                 hover:border-violet-500/40 hover:shadow-lg hover:shadow-violet-950/40
                                 transition-all duration-300">
 
                     <div class="mb-6">
-                        <span class="inline-block px-2.5 py-1 rounded-md bg-white/5 border border-white/10
-                                     text-[10px] font-bold text-zinc-400 tracking-widest uppercase mb-4">
+                        <span class="inline-block px-2.5 py-1 rounded-md bg-white/5 border border-[var(--border-color)]
+                                     text-[10px] font-bold text-[var(--gray)] tracking-widest uppercase mb-4">
                             Custom
                         </span>
-                        <h3 class="text-xl font-bold text-white mb-5">Projetos Personalizados</h3>
+                        <h3 class="text-xl font-bold text-[var(--white)] mb-5">Projetos Personalizados</h3>
 
                         <div class="flex items-end gap-1.5 mb-1">
-                            <span class="text-3xl font-bold text-white">Sob consulta</span>
+                            <span class="text-3xl font-bold text-[var(--white)]">Sob consulta</span>
                         </div>
-                        <p class="text-xs text-zinc-500">proposta à medida do projeto</p>
+                        <p class="text-xs text-[var(--gray)]">proposta à medida do projeto</p>
                     </div>
 
                     <a
@@ -465,7 +463,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                                     </svg>
                                 </div>
-                                <span class="text-sm text-zinc-300">{{ $feature }}</span>
+                                <span class="text-sm text-[var(--gray)]">{{ $feature }}</span>
                             </li>
                         @endforeach
                     </ul>
@@ -479,7 +477,7 @@
 </section>
 
 {{-- ══════════════════════════════════════════════════════
-     TESTEMUNHOS — Swiper slider v2
+     TESTEMUNHOS — Marquee loop v2
 ══════════════════════════════════════════════════════ --}}
 @include('partials.testimonials-v2')
 

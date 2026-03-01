@@ -3,10 +3,6 @@ import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Splitting from 'splitting';
-import Swiper from 'swiper';
-import { Autoplay, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
 import Alpine from 'alpinejs';
 import intersect from '@alpinejs/intersect';
 import collapse from '@alpinejs/collapse';
@@ -152,25 +148,3 @@ function initAnimations() {
 }
 
 initAnimations();
-
-// ─── Swiper: Testimonials ──────────────────────────────
-const testimonialsEl = document.querySelector('.testimonials-swiper');
-if (testimonialsEl) {
-    new Swiper(testimonialsEl, {
-        modules: [Autoplay, Pagination],
-        slidesPerView: 1.15,
-        centeredSlides: true,
-        spaceBetween: 32,
-        loop: true,
-        speed: 800,
-        autoplay: { delay: 5000, disableOnInteraction: false },
-        pagination: {
-            el: '.testimonials-pagination',
-            clickable: true,
-        },
-        breakpoints: {
-            768: { slidesPerView: 1.3 },
-            1024: { slidesPerView: 1.5 },
-        },
-    });
-}

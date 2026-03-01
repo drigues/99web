@@ -1,4 +1,4 @@
-<footer role="contentinfo" class="border-t border-white/5">
+<footer role="contentinfo" class="border-t border-[var(--border-subtle)]">
 
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
 
@@ -10,7 +10,7 @@
                     <span class="text-[var(--accent)]">99</span>web
                 </a>
 
-                <p class="text-sm text-[var(--gray)] leading-relaxed mb-6 max-w-xs">
+                <p class="text-base text-[var(--gray)] leading-relaxed mb-6 max-w-xs">
                     Agência digital especializada em websites, sistemas corporativos e visibilidade no Google.
                 </p>
 
@@ -30,7 +30,7 @@
                         'Google Maps',
                     ] as $label)
                         <li>
-                            <a href="#servicos" class="text-sm text-[var(--gray)] hover:text-[var(--white)] transition-colors duration-300">{{ $label }}</a>
+                            <a href="#servicos" class="text-base text-[var(--gray)] hover:text-[var(--white)] transition-colors duration-300">{{ $label }}</a>
                         </li>
                     @endforeach
                 </ul>
@@ -42,17 +42,17 @@
                 <ul class="space-y-4">
                     <li>
                         <p class="text-[10px] text-[var(--gray)] uppercase tracking-wider mb-0.5">Telefone</p>
-                        <a href="tel:+351939341853" class="text-sm text-[var(--white)] hover:text-[var(--accent)] transition-colors duration-300">
+                        <a href="tel:+351939341853" class="text-base text-[var(--white)] hover:text-[var(--accent)] transition-colors duration-300">
                             +351 939 341 853
                         </a>
                     </li>
                     <li>
                         <p class="text-[10px] text-[var(--gray)] uppercase tracking-wider mb-0.5">Horário</p>
-                        <p class="text-sm text-[var(--white)]">Seg – Sex: 09:00 – 18:00</p>
+                        <p class="text-base text-[var(--white)]">Seg – Sex: 09:00 – 18:00</p>
                     </li>
                     <li>
                         <p class="text-[10px] text-[var(--gray)] uppercase tracking-wider mb-0.5">Localização</p>
-                        <p class="text-sm text-[var(--white)]">Óbidos, Portugal</p>
+                        <p class="text-base text-[var(--white)]">Óbidos, Portugal</p>
                     </li>
                 </ul>
 
@@ -75,7 +75,7 @@
     </div>
 
     {{-- Copyright --}}
-    <div class="border-t border-white/5">
+    <div class="border-t border-[var(--border-subtle)]">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
             <p class="text-xs text-[var(--gray)]">
                 © {{ date('Y') }} 99web. Todos os direitos reservados.
