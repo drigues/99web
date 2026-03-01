@@ -14,11 +14,11 @@
     <div class="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
 
         <h2 class="text-3xl lg:text-6xl font-display font-black leading-tight mb-6" data-animate="fade-up">
-            Pronto para transformar o seu negócio?
+            {{ $settings->get('cta_title', 'Pronto para transformar o seu negócio?') }}
         </h2>
 
         <p class="text-lg lg:text-xl font-medium text-white/70 max-w-2xl mx-auto mb-12" data-animate="fade-up">
-            Fale com a 99web e construa uma presença digital que converte visitantes em clientes.
+            {{ $settings->get('cta_subtitle', 'Fale com a 99web e construa uma presença digital que converte visitantes em clientes.') }}
         </p>
 
         <div data-animate="fade-up">
@@ -31,13 +31,13 @@
                        hover:shadow-xl hover:shadow-white/20
                        transition-all duration-300"
             >
-                Vamos conversar
+                {{ $settings->get('cta_button_text', 'Vamos conversar') }}
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </button>
         </div>
 
         <p class="mt-8 text-sm text-white/40" data-animate="fade-in">
-            Sem compromisso. Resposta em 24h.
+            {{ $settings->get('cta_disclaimer', 'Sem compromisso. Resposta em 24h.') }}
         </p>
 
     </div>

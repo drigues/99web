@@ -42,15 +42,14 @@
 
                 {{-- H1 --}}
                 <h1 class="text-4xl lg:text-7xl font-display font-black text-[var(--white)] leading-[1.05] tracking-tight">
-                    Seus clientes estão<br>
-                    à sua procura<br>
-                    <span class="text-brand-accent">na internet!</span>
+                    {{ $settings->get('hero_title_line1', 'Seus clientes estão') }}<br>
+                    {{ $settings->get('hero_title_line2', 'à sua procura') }}<br>
+                    <span class="text-brand-accent">{{ $settings->get('hero_title_line3', 'na internet!') }}</span>
                 </h1>
 
                 {{-- Subtítulo --}}
                 <p class="text-lg lg:text-xl font-medium text-[var(--gray)] mt-5 leading-relaxed max-w-lg">
-                    Criamos a sua presença online — seja encontrado
-                    pelos seus públicos com um site que converte.
+                    {{ $settings->get('hero_subtitle', 'Criamos a sua presença online — seja encontrado pelos seus públicos com um site que converte.') }}
                 </p>
 
                 {{-- Botões --}}
@@ -63,7 +62,7 @@
                                transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-brand-primary/40"
                         style="background: linear-gradient(135deg, var(--color-brand-cta-from) 0%, var(--color-brand-cta-to) 100%);"
                     >
-                        Marcar revisão do projeto
+                        {{ $settings->get('hero_cta_primary', 'Marcar revisão do projeto') }}
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
@@ -75,7 +74,7 @@
                         class="inline-flex items-center px-6 py-3 rounded-full font-semibold text-[var(--white)]
                                border border-violet-500 hover:bg-violet-500/20 transition-colors duration-200"
                     >
-                        Ver casos de sucesso
+                        {{ $settings->get('hero_cta_secondary', 'Ver casos de sucesso') }}
                     </a>
                 </div>
 
@@ -90,8 +89,8 @@
                             </svg>
                         </div>
                         <div>
-                            <div class="text-3xl lg:text-5xl font-display font-black text-[var(--white)] leading-none">100%</div>
-                            <div class="text-sm font-medium text-[var(--gray)] mt-0.5">Entregas no prazo</div>
+                            <div class="text-3xl lg:text-5xl font-display font-black text-[var(--white)] leading-none">{{ $settings->get('hero_stat1_value', '100%') }}</div>
+                            <div class="text-sm font-medium text-[var(--gray)] mt-0.5">{{ $settings->get('hero_stat1_label', 'Entregas no prazo') }}</div>
                         </div>
                     </div>
 
@@ -106,8 +105,8 @@
                             </svg>
                         </div>
                         <div>
-                            <div class="text-2xl lg:text-3xl font-display font-bold text-[var(--white)] leading-none">Suporte</div>
-                            <div class="text-sm font-medium text-[var(--gray)] mt-0.5">Resposta em 24/48h</div>
+                            <div class="text-2xl lg:text-3xl font-display font-bold text-[var(--white)] leading-none">{{ $settings->get('hero_stat2_value', 'Suporte') }}</div>
+                            <div class="text-sm font-medium text-[var(--gray)] mt-0.5">{{ $settings->get('hero_stat2_label', 'Resposta em 24/48h') }}</div>
                         </div>
                     </div>
 
@@ -294,182 +293,131 @@
         </div>
 
         {{-- Grid de cards --}}
+        @php
+            $packages = [
+                [
+                    'slug'     => 'essencial',
+                    'type'     => 'essencial',
+                    'order'    => 'order-2 lg:order-1',
+                    'delay'    => 'delay-100',
+                ],
+                [
+                    'slug'     => 'corporativo',
+                    'type'     => 'corporativo',
+                    'order'    => 'order-1 lg:order-2',
+                    'delay'    => 'delay-200',
+                ],
+                [
+                    'slug'     => 'personalizado',
+                    'type'     => 'personalizado',
+                    'order'    => 'order-3 lg:order-3',
+                    'delay'    => 'delay-300',
+                ],
+            ];
+        @endphp
+
         <div class="grid lg:grid-cols-3 gap-8 items-start">
+            @foreach ($packages as $pkg)
+                @if (filter_var($settings->get("package_{$pkg['type']}_active", '1'), FILTER_VALIDATE_BOOLEAN))
+                    @php
+                        $isPopular   = filter_var($settings->get("package_{$pkg['type']}_popular", '0'), FILTER_VALIDATE_BOOLEAN);
+                        $name        = $settings->get("package_{$pkg['type']}_name", ucfirst($pkg['type']));
+                        $badge       = $settings->get("package_{$pkg['type']}_badge", '');
+                        $priceOrig   = $settings->get("package_{$pkg['type']}_price_original", '');
+                        $priceFinal  = $settings->get("package_{$pkg['type']}_price_final", '');
+                        $ctaText     = $settings->get("package_{$pkg['type']}_cta_text", 'Saber mais');
+                        $features    = array_filter(explode("\n", $settings->get("package_{$pkg['type']}_features", '')));
+                        $discount    = ($priceOrig && $priceFinal && is_numeric($priceOrig) && is_numeric($priceFinal) && (int)$priceOrig > (int)$priceFinal)
+                                       ? round((((int)$priceOrig - (int)$priceFinal) / (int)$priceOrig) * 100) : 0;
+                    @endphp
 
-            {{-- ── CARD 1 — Web Essencial ── --}}
-            <div
-                :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
-                class="transition-all duration-700 delay-100 ease-out order-2 lg:order-1"
-            >
-                <article class="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] p-8 h-full flex flex-col
-                                hover:border-violet-500/40 hover:shadow-lg hover:shadow-violet-950/40
-                                transition-all duration-300">
-
-                    <div class="mb-6">
-                        <span class="inline-block px-2.5 py-1 rounded-md bg-white/5 border border-[var(--border-color)]
-                                     text-[10px] font-bold text-[var(--gray)] tracking-widest uppercase mb-4">
-                            Starter
-                        </span>
-                        <h3 class="text-xl lg:text-2xl font-bold text-[var(--white)] mb-5">Web Essencial</h3>
-
-                        <div class="flex items-end gap-1.5 mb-1">
-                            <span class="text-4xl lg:text-6xl font-display font-black text-[var(--white)]">{{ $settings->get('package_essencial_price', '399€') }}</span>
-                        </div>
-                        <p class="text-xs text-[var(--gray)]">pagamento único</p>
-                    </div>
-
-                    <a
-                        href="{{ route('pacotes.show', 'essencial') }}"
-                        class="block w-full py-3 rounded-full text-center text-sm font-semibold text-violet-400
-                               border border-violet-500/50 hover:bg-violet-500/10 hover:border-violet-400
-                               transition-all duration-200 mb-8"
-                    >
-                        Garantir o meu website
-                    </a>
-
-                    <ul class="space-y-3.5 flex-1">
-                        @foreach ([
-                            'Design profissional e responsivo',
-                            'Até 5 páginas',
-                            'Formulário de contacto',
-                            'SEO básico',
-                            'Entrega em 7–14 dias',
-                            'Alojamento e domínio incluído (1 ano)',
-                        ] as $feature)
-                            <li class="flex items-start gap-3">
-                                <div class="mt-0.5 w-4 h-4 rounded-full bg-violet-500/15 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-2.5 h-2.5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-base text-[var(--text-secondary)]">{{ $feature }}</span>
-                            </li>
-                        @endforeach
-                    </ul>
-                </article>
-            </div>
-
-            {{-- ── CARD 2 — Web Corporativo (DESTACADO) ── --}}
-            <div
-                :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
-                class="transition-all duration-700 delay-200 ease-out order-1 lg:order-2"
-            >
-                <article
-                    class="relative rounded-2xl border border-violet-500 p-8 h-full flex flex-col
-                           shadow-xl shadow-violet-500/10 hover:shadow-2xl hover:shadow-violet-500/20
-                           transition-all duration-300"
-                    style="background: linear-gradient(160deg, #1E0F3A 0%, #1A1225 60%, #110A1F 100%);"
-                >
-                    {{-- Glow interno --}}
                     <div
-                        class="absolute -top-px inset-x-8 h-px"
-                        style="background: linear-gradient(to right, transparent, #7C3AED, transparent);"
-                        aria-hidden="true"
-                    ></div>
-
-                    <div class="mb-6">
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md
-                                     bg-violet-500/20 border border-violet-500/40
-                                     text-[10px] font-bold text-violet-300 tracking-widest uppercase mb-4">
-                            <span class="relative flex h-1.5 w-1.5">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-violet-400"></span>
-                            </span>
-                            Mais Popular
-                        </span>
-                        <h3 class="text-xl lg:text-2xl font-bold text-white mb-5">Web Corporativo</h3>
-
-                        <div class="flex items-end gap-1.5 mb-1">
-                            <span class="text-4xl lg:text-6xl font-display font-black text-white">{{ $settings->get('package_corporativo_price', '599€') }}</span>
-                        </div>
-                        <p class="text-xs text-zinc-500">pagamento único</p>
-                    </div>
-
-                    <a
-                        href="{{ route('pacotes.show', 'corporativo') }}"
-                        class="block w-full py-3 rounded-full text-center text-sm font-semibold text-white
-                               transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:shadow-brand-primary/40 mb-8"
-                        style="background: linear-gradient(135deg, var(--color-brand-cta-from) 0%, var(--color-brand-cta-to) 100%);"
+                        :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+                        class="transition-all duration-700 {{ $pkg['delay'] }} ease-out {{ $pkg['order'] }}"
                     >
-                        Escolher este plano
-                    </a>
+                        <article
+                            class="relative rounded-2xl p-8 h-full flex flex-col transition-all duration-300
+                                   {{ $isPopular
+                                      ? 'border border-violet-500 shadow-xl shadow-violet-500/10 hover:shadow-2xl hover:shadow-violet-500/20'
+                                      : 'border border-[var(--border-color)] bg-[var(--bg-card)] hover:border-violet-500/40 hover:shadow-lg hover:shadow-violet-950/40' }}"
+                            @if ($isPopular) style="background: linear-gradient(160deg, #1E0F3A 0%, #1A1225 60%, #110A1F 100%);" @endif
+                        >
+                            @if ($isPopular)
+                                {{-- Glow interno --}}
+                                <div
+                                    class="absolute -top-px inset-x-8 h-px"
+                                    style="background: linear-gradient(to right, transparent, #7C3AED, transparent);"
+                                    aria-hidden="true"
+                                ></div>
+                            @endif
 
-                    <ul class="space-y-3.5 flex-1">
-                        @foreach ([
-                            'Design profissional e responsivo',
-                            'Até 10 páginas',
-                            'Formulário de contacto',
-                            'SEO básico + avançado',
-                            'Integração com redes sociais',
-                            'Google Maps + Analytics',
-                            'Blog integrado',
-                            'Suporte prioritário 30 dias',
-                        ] as $feature)
-                            <li class="flex items-start gap-3">
-                                <div class="mt-0.5 w-4 h-4 rounded-full bg-violet-500/25 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-2.5 h-2.5 text-violet-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-                                    </svg>
+                            <div class="mb-6">
+                                @if ($badge)
+                                    @if ($isPopular)
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md
+                                                     bg-violet-500/20 border border-violet-500/40
+                                                     text-[10px] font-bold text-violet-300 tracking-widest uppercase mb-4">
+                                            <span class="relative flex h-1.5 w-1.5">
+                                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
+                                                <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-violet-400"></span>
+                                            </span>
+                                            {{ $badge }}
+                                        </span>
+                                    @else
+                                        <span class="inline-block px-2.5 py-1 rounded-md bg-white/5 border border-[var(--border-color)]
+                                                     text-[10px] font-bold text-[var(--gray)] tracking-widest uppercase mb-4">
+                                            {{ $badge }}
+                                        </span>
+                                    @endif
+                                @endif
+
+                                <h3 class="text-xl lg:text-2xl font-bold {{ $isPopular ? 'text-white' : 'text-[var(--white)]' }} mb-5">{{ $name }}</h3>
+
+                                <div class="flex items-end gap-2 mb-1">
+                                    @if ($priceOrig && is_numeric($priceOrig) && $discount > 0)
+                                        <span class="text-lg line-through text-[var(--gray)]">{{ $priceOrig }}€</span>
+                                    @endif
+                                    <span class="{{ is_numeric($priceFinal) ? 'text-4xl lg:text-6xl' : 'text-3xl lg:text-5xl' }} font-display font-black {{ $isPopular ? 'text-white' : 'text-[var(--white)]' }}">
+                                        {{ is_numeric($priceFinal) ? $priceFinal . '€' : $priceFinal }}
+                                    </span>
                                 </div>
-                                <span class="text-base text-[var(--text-secondary)]">{{ $feature }}</span>
-                            </li>
-                        @endforeach
-                    </ul>
-                </article>
-            </div>
+                                @if ($discount > 0)
+                                    <span class="inline-block mt-1 px-2 py-0.5 rounded-full bg-green-500/15 text-green-400 text-xs font-semibold">
+                                        -{{ $discount }}% desconto
+                                    </span>
+                                @endif
+                                <p class="text-xs {{ $isPopular ? 'text-zinc-500' : 'text-[var(--gray)]' }} mt-1">
+                                    {{ is_numeric($priceFinal) ? 'pagamento único' : 'proposta à medida do projeto' }}
+                                </p>
+                            </div>
 
-            {{-- ── CARD 3 — Projetos Personalizados ── --}}
-            <div
-                :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
-                class="transition-all duration-700 delay-300 ease-out order-3 lg:order-3"
-            >
-                <article class="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] p-8 h-full flex flex-col
-                                hover:border-violet-500/40 hover:shadow-lg hover:shadow-violet-950/40
-                                transition-all duration-300">
+                            <a
+                                href="{{ route('pacotes.show', $pkg['slug']) }}"
+                                class="block w-full py-3 rounded-full text-center text-sm font-semibold transition-all duration-200 mb-8
+                                       {{ $isPopular
+                                          ? 'text-white hover:scale-[1.02] hover:shadow-lg hover:shadow-brand-primary/40'
+                                          : 'text-violet-400 border border-violet-500/50 hover:bg-violet-500/10 hover:border-violet-400' }}"
+                                @if ($isPopular) style="background: linear-gradient(135deg, var(--color-brand-cta-from) 0%, var(--color-brand-cta-to) 100%);" @endif
+                            >
+                                {{ $ctaText }}
+                            </a>
 
-                    <div class="mb-6">
-                        <span class="inline-block px-2.5 py-1 rounded-md bg-white/5 border border-[var(--border-color)]
-                                     text-[10px] font-bold text-[var(--gray)] tracking-widest uppercase mb-4">
-                            Custom
-                        </span>
-                        <h3 class="text-xl lg:text-2xl font-bold text-[var(--white)] mb-5">Projetos Personalizados</h3>
-
-                        <div class="flex items-end gap-1.5 mb-1">
-                            <span class="text-3xl lg:text-5xl font-display font-black text-[var(--white)]">{{ $settings->get('package_personalizado_price', 'Sob consulta') }}</span>
-                        </div>
-                        <p class="text-xs text-[var(--gray)]">proposta à medida do projeto</p>
+                            <ul class="space-y-3.5 flex-1">
+                                @foreach ($features as $feature)
+                                    <li class="flex items-start gap-3">
+                                        <div class="mt-0.5 w-4 h-4 rounded-full {{ $isPopular ? 'bg-violet-500/25' : 'bg-violet-500/15' }} flex items-center justify-center flex-shrink-0">
+                                            <svg class="w-2.5 h-2.5 {{ $isPopular ? 'text-violet-300' : 'text-violet-400' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                        <span class="text-base text-[var(--text-secondary)]">{{ $feature }}</span>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </article>
                     </div>
-
-                    <a
-                        href="{{ route('pacotes.show', 'personalizado') }}"
-                        class="block w-full py-3 rounded-full text-center text-sm font-semibold text-violet-400
-                               border border-violet-500/50 hover:bg-violet-500/10 hover:border-violet-400
-                               transition-all duration-200 mb-8"
-                    >
-                        Falar sobre o projeto
-                    </a>
-
-                    <ul class="space-y-3.5 flex-1">
-                        @foreach ([
-                            'Sistemas web à medida',
-                            'E-commerce e lojas digitais',
-                            'Integrações com APIs',
-                            'Dashboards e painéis admin',
-                            'Manutenção e suporte contínuo',
-                        ] as $feature)
-                            <li class="flex items-start gap-3">
-                                <div class="mt-0.5 w-4 h-4 rounded-full bg-violet-500/15 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-2.5 h-2.5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <span class="text-base text-[var(--text-secondary)]">{{ $feature }}</span>
-                            </li>
-                        @endforeach
-                    </ul>
-                </article>
-            </div>
-
+                @endif
+            @endforeach
         </div>
         {{-- /Grid --}}
 
