@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
 class ContactsChartWidget extends ChartWidget
 {
     protected static ?string $heading = 'Contactos (últimos 30 dias)';
-    protected static ?int $sort = 3;
+    protected static ?int $sort = 5;
 
     protected function getData(): array
     {

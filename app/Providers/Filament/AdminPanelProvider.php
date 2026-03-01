@@ -35,6 +35,7 @@ class AdminPanelProvider extends PanelProvider
             ->navigationGroups([
                 'CRM',
                 'Conteúdo',
+                'Sistema',
             ])
             ->sidebarCollapsibleOnDesktop()
             ->globalSearchKeyBindings(['command+k', 'ctrl+k'])
