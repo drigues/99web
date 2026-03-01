@@ -18,7 +18,7 @@
     --border-subtle: rgba(255, 255, 255, 0.05);
 
     /* Fonts */
-    --font-display: 'Abril Fatface', serif;
+    --font-display: 'Noto Serif Display', serif;
     --font-body: 'Manrope', sans-serif;
 }
 
@@ -50,6 +50,8 @@ html {
 
 h1, h2, h3, .font-display {
     font-family: var(--font-display);
+    font-weight: 900;
+    letter-spacing: 0.02em;
 }
 
 /* ─── Lenis smooth scroll ────────────────────────────── */
