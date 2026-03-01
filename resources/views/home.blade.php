@@ -41,14 +41,14 @@
                 </div>
 
                 {{-- H1 --}}
-                <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-[var(--white)] leading-tight">
+                <h1 class="text-4xl lg:text-7xl font-display font-black text-[var(--white)] leading-[1.05] tracking-tight">
                     Seus clientes estão<br>
                     à sua procura<br>
                     <span class="text-brand-accent">na internet!</span>
                 </h1>
 
                 {{-- Subtítulo --}}
-                <p class="text-xl lg:text-2xl text-[var(--gray)] mt-5 leading-relaxed max-w-lg">
+                <p class="text-lg lg:text-xl font-medium text-[var(--gray)] mt-5 leading-relaxed max-w-lg">
                     Criamos a sua presença online — seja encontrado
                     pelos seus públicos com um site que converte.
                 </p>
@@ -90,8 +90,8 @@
                             </svg>
                         </div>
                         <div>
-                            <div class="text-2xl font-bold text-[var(--white)] leading-none">100%</div>
-                            <div class="text-xs text-[var(--gray)] mt-0.5">Entregas no prazo</div>
+                            <div class="text-3xl lg:text-5xl font-display font-black text-[var(--white)] leading-none">100%</div>
+                            <div class="text-sm font-medium text-[var(--gray)] mt-0.5">Entregas no prazo</div>
                         </div>
                     </div>
 
@@ -106,8 +106,8 @@
                             </svg>
                         </div>
                         <div>
-                            <div class="text-lg font-bold text-[var(--white)] leading-none">Suporte</div>
-                            <div class="text-xs text-[var(--gray)] mt-0.5">Resposta em 24/48h</div>
+                            <div class="text-2xl lg:text-3xl font-display font-bold text-[var(--white)] leading-none">Suporte</div>
+                            <div class="text-sm font-medium text-[var(--gray)] mt-0.5">Resposta em 24/48h</div>
                         </div>
                     </div>
 
@@ -289,8 +289,8 @@
                 <span class="text-xs font-semibold text-violet-400 tracking-widest uppercase">Preços</span>
             </div>
 
-            <h2 class="text-4xl lg:text-5xl font-bold text-[var(--white)] mb-4">Pacotes</h2>
-            <p class="text-lg text-[var(--gray)] max-w-md mx-auto">Planos simples e transparentes</p>
+            <h2 class="text-3xl lg:text-6xl font-display font-black text-[var(--white)] mb-4">Pacotes</h2>
+            <p class="text-base lg:text-lg text-[var(--gray)] max-w-md mx-auto">Planos simples e transparentes</p>
         </div>
 
         {{-- Grid de cards --}}
@@ -310,10 +310,10 @@
                                      text-[10px] font-bold text-[var(--gray)] tracking-widest uppercase mb-4">
                             Starter
                         </span>
-                        <h3 class="text-xl font-bold text-[var(--white)] mb-5">Web Essencial</h3>
+                        <h3 class="text-xl lg:text-2xl font-bold text-[var(--white)] mb-5">Web Essencial</h3>
 
                         <div class="flex items-end gap-1.5 mb-1">
-                            <span class="text-4xl font-bold text-[var(--white)]">399€</span>
+                            <span class="text-4xl lg:text-6xl font-display font-black text-[var(--white)]">399€</span>
                         </div>
                         <p class="text-xs text-[var(--gray)]">pagamento único</p>
                     </div>
@@ -342,7 +342,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                                     </svg>
                                 </div>
-                                <span class="text-sm text-[var(--gray)]">{{ $feature }}</span>
+                                <span class="text-base text-[var(--text-secondary)]">{{ $feature }}</span>
                             </li>
                         @endforeach
                     </ul>
@@ -377,10 +377,10 @@
                             </span>
                             Mais Popular
                         </span>
-                        <h3 class="text-xl font-bold text-white mb-5">Web Corporativo</h3>
+                        <h3 class="text-xl lg:text-2xl font-bold text-white mb-5">Web Corporativo</h3>
 
                         <div class="flex items-end gap-1.5 mb-1">
-                            <span class="text-4xl font-bold text-white">599€</span>
+                            <span class="text-4xl lg:text-6xl font-display font-black text-white">599€</span>
                         </div>
                         <p class="text-xs text-zinc-500">pagamento único</p>
                     </div>
@@ -411,7 +411,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                                     </svg>
                                 </div>
-                                <span class="text-sm text-zinc-200">{{ $feature }}</span>
+                                <span class="text-base text-[var(--text-secondary)]">{{ $feature }}</span>
                             </li>
                         @endforeach
                     </ul>
@@ -432,10 +432,10 @@
                                      text-[10px] font-bold text-[var(--gray)] tracking-widest uppercase mb-4">
                             Custom
                         </span>
-                        <h3 class="text-xl font-bold text-[var(--white)] mb-5">Projetos Personalizados</h3>
+                        <h3 class="text-xl lg:text-2xl font-bold text-[var(--white)] mb-5">Projetos Personalizados</h3>
 
                         <div class="flex items-end gap-1.5 mb-1">
-                            <span class="text-3xl font-bold text-[var(--white)]">Sob consulta</span>
+                            <span class="text-3xl lg:text-5xl font-display font-black text-[var(--white)]">Sob consulta</span>
                         </div>
                         <p class="text-xs text-[var(--gray)]">proposta à medida do projeto</p>
                     </div>
@@ -463,7 +463,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                                     </svg>
                                 </div>
-                                <span class="text-sm text-[var(--gray)]">{{ $feature }}</span>
+                                <span class="text-base text-[var(--text-secondary)]">{{ $feature }}</span>
                             </li>
                         @endforeach
                     </ul>

@@ -3,7 +3,7 @@
 
         <x-section-label text="Testemunhos" />
 
-        <h2 class="text-5xl lg:text-7xl font-display leading-tight max-w-3xl" data-animate="fade-up">
+        <h2 class="text-3xl lg:text-6xl font-display font-black leading-tight max-w-3xl" data-animate="fade-up">
             O que dizem os nossos clientes
         </h2>
 
@@ -30,11 +30,11 @@
             @foreach(array_merge($row1, $row1) as $t)
             <div class="flex-shrink-0 w-[380px] lg:w-[480px] mr-6 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-8">
                 <span class="block text-4xl font-display text-[var(--accent)]/20 leading-none mb-4" aria-hidden="true">&ldquo;</span>
-                <blockquote class="text-lg lg:text-xl font-display leading-relaxed text-[var(--white)] mb-6">
+                <blockquote class="text-base lg:text-lg font-medium leading-relaxed text-[var(--white)] mb-6">
                     {{ $t['texto'] }}
                 </blockquote>
                 <div>
-                    <p class="text-base font-semibold text-[var(--white)]">{{ $t['nome'] }}</p>
+                    <p class="text-base font-bold text-[var(--white)]">{{ $t['nome'] }}</p>
                     <p class="text-sm text-[var(--gray)] mt-1">{{ $t['cargo'] }}</p>
                 </div>
             </div>
@@ -48,11 +48,11 @@
             @foreach(array_merge($row2, $row2) as $t)
             <div class="flex-shrink-0 w-[380px] lg:w-[480px] mr-6 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-2xl p-8">
                 <span class="block text-4xl font-display text-[var(--accent)]/20 leading-none mb-4" aria-hidden="true">&ldquo;</span>
-                <blockquote class="text-lg lg:text-xl font-display leading-relaxed text-[var(--white)] mb-6">
+                <blockquote class="text-base lg:text-lg font-medium leading-relaxed text-[var(--white)] mb-6">
                     {{ $t['texto'] }}
                 </blockquote>
                 <div>
-                    <p class="text-base font-semibold text-[var(--white)]">{{ $t['nome'] }}</p>
+                    <p class="text-base font-bold text-[var(--white)]">{{ $t['nome'] }}</p>
                     <p class="text-sm text-[var(--gray)] mt-1">{{ $t['cargo'] }}</p>
                 </div>
             </div>

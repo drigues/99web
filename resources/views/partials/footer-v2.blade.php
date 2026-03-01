@@ -6,7 +6,7 @@
 
             {{-- Col 1: Marca --}}
             <div>
-                <a href="/" class="inline-block text-2xl font-display mb-5">
+                <a href="/" class="inline-block text-3xl font-extrabold mb-5" style="font-family: var(--font-body);">
                     <span class="text-[var(--accent)]">99</span>web
                 </a>
 
@@ -30,7 +30,7 @@
                         'Google Maps',
                     ] as $label)
                         <li>
-                            <a href="#servicos" class="text-base text-[var(--gray)] hover:text-[var(--white)] transition-colors duration-300">{{ $label }}</a>
+                            <a href="#servicos" class="text-base font-medium text-[var(--gray)] hover:text-[var(--white)] transition-colors duration-300">{{ $label }}</a>
                         </li>
                     @endforeach
                 </ul>

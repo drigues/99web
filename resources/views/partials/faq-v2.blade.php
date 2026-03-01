@@ -3,7 +3,7 @@
 
         <x-section-label text="Dúvidas" />
 
-        <h2 class="text-5xl lg:text-7xl font-display leading-tight mb-20" data-animate="fade-up">
+        <h2 class="text-3xl lg:text-6xl font-display font-black leading-tight mb-20" data-animate="fade-up">
             Perguntas frequentes
         </h2>
 
@@ -49,7 +49,7 @@
                     <span class="text-sm text-[var(--gray)] font-mono flex-shrink-0">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
 
                     <!-- Question -->
-                    <span class="flex-1 text-2xl lg:text-3xl font-display text-[var(--white)] group-hover:text-[var(--accent-light)] transition-colors duration-300">
+                    <span class="flex-1 text-xl lg:text-2xl font-display font-bold text-[var(--white)] group-hover:text-[var(--accent-light)] transition-colors duration-300">
                         {{ $faq['pergunta'] }}
                     </span>
 
@@ -65,7 +65,7 @@
                 <!-- Answer -->
                 <div x-show="open === {{ $index }}" x-collapse x-cloak>
                     <div class="pb-8 pl-0 lg:pl-16 pr-14">
-                        <p class="text-[var(--gray)] text-lg leading-relaxed max-w-2xl">
+                        <p class="text-[var(--gray)] text-base lg:text-lg font-medium leading-relaxed max-w-2xl">
                             {{ $faq['resposta'] }}
                         </p>
                     </div>

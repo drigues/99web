@@ -4,7 +4,7 @@
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
             <div>
                 <x-section-label text="Trabalhos" />
-                <h2 class="text-5xl lg:text-7xl font-display" data-animate="fade-up">Projetos selecionados</h2>
+                <h2 class="text-3xl lg:text-6xl font-display font-black" data-animate="fade-up">Projetos selecionados</h2>
             </div>
             <a href="#" class="text-[var(--accent-light)] text-sm flex items-center gap-2 hover:gap-3 transition-all" data-magnetic>
                 Ver todos os projetos
@@ -40,8 +40,8 @@
                     <div class="absolute bottom-0 left-0 right-0 p-6 lg:p-8 bg-gradient-to-t from-black/60 to-transparent">
                         <div class="flex items-end justify-between">
                             <div>
-                                <span class="text-xs text-[var(--gray)] uppercase tracking-wider">{{ $project['type'] }}</span>
-                                <h3 class="text-2xl lg:text-3xl font-display mt-1 group-hover:text-[var(--accent-light)] transition-colors">{{ $project['name'] }}</h3>
+                                <span class="text-sm font-medium text-[var(--gray)] uppercase tracking-wider">{{ $project['type'] }}</span>
+                                <h3 class="text-xl lg:text-2xl font-display font-bold mt-1 group-hover:text-[var(--accent-light)] transition-colors">{{ $project['name'] }}</h3>
                             </div>
                             <div class="w-10 h-10 rounded-full border border-[var(--border-color)] flex items-center justify-center group-hover:bg-[var(--accent)] group-hover:border-[var(--accent)] transition-all duration-300 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M7 17L17 7M17 7H7M17 7v10"/></svg>

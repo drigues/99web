@@ -13,11 +13,11 @@
 
     <div class="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
 
-        <h2 class="text-5xl lg:text-8xl xl:text-[9rem] font-display leading-tight mb-6" data-animate="fade-up">
+        <h2 class="text-3xl lg:text-6xl font-display font-black leading-tight mb-6" data-animate="fade-up">
             Pronto para transformar o seu negócio?
         </h2>
 
-        <p class="text-xl lg:text-2xl text-white/70 max-w-2xl mx-auto mb-12" data-animate="fade-up">
+        <p class="text-lg lg:text-xl font-medium text-white/70 max-w-2xl mx-auto mb-12" data-animate="fade-up">
             Fale com a 99web e construa uma presença digital que converte visitantes em clientes.
         </p>
 
