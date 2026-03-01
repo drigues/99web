@@ -23,7 +23,7 @@ class SiteSettings extends Page implements Forms\Contracts\HasForms
 
     protected static ?string $slug = 'configuracoes';
 
-    protected static ?int $navigationSort = 100;
+    protected static ?int $navigationSort = 1;
 
     protected static string $view = 'filament.pages.site-settings';
 

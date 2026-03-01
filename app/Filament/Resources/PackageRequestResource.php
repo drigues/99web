@@ -14,7 +14,7 @@ class PackageRequestResource extends Resource
 {
     protected static ?string $model = PackageRequest::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
+    protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
     protected static ?string $navigationGroup = 'CRM';
     protected static ?string $navigationLabel = 'Pedidos';
     protected static ?string $modelLabel = 'Pedido de Pacote';

@@ -6,6 +6,7 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -27,18 +28,22 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->authGuard('admin')
-            ->brandName('99web')
+            ->brandName('99web Admin')
+            ->brandLogo(fn () => view('filament.components.logo'))
             ->darkMode(true)
             ->colors([
                 'primary' => Color::Violet,
             ])
+            ->favicon(asset('favicon.ico'))
             ->navigationGroups([
-                'CRM',
-                'Conteúdo',
-                'Sistema',
+                NavigationGroup::make('CRM')->icon('heroicon-o-users'),
+                NavigationGroup::make('Conteúdo')->icon('heroicon-o-document-text'),
+                NavigationGroup::make('Sistema')->icon('heroicon-o-cog-6-tooth')->collapsed(),
             ])
             ->sidebarCollapsibleOnDesktop()
             ->globalSearchKeyBindings(['command+k', 'ctrl+k'])
+            ->globalSearch(true)
+            ->databaseNotifications()
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -55,6 +60,7 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                'throttle:5,1',
             ])
             ->authMiddleware([
                 Authenticate::class,

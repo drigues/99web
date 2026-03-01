@@ -17,7 +17,7 @@ class MeetingRequestResource extends Resource
 {
     protected static ?string $model = MeetingRequest::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
+    protected static ?string $navigationIcon = 'heroicon-o-calendar';
     protected static ?string $navigationGroup = 'CRM';
     protected static ?string $navigationLabel = 'Reuniões';
     protected static ?string $modelLabel = 'Reunião';
