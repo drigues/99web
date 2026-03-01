@@ -54,9 +54,19 @@ class SiteSetting extends Model
 
     public static function getAllCached(): array
     {
-        return Cache::remember('site_settings', 3600, function () {
-            return static::pluck('value', 'key')->toArray();
+        $cached = Cache::remember('site_settings', 3600, function () {
+            try {
+                return static::pluck('value', 'key')->toArray();
+            } catch (\Exception $e) {
+                return [];
+            }
         });
+
+        if ($cached instanceof \Illuminate\Support\Collection) {
+            $cached = $cached->toArray();
+        }
+
+        return is_array($cached) ? $cached : [];
     }
 
     public static function clearCache(): void
