@@ -54,6 +54,27 @@ class BlogPost extends Model
         return $this->belongsToMany(BlogTag::class, 'blog_post_tag', 'blog_post_id', 'blog_tag_id');
     }
 
+    public function relatedPosts(): BelongsToMany
+    {
+        return $this->belongsToMany(self::class, 'blog_post_related', 'blog_post_id', 'related_post_id');
+    }
+
+    public function getRelatedPostsForDisplay(): \Illuminate\Database\Eloquent\Collection
+    {
+        $manual = $this->relatedPosts;
+
+        if ($manual->isNotEmpty()) {
+            return $manual;
+        }
+
+        return static::published()
+            ->where('id', '!=', $this->id)
+            ->where('category_id', $this->category_id)
+            ->latest('published_at')
+            ->limit(3)
+            ->get();
+    }
+
     // ─── Scopes ───────────────────────────────────────────────
 
     public function scopePublished($query)
