@@ -20,7 +20,7 @@
                 ['name' => 'Mesahu', 'type' => 'WebsRest & Reservas', 'color' => 'from-emerald-500/20 to-emerald-900/40', 'size' => 'large'],
                 ['name' => 'Granber', 'type' => 'Sistema Corporativo', 'color' => 'from-blue-500/20 to-blue-900/40', 'size' => 'normal'],
                 ['name' => 'Navego', 'type' => 'Plataforma Web', 'color' => 'from-orange-500/20 to-orange-900/40', 'size' => 'normal'],
-                ['name' => 'Abacate Café', 'type' => 'WebsRest & Reservas', 'color' => 'from-[var(--accent)]/20 to-purple-900/40', 'size' => 'large'],
+                ['name' => 'Abacate Café', 'type' => 'Website Institucional', 'color' => 'from-[var(--accent)]/20 to-purple-900/40', 'size' => 'large'],
             ];
             @endphp
 
