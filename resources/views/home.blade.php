@@ -387,7 +387,7 @@
                                     </span>
                                 @endif
                                 <p class="text-xs {{ $isPopular ? 'text-zinc-500' : 'text-[var(--gray)]' }} mt-1">
-                                    {{ is_numeric($priceFinal) ? 'pagamento único' : 'proposta à medida do projeto' }}
+                                    {{ is_numeric($priceFinal) ? 'pagamento único / valor sem iva' : 'proposta à medida do projeto' }}
                                 </p>
                             </div>
 
